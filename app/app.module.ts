@@ -12,6 +12,8 @@ import {AdminOrdersComponent} from './admin-orders/admin-orders.component';
 import {AuthentificationComponent } from './authentification/authentification.component';
 import {FormsModule} from '@angular/forms';
 import { NewUserComponent } from './new-user/new-user.component';
+import { UserService } from './user.service';
+import {HttpClientModule} from '@angular/common/http';
 
 const appRoutes:Routes =[
   {path:'Product',component:ProductComponent},
@@ -19,7 +21,7 @@ const appRoutes:Routes =[
   {path:'adminProducts',component:ProductsComponent},
   {path:'adminOrders',component:ProductsComponent},
   {path : 'authentification', component: AuthentificationComponent},
-  {path : 'newUser', component: NewUserComponent}
+{path : 'newUser', component: NewUserComponent}
 ];
 
 @NgModule({
@@ -32,18 +34,19 @@ const appRoutes:Routes =[
     ProductsComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
-    appRoutes,
+   
     NewUserComponent
   ],
   imports: [
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     ),
     BrowserModule
   ],
-  providers: [ProductService],
+  providers: [ProductService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

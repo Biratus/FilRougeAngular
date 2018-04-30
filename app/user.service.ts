@@ -7,7 +7,9 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class UserService {
   readonly rootUrl = 'http://localhost:8085';
-  constructor(private http: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    this.httpClient=httpClient;
+   }
 
 
   userAuthentification(user : User):Observable<any>{
@@ -24,7 +26,7 @@ export class UserService {
     }
 
 return null;
-   // return this.http.post(this.rootUrl + '/authenticate?username='+user.UserName+'&password='+user.Password,null);
+   // return this.httpClient.post(this.rootUrl + '/authenticate?username='+user.UserName+'&password='+user.Password,null);
   }
 
 
@@ -38,7 +40,7 @@ return null;
       UserName: USER.UserName,
       Password: USER.Password
     }
-    return this.http.post(this.rootUrl + '/api/user/Register', USER);
+    return this.httpClient.post(this.rootUrl + '/api/user/Register', USER);
   
  
 }
