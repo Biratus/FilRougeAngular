@@ -16,13 +16,13 @@ import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './menu/menu.component';
 
-const appRoutes: Routes = [
-  { path: 'Product', component: ProductComponent },
-  { path: 'Products', component: ProductsComponent },
-  { path: 'adminProducts', component: ProductsComponent },
-  { path: 'adminOrders', component: ProductsComponent },
-  { path: 'authentification', component: AuthentificationComponent },
-  { path: 'newUser', component: NewUserComponent }
+const appRoutes:Routes =[
+  {path:'Product',component:ProductComponent},
+  {path:'Products',component:ProductsComponent},
+  {path:'AdminProducts',component:AdminProductsComponent},
+  {path:'AdminOrders',component:AdminOrdersComponent},
+  {path :'Authentification', component: AuthentificationComponent},
+  {path :'newUser', component: NewUserComponent}
 ];
 
 @NgModule({
@@ -40,6 +40,7 @@ const appRoutes: Routes = [
     MenuComponent
   ],
   imports: [
+    HttpClientModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(
@@ -48,7 +49,7 @@ const appRoutes: Routes = [
     ),
     BrowserModule
   ],
-  providers: [ProductService, UserService],
+  providers: [ProductService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
