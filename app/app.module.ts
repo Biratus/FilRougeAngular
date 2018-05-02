@@ -18,6 +18,8 @@ import { MenuComponent } from './menu/menu.component';
 import {AccordionModule} from 'primeng/accordion';
 import {TableModule} from 'primeng/table';
 import {DataTableModule} from 'primeng/datatable';
+import {MenubarModule} from 'primeng/menubar';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 
 const appRoutes:Routes =[
@@ -44,6 +46,8 @@ const appRoutes:Routes =[
     MenuComponent
   ],
   imports: [
+    AngularFontAwesomeModule,
+    MenubarModule,
     TableModule,
     DataTableModule,
     AccordionModule,
