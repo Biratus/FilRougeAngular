@@ -4,10 +4,17 @@ export class User {
     mail: string;
     address: string;
     phone: number;
-    UserName: string;
+
     Password: string;
    
-
+    constructor( lastName:string, firstName:string,mail: string,adress: string, phone: number, Password: string  ){
+        this.lastName= lastName;
+        this.firstName = firstName;
+        this.mail = mail;;
+        this.address = this.address;
+        this.phone = phone;
+        this.Password = Password;
+    }
    
     
    
