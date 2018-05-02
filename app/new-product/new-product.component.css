@@ -1,8 +1,9 @@
 div.sm-jumbotron{
     margin: 0px;
     padding: 0.5rem;
-    background-color: #38547c;
+    background-color: rgb(18, 101, 184);
     color: #fff;
+    
 }
 
 button.btn-submit{
