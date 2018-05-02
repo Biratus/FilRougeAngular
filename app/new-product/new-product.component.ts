@@ -19,15 +19,7 @@ export class NewProductComponent implements OnInit {
   resetForm(form?: NgForm) {
     if (form != null)
       form.reset();
-    this.product = {
-      name: '',
-      type: '',
-      price: null,
-      category:'',
-      qty: null,
-      src:''
-
-    }
+    this.product =new Product(0,'','',0,'',0,'');
   }
 
   ngOnInit() {
