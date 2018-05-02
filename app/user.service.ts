@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class UserService {
-  readonly rootUrl = 'http://localhost:8085';
+  readonly rootUrl = 'http://localhost:8082/formafond';
   constructor(private httpClient: HttpClient) {
     this.httpClient = httpClient;
   }
@@ -18,7 +18,7 @@ export class UserService {
   }
 
 
-  registerUser(user: User) {
+  registerUser(user: User):Observable<any> {
     return this.httpClient.post(this.rootUrl + '/api/user', user);
   }
 

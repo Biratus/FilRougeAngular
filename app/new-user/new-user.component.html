@@ -1,49 +1,49 @@
 <div class="container container-fluid">
-<div class="row">
+  <div class="row">
     <div class="col s8 ">
       <div class="card">
         <div class="sm-jumbotron center-align">
           <h4>Nouveau utilisateur</h4>
         </div>
         <form class="col s12 white" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
-            <div class="row">
-                <div class="input-field col s6">
-                  <input class="validate" type="text" name="Email" #Email="ngModel" [(ngModel)]="user.Email" [pattern]="emailPattern">
-                  <label data-error="Invalid email!">Email</label>
-                </div>
-                <div class="input-field col s6">
-                    <input  type="password" name="Password" #Password="ngModel" [(ngModel)]="user.Password" required  minlength="3">
-                    <label [attr.data-error]="Password.errors!=null?(Password.errors.required?'Required field!':'Minimum 3 characters needed'):''">Password</label>
-                </div>
-
-              </div>
           <div class="row">
-              <div class="input-field col s6">
-                  <input class="validate" type="text" name="firstName" #firstName="ngModel" [(ngModel)]="user.firstName" required>
-                  <label data-error="Required field!">First name</label>
-                </div>
+            <div class="input-field col s6">
+              <input class="validate" type="text" name="mail" #Email="ngModel" [(ngModel)]="user.mail" [pattern]="emailPattern">
+              <label data-error="Invalid email!">Email</label>
+            </div>
+            <div class="input-field col s6">
+              <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" required minlength="3">
+              <label [attr.data-error]="password.errors!=null?(password.errors.required?'Required field!':'Minimum 3 characters needed'):''">Mot de passe</label>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input class="validate" type="text" name="firstName" #firstName="ngModel" [(ngModel)]="user.firstName" required>
+              <label data-error="Required field!">Prenom</label>
+            </div>
             <div class="input-field col s6">
               <input class="validate" type="text" name="lastName" #lastName="ngModel" [(ngModel)]="user.lastName" required>
-              <label data-error="Required field!">Last name</label>
+              <label data-error="Required field!">Nom</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s6">
-                <input class="validate" type="tel" name="phone" #phone="ngModel" [(ngModel)]="user.phone" required  minlength="3">
-                <label >phone</label>
-              </div>
-              <div class="input-field col s6">
-                  <input class="validate" type="tel" name="adress" #phone="ngModel" [(ngModel)]="user.adress" required  minlength="3">
-                  <label >Adress</label>
-                </div>
-          </div>
-        
-        
-          <div class="row">
-              <div class="input-field col s12">
-                <button [disabled]="" class="btn-large btn-submit" type="submit">Submit</button>
-              </div>
+              <input class="validate" type="tel" name="phone" #phone="ngModel" [(ngModel)]="user.phone" required minlength="3">
+              <label>Telephone</label>
             </div>
+            <div class="input-field col s6">
+              <input class="validate" type="text" name="address" #address="ngModel" [(ngModel)]="user.address" required minlength="3">
+              <label>Addresse</label>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="input-field col s12">
+              <button [disabled]="" class="btn-large btn-submit" type="submit">Submit</button>
+            </div>
+          </div>
         </form>
       </div>
     </div>

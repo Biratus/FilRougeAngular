@@ -27,12 +27,13 @@ export class NewUserComponent implements OnInit {
   OnSubmit(form: NgForm) {
     this.userService.registerUser(form.value)
       .subscribe((data: any) => {
-        if (data.Succeeded == true) {
+        if (data.state == "success") {
           this.resetForm(form);
       
+        } else {
+          //TODO Message d'erreur pb serveur
         }
-    
-      });
+      },error => console.log(error));
   }
 
 }
