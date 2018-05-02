@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
+import {User} from './../user.model';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  items: MenuItem[];
+
+  constructor(private uServ:UserService) {
+    this.uServ=uServ;
+  }
 
   ngOnInit() {
+    this.buildItems(new User("","","","",0,"",""));
+    //this.uServ.getConnectedUser().subscribe(user => this.buildItems(User.fromJSON(user)));
+  }
+
+  buildItems(u:User) {
+    
   }
 
 }

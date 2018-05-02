@@ -9,7 +9,7 @@ import {ProductService} from '../product.service';
 })
 export class ProductsComponent implements OnInit {
 
-  myProducts = new Array<Product>();
+  myProducts: Product[];
   page:number;
 
   constructor(private productService: ProductService ) { 
@@ -18,7 +18,7 @@ export class ProductsComponent implements OnInit {
 
   
   ngOnInit() {
-    this.productService.getProducts().subscribe(products=>this.myProducts=products);
+
   }
 
 }

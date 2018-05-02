@@ -20,6 +20,10 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {AccordionModule} from 'primeng/accordion';
 import { UpdateProductComponent } from './update-product/update-product.component';     //accordion and accordion tab
 //import {MenuItem} from 'primeng/api';                 //api
+import {TableModule} from 'primeng/table';
+import {DataTableModule} from 'primeng/datatable';
+import {MenubarModule} from 'primeng/menubar';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 
 const appRoutes:Routes =[
@@ -34,6 +38,8 @@ const appRoutes:Routes =[
 
 @NgModule({
   declarations: [
+    
+   
     AppComponent,
     AuthentificationComponent,
     AppComponent,
@@ -41,7 +47,6 @@ const appRoutes:Routes =[
     ProductsComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
-
     NewUserComponent,
 
     MenuComponent,
@@ -51,6 +56,11 @@ const appRoutes:Routes =[
     UpdateProductComponent
   ],
   imports: [
+    AngularFontAwesomeModule,
+    MenubarModule,
+    TableModule,
+    DataTableModule,
+    AccordionModule,
     HttpClientModule,
     FileUploadModule,
     FormsModule,

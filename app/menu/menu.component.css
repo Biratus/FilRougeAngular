@@ -1,0 +1,40 @@
+.menuItemRound {
+    text-align: center;
+    font-size: 3em;
+    border-radius: 15em;
+    background-color: rgb(98, 168, 107);
+    margin: 0 0.1em;
+    padding: 0.2em;
+    width: 40%;
+    cursor:pointer;
+    box-shadow: 2px 3px 2px darkgreen;
+}
+
+.menuItemRound:hover  {
+    box-shadow:0;
+    background-color: rgb(51, 109, 58);
+}
+
+#menuItems {
+    display:inline-flex;
+    justify-content:center;
+}
+
+#menu {
+    text-align:center;
+    padding:1em;
+    background-color: rgb(18, 101, 184);
+} 
+
+#title {
+    color:white;
+    font-weight: bold;
+}
+
+#title h1 {
+    font-size:5em;
+}
+
+i {
+    width:1em;
+}
