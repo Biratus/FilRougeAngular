@@ -3,6 +3,7 @@ import {Product} from '../product';
 import {ProductService} from '../product.service';
 import {DataTableModule} from 'primeng/datatable';
 import {TableModule} from 'primeng/table';
+import {CheckboxModule} from 'primeng/checkbox';
 
 
 @Component({
@@ -31,7 +32,6 @@ export class AdminProductsComponent implements OnInit {
       { field: 'price', header: 'Price' },
       { field: 'category', header: 'Category' },
       { field: 'qty', header: 'Quantity' },
-      { field: 'src', header: 'Source' }
     ];
   }
 }

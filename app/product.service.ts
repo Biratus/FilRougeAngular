@@ -7,14 +7,15 @@ import { Response } from "@angular/http";
 @Injectable()
 export class ProductService {
 
-  urlProducts = '';
+  urlAdminProducts='http://localhost:8080/formafond/Api/product/products';
+  urlProducts='';
 
   constructor(private http: HttpClient) {
     this.http = http;
   }
 
-  getProducts(): Observable<any> {
-    return this.http.get(this.urlProducts);
+  getProducts(): Observable<any>{
+    return this.http.get(this.urlAdminProducts);
   }
 
   saveProduct(product: Product): Observable<any> {

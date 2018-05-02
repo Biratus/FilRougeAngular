@@ -22,6 +22,7 @@ import { UpdateProductComponent } from './update-product/update-product.componen
 //import {MenuItem} from 'primeng/api';                 //api
 import {TableModule} from 'primeng/table';
 import {DataTableModule} from 'primeng/datatable';
+import {CheckboxModule} from 'primeng/checkbox';
 import {MenubarModule} from 'primeng/menubar';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import {ButtonModule} from 'primeng/button';
@@ -58,6 +59,7 @@ const appRoutes:Routes =[
   imports: [
     AngularFontAwesomeModule,
     MenubarModule,
+    CheckboxModule,
     TableModule,
     DataTableModule,
     AccordionModule,

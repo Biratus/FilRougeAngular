@@ -1,37 +1,42 @@
 <p>
   Gestion des produits
 </p>
-<div class="ui-g ui-fluid">
-  <div class="ui-g-12 ui-md-4">
-    <div class="ui-inputgroup">
-      <span class="ui-inputgroup-addon">
-        <i class="fa fa-user"></i>
-      </span>
-      <!-- rechercher poduits -->
-      <input type="text" pInputText placeholder="Product Name">
+<form>
+  <div class="form-group">
+    <div class="ui-g ui-fluid">
+      <div class="ui-g-12 ui-md-4">
+        <div class="ui-inputgroup">
+          <input type="text" pInputText placeholder="Product Name">         
+        </div>
+      </div>
+      <div class="ui-g-12 ui-md-4">
+        <div class="ui-inputgroup">
+          <input type="text" pInputText placeholder="Type">      
+        </div>
+      </div>
+      <button pButton type="submit" class="btnSearch" label="Search"  >Rechercher</button>
     </div>
   </div>
-  <div class="ui-g-12 ui-md-4">
-    <div class="ui-inputgroup">
-      <span class="ui-inputgroup-addon">type</span>
-      <!-- rechercher par type -->
-      <input type="text" pInputText placeholder="Type">
-    </div>
-  </div>
-</div>
+</form>
 <p-table [columns]="cols" [value]="myProducts" [paginator]="true" [rows]="10">
   <ng-template pTemplate="header" let cols>
-    <tr>
-      <th *ngFor="let col of cols">
-        {{col.header}}
-      </th>
-    </tr>
+      <tr>
+          <th *ngFor="let col of cols" >
+             {{col.header}}
+          </th>
+          <th>
+            Actif
+         </th>
+      </tr>
   </ng-template>
   <ng-template pTemplate="body" let-product let-cols="columns">
-    <tr>
-      <td *ngFor="let col of cols">
-        {{product[col.field]}}
-      </td>
-    </tr>
+      <tr>
+          <td *ngFor="let col of cols">
+            {{product[col.field]}}
+          </td>
+          <td>
+            <p-checkbox [(ngModel)]="checked" binary="true"></p-checkbox>
+          </td>
+      </tr>
   </ng-template>
 </p-table>

@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-orders.component.css']
 })
 export class AdminOrdersComponent implements OnInit {
-
+  cols: any[];
+  page: number;
   constructor() { }
 
   ngOnInit() {
