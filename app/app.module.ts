@@ -14,6 +14,9 @@ import { MenubarModule } from 'primeng/menubar';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ButtonModule } from 'primeng/button';
 import { Observable } from 'rxjs';
+import { DataGridModule } from 'primeng/datagrid';
+import { PanelModule } from 'primeng/panel';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
@@ -27,6 +30,7 @@ import { AdminProductsComponent } from './admin-products/admin-products.componen
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { UserService } from './user.service';
+
 
 
 const appRoutes: Routes = [
@@ -53,6 +57,8 @@ const appRoutes: Routes = [
     UpdateProductComponent
   ],
   imports: [
+    PanelModule,
+    DataGridModule,
     AngularFontAwesomeModule,
     MenubarModule,
     CheckboxModule,
@@ -67,7 +73,8 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     ),
     BrowserModule,
-    ButtonModule
+    ButtonModule,
+    BrowserAnimationsModule
   ],
   providers: [ProductService, UserService],
   bootstrap: [AppComponent]

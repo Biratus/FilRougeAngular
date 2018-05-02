@@ -4,22 +4,25 @@
 
 <form (ngSubmit)="onSubmit()">
   <div class="ui-g-12 ui-md-4">
-    <div class="ui-inputgroup">     
-      <input type="text" required [(ngModel)]="model.name" name="modelName" pInputText placeholder="Quel produit recherchez vous?">
-      <button pButton type="submit" class="btnSearch" label="Search"  >Rechercher</button>
-    </div>
-  </div>
-
-  <div class="ui-grid ui-grid-pad ui-grid-responsive">
-    <div class="ui-grid-row">
-      <div class="ui-grid-col-6 ui-widget-content" style="border-right:0 none">
-        <ul style="margin:0;padding:0">
-          <li *ngFor="let p of myProducts" class="ui-state-default ui-helper-clearfix">
-            <img src={{p.src}}/>
-            <div>{{p.name}} - {{p.price}}</div>
-          </li>
-        </ul>
-      </div>
+    <div class="ui-inputgroup">
+      <input type="text" id="namesearch" required [(ngModel)]="name" name="model" pInputText placeholder="Quel produit recherchez vous?">
+      <button pButton type="submit" class="btnSearch">Rechercher</button>
     </div>
   </div>
 </form>
+
+<p-dataGrid [value]="myProducts" [paginator]="true" [rows]="9">
+  <p-header>
+    Nos produits
+  </p-header>
+  <ng-template let-product let-i="index" pTemplate="item">
+    <div style="padding:3px" class="ui-g-12 ui-md-3">
+      <p-panel [header]="product.name" [style]="{'text-align':'center'}">
+        <img src="src" width="60"/>
+        <div class="product-detail">{{product.name}} - {{product.price}}</div>
+        <hr class="ui-widget-content" style="border-top:0"/>
+        <i class="fa fa-search" (click)="selectProd(products)" style="cursor:pointer"></i>
+      </p-panel>
+    </div>
+  </ng-template>
+</p-dataGrid>

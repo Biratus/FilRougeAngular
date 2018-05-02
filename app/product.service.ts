@@ -7,14 +7,14 @@ import { Response } from "@angular/http";
 @Injectable()
 export class ProductService {
 
-  urlAdminProducts='http://localhost:8080/formafond/Api/product/products';
-  urlProducts='';
+  urlAdminProducts = 'http://localhost:8080/formafond/Api/product/products';
+  urlProducts = '';
 
   constructor(private http: HttpClient) {
     this.http = http;
   }
 
-  getProducts(): Observable<any>{
+  getProducts(): Observable<any> {
     return this.http.get(this.urlAdminProducts);
   }
 
@@ -62,7 +62,11 @@ export class ProductService {
   }
 
   search(name, category, page, resultByPage): Observable<any> {
-    return this.http.get("http://localhost:8080/formafond/Api/product/search" + name + category + page + resultByPage);
+    return this.http.get("http://localhost:8080/formafond/Api/product/search?" +
+      "name=" + name +
+      "&category=" + category +
+      "&page=" + page +
+      "&resultByPage=" + resultByPage);
   }
 
 }
