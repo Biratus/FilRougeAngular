@@ -31,13 +31,13 @@ export class MenuComponent implements OnInit {
     }
   }
 
+  goToCart() {
+    console.log("go to cart");
+  }
+
   goToProfile() {
     //check visitor/user/admin
     console.log("go to profile");
-  }
-
-  goToCart() {
-    console.log("go to cart");
   }
 
 }
