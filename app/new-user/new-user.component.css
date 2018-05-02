@@ -6,11 +6,11 @@ div.sm-jumbotron{
 }
 
 button.btn-submit{
-    background-color: #38547b;
+    background-color: rgb(18, 101, 184);
     color: #fff;
     width: 100%;
 }
 button.btn-submit:focus,button.btn-submit:hover{
-    background-color: #38547b;
+    background-color: rgb(18, 101, 184);
 }
 
