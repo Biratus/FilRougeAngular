@@ -1,3 +1,25 @@
-<p>
-  products works!
-</p>
+<h1>
+  Rechercher des produits
+</h1>
+
+<form (ngSubmit)="onSubmit()">
+  <div class="ui-g-12 ui-md-4">
+    <div class="ui-inputgroup">     
+      <input type="text" required [(ngModel)]="model.name" name="modelName" pInputText placeholder="Quel produit recherchez vous?">
+      <button pButton type="submit" class="btnSearch" label="Search"  >Rechercher</button>
+    </div>
+  </div>
+
+  <div class="ui-grid ui-grid-pad ui-grid-responsive">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-6 ui-widget-content" style="border-right:0 none">
+        <ul style="margin:0;padding:0">
+          <li *ngFor="let p of myProducts" class="ui-state-default ui-helper-clearfix">
+            <img src={{p.src}}/>
+            <div>{{p.name}} - {{p.price}}</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</form>

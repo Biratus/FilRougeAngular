@@ -25,6 +25,7 @@ import {DataTableModule} from 'primeng/datatable';
 import {MenubarModule} from 'primeng/menubar';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import {ButtonModule} from 'primeng/button';
+import { Observable } from 'rxjs';
 
 
 const appRoutes:Routes =[
@@ -71,7 +72,7 @@ const appRoutes:Routes =[
     BrowserModule,
     ButtonModule
   ],
-  providers: [ProductService,UserService],
+  providers: [ProductService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
