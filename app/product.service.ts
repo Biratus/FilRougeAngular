@@ -25,6 +25,9 @@ export class ProductService {
   removeProduct(product: Product): Observable<any> {
     return this.http.delete<Product>(this.urlProducts);
   }
+  update(product: Product) {
+    return this.http.put("http://localhost:8080/formafond/Api/product", product);
+  }
 
   removeProductById(id: number): Observable<any> {
     return this.http.delete<Product>(this.urlProducts);
@@ -61,4 +64,5 @@ export class ProductService {
   search(name, category, page, resultByPage): Observable<any> {
     return this.http.get("http://localhost:8080/formafond/Api/product/search" + name + category + page + resultByPage);
   }
+
 }
