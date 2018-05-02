@@ -15,6 +15,10 @@ import { NewUserComponent } from './new-user/new-user.component';
 import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './menu/menu.component';
+import {AccordionModule} from 'primeng/accordion';
+import {TableModule} from 'primeng/table';
+import {DataTableModule} from 'primeng/datatable';
+
 
 const appRoutes:Routes =[
   {path:'Product',component:ProductComponent},
@@ -27,6 +31,8 @@ const appRoutes:Routes =[
 
 @NgModule({
   declarations: [
+    
+   
     AppComponent,
     AuthentificationComponent,
     AppComponent,
@@ -34,12 +40,13 @@ const appRoutes:Routes =[
     ProductsComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
-
     NewUserComponent,
-
     MenuComponent
   ],
   imports: [
+    TableModule,
+    DataTableModule,
+    AccordionModule,
     HttpClientModule,
     FormsModule,
     HttpClientModule,
