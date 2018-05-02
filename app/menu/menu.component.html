@@ -1,27 +1,28 @@
-<div id="menu" class="container container-fluid">
-  <div class="row">
+<div class="container container-fluid">
+  <div id="menu" class="row">
     <div class="col-2">
       <a routerLink='/'>
         <img src="http://via.placeholder.com/140x100">
       </a>
     </div>
-    <div class="col-7 hide-md-down" id="title">
+    <div class="col-7 ui-hide-md-down" id="title">
       <h1>La forme à fond</h1>
     </div>
-    <div id="menuItems" class="col-3">
+    <div id="menuItems" class="col-3" (click)="goToCart()">
       <div class="menuItemRound">
         <i class="fa fa-shopping-cart"></i>
       </div>
-      <div class="menuItemRound">
-       <i class="fa fa-user-circle"></i>
+      <div class="menuItemRound" (click)="goToProfile()">
+        <i class="fa fa-user-circle"></i>
       </div>
     </div>
   </div>
-</div> 
-<!-- 
-<p-menubar [model]="items" [autoDisplay]="false">
   <div>
-    <input type="text" pInputText placeholder="Rechercher des produits">
-    <button pButton label="Déconnexion" icon="fa-sign-out"></button>
+    <p-menubar [model]="items" [autoDisplay]="false">
+      <div id="menubarright">
+        <input type="text" placeholder="Rechercher des produits">
+        <p-button  label="Deconnexion" icon="fa fa-sign-out" routerLink='/logout'></p-button>
+      </div>
+    </p-menubar>
   </div>
-</p-menubar> -->
+</div>

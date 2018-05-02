@@ -24,6 +24,7 @@ import {TableModule} from 'primeng/table';
 import {DataTableModule} from 'primeng/datatable';
 import {MenubarModule} from 'primeng/menubar';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import {ButtonModule} from 'primeng/button';
 
 
 const appRoutes:Routes =[
@@ -38,8 +39,6 @@ const appRoutes:Routes =[
 
 @NgModule({
   declarations: [
-    
-   
     AppComponent,
     AuthentificationComponent,
     AppComponent,
@@ -69,7 +68,8 @@ const appRoutes:Routes =[
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     ),
-    BrowserModule
+    BrowserModule,
+    ButtonModule
   ],
   providers: [ProductService,UserService],
   bootstrap: [AppComponent]

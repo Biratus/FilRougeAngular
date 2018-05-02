@@ -34,5 +34,4 @@ export class AdminProductsComponent implements OnInit {
       { field: 'src', header: 'Source' }
     ];
   }
-
 }
