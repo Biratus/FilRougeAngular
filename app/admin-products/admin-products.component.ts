@@ -15,7 +15,13 @@ export class AdminProductsComponent implements OnInit {
 
   myProducts: Product[];
   cols: any[];
-  page: number;
+  page: number=1;
+  resultByPage:number=9;
+  model: Product = new Product(0, "", "", 0, "", 0, "");
+  name:string="";
+  category:string="";
+  submitted=false;
+
 
   constructor(private productService: ProductService) {
     this.productService=productService;
@@ -33,5 +39,25 @@ export class AdminProductsComponent implements OnInit {
       { field: 'category', header: 'Category' },
       { field: 'qty', header: 'Quantity' },
     ];
+  }
+
+  onSubmit(name,cat){
+    this.submitted=true;
+    this.productService.search(name, cat, this.page, this.resultByPage)
+      .subscribe(result => {console.log(result);this.myProducts = result;}, error => console.log(error));
+  }
+
+  redirect(event){
+    console.log("mon produit");
+    console.log(event);
+  }
+
+  input(name:string, category:string){
+    if(name){
+      this.name=name;
+    }
+    if(category){
+      this.category=category;
+    }
   }
 }

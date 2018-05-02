@@ -1,27 +1,24 @@
-<p>
-  Gestion des produits
-</p>
-<form>
+<form (ngSubmit)="onSubmit(name.value,category.value)">
   <div class="form-group">
     <div class="ui-g ui-fluid">
-      <div class="ui-g-12 ui-md-4">
+      <div class="ui-g-4 ui-md-4">
         <div class="ui-inputgroup">
-          <input type="text" pInputText placeholder="Product Name">         
+          <input id="name" #name type="text" pInputText placeholder="Product Name">         
         </div>
       </div>
-      <div class="ui-g-12 ui-md-4">
+      <div class="ui-g-4 ui-md-4">
         <div class="ui-inputgroup">
-          <input type="text" pInputText placeholder="Type">      
+          <input id="category" #category type="text" pInputText placeholder="Product Category">      
         </div>
+        <button (click)="input(name.value,category.value)"  pButton type="submit" class="btnSearch" label="Search"  >Rechercher</button>
       </div>
-      <button pButton type="submit" class="btnSearch" label="Search"  >Rechercher</button>
     </div>
   </div>
 </form>
 <p-table [columns]="cols" [value]="myProducts" [paginator]="true" [rows]="10">
   <ng-template pTemplate="header" let cols>
       <tr>
-          <th *ngFor="let col of cols" >
+          <th *ngFor="let col of cols">
              {{col.header}}
           </th>
           <th>
@@ -30,7 +27,7 @@
       </tr>
   </ng-template>
   <ng-template pTemplate="body" let-product let-cols="columns">
-      <tr>
+      <tr (click)="redirect(product)">
           <td *ngFor="let col of cols">
             {{product[col.field]}}
           </td>
