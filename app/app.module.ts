@@ -15,6 +15,12 @@ import { NewUserComponent } from './new-user/new-user.component';
 import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './menu/menu.component';
+import { NewProductComponent } from './new-product/new-product.component';
+import {FileUploadModule} from 'primeng/fileupload';
+import {AccordionModule} from 'primeng/accordion';
+import { UpdateProductComponent } from './update-product/update-product.component';     //accordion and accordion tab
+//import {MenuItem} from 'primeng/api';                 //api
+
 
 const appRoutes:Routes =[
   {path:'Product',component:ProductComponent},
@@ -22,7 +28,8 @@ const appRoutes:Routes =[
   {path:'AdminProducts',component:AdminProductsComponent},
   {path:'AdminOrders',component:AdminOrdersComponent},
   {path :'Authentification', component: AuthentificationComponent},
-  {path :'newUser', component: NewUserComponent}
+  {path :'newUser', component: NewUserComponent},
+  {path :'newProduct', component: NewProductComponent}
 ];
 
 @NgModule({
@@ -37,10 +44,15 @@ const appRoutes:Routes =[
 
     NewUserComponent,
 
-    MenuComponent
+    MenuComponent,
+
+    NewProductComponent,
+
+    UpdateProductComponent
   ],
   imports: [
     HttpClientModule,
+    FileUploadModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(

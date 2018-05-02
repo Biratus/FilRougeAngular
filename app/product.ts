@@ -1,6 +1,5 @@
 export class Product {
     
-    id:number;
     name:string;
     type:string;
     price:number;
@@ -8,8 +7,7 @@ export class Product {
     qty:number;
     src:string;
 
-    constructor( id:number,name:string, type:string, price:number, category:string, qty:number, src:string){
-        this.id=id;
+    constructor( name:string, type:string, price:number, category:string, qty:number, src:string){
         this.name=name;
         this.type=type;
         this.price=price;
