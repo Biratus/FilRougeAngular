@@ -1,24 +1,23 @@
 export class User {
     lastName: string;
-    firstName:string;
+    firstName: string;
     mail: string;
     address: string;
     phone: number;
+    role:string;
+    password:string;
 
-    Password: string;
-   
-    constructor( lastName:string, firstName:string,mail: string,adress: string, phone: number, Password: string  ){
-        this.lastName= lastName;
+    constructor(lastName: string, firstName: string, mail: string, address: string, phone: number,role:string,pwd:string) {
+        this.lastName = lastName;
         this.firstName = firstName;
-        this.mail = mail;;
-        this.address = this.address;
+        this.mail = mail;
+        this.address = address;
         this.phone = phone;
-        this.Password = Password;
+        this.password=pwd;
+        this.role=role;
     }
-   
-    
-   
 
-
- 
+    static fromJSON(jsonObj) {
+        return new User(jsonObj.lastname,jsonObj.firstname,jsonObj.mail,jsonObj.address,jsonObj.phone,jsonObj.role,jsonObj.password);
+    }
 }

@@ -14,33 +14,12 @@ export class UserService {
 
   userAuthentification(user: User): Observable<any> {
 
-    const body: User = {
-
-      lastName: user.lastName,
-      firstName: user.firstName,
-      mail: user.mail,
-      address: user.address,
-      phone: user.phone,
-      UserName: user.UserName,
-      Password: user.Password
-    }
-
-    return null;
-    // return this.httpClient.post(this.rootUrl + '/authenticate?username='+user.UserName+'&password='+user.Password,null);
+    return this.httpClient.post(this.rootUrl + '/authenticate?username='+user.mail+'&password='+user.password,null);
   }
 
 
-  registerUser(USER: User) {
-    const body: User = {
-      lastName: USER.lastName,
-      firstName: USER.firstName,
-      mail: USER.mail,
-      address: USER.address,
-      phone: USER.phone,
-      UserName: USER.UserName,
-      Password: USER.Password
-    }
-    return this.httpClient.post(this.rootUrl + '/api/user', USER);
+  registerUser(user: User) {
+    return this.httpClient.post(this.rootUrl + '/api/user', user);
   }
 
   getConnectedUser():Observable<any> {

@@ -9,24 +9,16 @@ import { UserService } from '../user.service';
   styleUrls: ['./authentification.component.css']
 })
 export class AuthentificationComponent implements OnInit {
-  user: User;
+  user: User=new User("","","","",0,"","");
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+    this.userService=this.userService;
+   }
+
   resetForm(form?: NgForm) {
     if (form != null)
       form.reset();
-    this.user = {
-      UserName: '',
-      Password: '',
-
-    
-      lastName: '',
-      firstName:'',
-      mail: '',
-      address: '',
-      phone: null
-    
-    }
+    this.user = new User("","","","",0,"","");
   }
 
   ngOnInit() {
@@ -36,10 +28,10 @@ export class AuthentificationComponent implements OnInit {
       .subscribe((data: any) => {
         if (data.Succeeded == true) {
           this.resetForm(form);
-        }        
+        }
       },
-    error => console.log(error))
-    
+        error => console.log(error))
+
   }
 
 

@@ -22,17 +22,7 @@ export class NewUserComponent implements OnInit {
   resetForm(form?: NgForm) {
     if (form != null)
       form.reset();
-    this.user = {
-      UserName: '',
-      Password: '',
-
-    
-      lastName: '',
-      firstName:'',
-      mail: '',
-      address: '',
-      phone: null
-    }
+    this.user = new User("","","","",0,"","");
   }
   OnSubmit(form: NgForm) {
     this.userService.registerUser(form.value)
