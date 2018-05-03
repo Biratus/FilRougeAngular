@@ -1,56 +1,108 @@
-.menuItemRound {
+/* .circle {
     text-align: center;
-    font-size: 3em;
     border-radius: 15em;
     background-color: rgb(98, 168, 107);
     margin: 0 0.1em;
     padding: 0.2em;
-    width: 40%;
     cursor:pointer;
-    box-shadow: 2px 3px 2px darkgreen;
-}
+    height:50%;
+} */
 
-.menuItemRound:hover  {
+.container {
+    height: 8em;
+    margin-top: 1em;
+    /* background-color: darkblue; */
+}
+.circle {
+    box-shadow: 2px 3px 2px darkgreen;
+    background-color: rgb(98, 168, 107);
+    border-radius: 100%;
+    height: 70%;
+    margin: auto;
+    padding:10%;
+}
+.circle:hover {
     box-shadow:0;
     background-color: rgb(51, 109, 58);
 }
-
-#menuItems {
-    display:inline-flex;
-    justify-content:center;
+.row {
+    height: 100%;
+    margin: auto;
 }
 
+.container>div>div {
+    /* height: 80%; */
+    margin: auto;
+}
+
+.col-2>.row {
+    height: 100%;
+}
+
+#menuItems {
+    margin:0;
+}
 #menu {
     text-align:center;
-    padding:1em;
     background-color: rgb(18, 101, 184);
-} 
+}
 
-#title {
-    color:white;
-    font-weight: bold;
+img {
+    width:100%;
 }
 
 #title h1 {
+    margin:auto;
+    color:white;
+    font-weight: bold;
     font-size:5em;
 }
 
-i {
-    width:1em;
+.circle i {
+    font-size:xx-large;
 }
 
-#menubarright {
-     display:inline-flex;
-     widows: 150%;
-     float:right;
-}
-#menubarright p-button {
-    margin-left:1em;
-}
+@media screen and (max-width: 1200px) {
+    .circle {
+      height: 60%;
+    }
+    #title h1 {
+        font-size:4em;
+    }
+    .circle i {
+        font-size:x-large;
+    }
+  }
+@media screen and (max-width: 990px) {
+    .circle {
+      height: 40%;
+    }
 
-#menubarright input {
-    width:100%;
-    height:2em;
-    margin:0;
+    #title h1 {
+        font-size:3em;
+    }
+    .circle i {
+        font-size:large;
+    }
+  }
 
-}
+  @media screen and (max-width: 760px) {
+    .circle {
+      height: 30%;
+      padding:7%;
+    }
+    .circle i {
+        font-size:small;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .circle {
+      height: 25%;
+      padding:5%
+    }
+    #title {
+        visibility:hidden;
+    }
+  }
+
