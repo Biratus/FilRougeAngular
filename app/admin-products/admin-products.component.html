@@ -24,22 +24,22 @@
             </th>
             <th>
               Affiché
-          </th>
+            </th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product let-cols="columns">
-        <tr (click)="selectProduct(product)">
-            <td *ngFor="let col of cols">
+        <tr >
+            <td *ngFor="let col of cols" (click)="selectProduct(product)">
               {{product[col.field]}}
             </td>
             <td>
-              Actif
-              <p-checkbox [(ngModel)]="checked" binary="true"></p-checkbox>
+                Actif
+                <p-checkbox [(ngModel)]="checked" binary="true"></p-checkbox>
             </td>
         </tr>
     </ng-template>
   </p-table>
-  <p-dialog header="Product Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" width="500" (onAfterHide)="onDialogHide()">
+  <p-dialog  header="Product Details" [(visible)]="display" [responsive]="true" showEffect="fade" [modal]="true" width="500" (onAfterHide)="onDialogHide()">
       <div class="ui-grid ui-grid-responsive ui-grid-pad" *ngIf="selectedProduct" style="font-size:16px;text-align:center;padding:20px">
           <div class="ui-grid-row">
               <div class="ui-grid-col-12" style="text-align:center">
@@ -53,7 +53,7 @@
                         Id
                       </div>
                       <div>
-                        <input id="id" type="text" pInputText placeholder="{{selectedProduct.id}}">
+                        <input #id id="id" type="text" pInputText placeholder="{{selectedProduct.id}}">
                       </div>
                     </div>
                     <div class="ui-grid-col-4" style="text-align:right">
@@ -90,6 +90,8 @@
                 </form>
               </div>
           </div>
+          <button (click)="removeProduct(id.value);display=false" type="button" pButton class="btnDelete" label="Supprimer produit"></button>
+          <button (click)="updateProduct(selectedProduct);display=false" pButton type="button" class="btnModify" label="Modifier produit"></button>
       </div>
   </p-dialog>
 </div>

@@ -24,8 +24,9 @@ export class AdminProductsComponent implements OnInit {
   model: Product = new Product(0, "", "", 0, "", 0, "",false);
   name:string="";
   category:string="";
+  id:number=0;
   submitted=false;
-  displayDialog: boolean;
+  display: boolean = false;
 
 
   constructor(private productService: ProductService) {
@@ -52,10 +53,10 @@ export class AdminProductsComponent implements OnInit {
       .subscribe(result => {console.log(result);this.myProducts = result;}, error => console.log(error));
   }
 
-  redirect(event){
-    console.log("mon produit");
-    console.log(event);
-  }
+  // redirect(event){
+  //   console.log("mon produit");
+  //   console.log(event);
+  // }
 
   input(name:string, category:string){
     if(name){
@@ -66,13 +67,26 @@ export class AdminProductsComponent implements OnInit {
     }
   }
 
+  removeProduct(id:number){
+    this.id=id;
+    this.productService.removeProductById(id).subscribe(() => this.ngOnInit());
+    this.myProducts=[...this.myProducts]; 
+  }
+
   selectProduct(product: Product) {
-    console.log(product);
+    this.display=true;
     this.selectedProduct = product;
-    this.displayDialog = true;
+    
+  }
+
+  updateProduct(product:Product){
+    console.log(product);
+    this.productService.update(product).subscribe(()=>this.ngOnInit());
+    this.myProducts=[...this.myProducts];
   }
 
   onDialogHide() {
     this.selectedProduct = null;
+    
   }
 }

@@ -23,11 +23,11 @@ export class ProductService {
   }
 
   update(product: Product) {
-    return this.http.put(this.urlProducts, product);
+    return this.http.post(this.urlProducts, product);
   }
 
   removeProductById(id: number): Observable<any> {
-    return this.http.delete<Product>(this.urlProducts+"/{id}");
+    return this.http.delete<Product>(this.urlProducts+"/"+id);
   }
 
   getProductById(id): Observable<any> {
@@ -35,7 +35,7 @@ export class ProductService {
   }
 
   search(name, category, page, resultByPage): Observable<any> {
-    return this.http.get(this.urlProducts+ "/search?"+ 
+    return this.http.get(this.urlProducts+"/search?"+ 
     "name="+name+ 
     "&category="+category+ 
     "&page="+page+
