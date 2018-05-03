@@ -48,7 +48,7 @@ const appRoutes: Routes = [
   { path: 'authentification', component: AuthentificationComponent },
   { path: 'newUser', component: NewUserComponent },
   { path: 'newProduct', component: NewProductComponent },
-  { path: 'panier', component: PanierComponent }
+  { path: 'panier', component: PanierComponent },
   { path: 'Profile', component: UserProfileComponent }
 ];
 
