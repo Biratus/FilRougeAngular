@@ -13,8 +13,7 @@
 
 <form (ngSubmit)="onSubmit()">
   <h3>Catégories de produits :</h3>
-  <p-selectButton [options]="avalaibleCategories" [(ngModel)]="selectedTypes" 
-  multiple="multiple" name="SubmitedType"></p-selectButton>
+  <p-selectButton [options]="avalaibleCategories" [(ngModel)]="selectedTypes" multiple="multiple" name="SubmitedType"></p-selectButton>
   <p>Catégorie(s) sélectionnée(s):
     <span style="font-weight: bold" *ngFor="let t of selectedTypes">
       {{t}} </span>

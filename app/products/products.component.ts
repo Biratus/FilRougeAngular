@@ -44,13 +44,8 @@ export class ProductsComponent implements OnInit {
     if (nameProduct) {
       this.nameProduct = nameProduct;
     }
-    //console.log("Test submitted : " + this.nameProduct);
-    console.log("Test submitted : " + this.selectedTypes);
-    //this.selectedTypes.push(this.selectedTypes.join("-"));
-    this.productService.getCategories().subscribe
-    (selectedTypes => this.selectedTypes = selectedTypes.join("-"));
-    console.log("Test modifié : " + this.selectedTypes);
-    this.productService.search(this.nameProduct, this.model.category, this.page, this.resultByPage)
+    let catStr=this.selectedTypes?this.selectedTypes.join("-"):'';
+    this.productService.search(this.nameProduct, catStr, this.page, this.resultByPage)
       .subscribe(result => this.myProducts = result, error => console.log(error));
   }
 }
