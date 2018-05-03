@@ -12,8 +12,11 @@ import {FileUploadModule} from 'primeng/fileupload';
 export class NewProductComponent implements OnInit {
   product:Product;
   uploadedFiles: any[] = [];
+  myProducts: Product[];
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService) {
+    this.productService = productService;
+   }
 
 
   resetForm(form?: NgForm) {
@@ -24,17 +27,24 @@ export class NewProductComponent implements OnInit {
 
   ngOnInit() {
     this.resetForm();
+    this.productService.getProducts().subscribe
+    (myProducts => this.myProducts = myProducts);
   }
 
   OnSubmit(form: NgForm) {
-    this.productService.saveProduct(form.value)
-      .subscribe((data: any) => {
-        if (data.Succeeded == true) {
-          this.resetForm(form);
+  // console.log(form.value);
+    // this.productService.saveProduct(form.value)
+    //   .subscribe((data: any) => {
+    //     if (data.Succeeded == true) {
+    //       this.resetForm(form);
       
-        }
+    //     }
     
-      });
+    //   });
+
+    this.productService.saveProduct(form.value).subscribe
+    (newProduct => this.myProducts = newProduct);
+    this.resetForm(form);
   }
 
   //onUpload(event) {}

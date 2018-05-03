@@ -5,7 +5,7 @@
         <div class="sm-jumbotron center-align">
           <h4>Ajouter un nouveau produit</h4>
         </div>
-        <form class="col s12 white" #newProduct="ngForm" (ngSubmit)="OnSubmit(addNewProduct)">
+        <form class="col s12 white" #newProduct="ngForm" (ngSubmit)="OnSubmit(newProduct)">
             <div class="row">
                 <div class="input-field col s6">
                     <input class="validate" type="text" name="name" #name="ngModel" [(ngModel)]="product.name" required>
