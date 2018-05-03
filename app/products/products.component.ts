@@ -4,6 +4,8 @@ import { ProductService } from '../product.service';
 import { Observable } from 'rxjs';
 import { DataGridModule } from 'primeng/datagrid';
 import { PanelModule } from 'primeng/panel';
+import { SelectItem } from 'primeng/api';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 
 @Component({
@@ -13,12 +15,15 @@ import { PanelModule } from 'primeng/panel';
 })
 export class ProductsComponent implements OnInit {
   model: Product = new Product(0, "", "", 0, "", 0, "", false);
+  submitted = false;
   myProducts: Product[];
   name:string="";
   category:string="";
   page: number = 1;
   resultByPage: number = 9;
   nameProduct = "";
+  avalaibleCategories: SelectItem[]=[];
+  selectedTypes: string[];
 
   constructor(private productService: ProductService) {
     this.productService = productService;
@@ -27,15 +32,25 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.productService.getProducts().subscribe(myProducts => this.myProducts = myProducts);
-
+    this.productService.getCategories().subscribe(myAvalaibleCategories =>{
+       for(let catStr of myAvalaibleCategories) {
+         this.avalaibleCategories.push( {label: catStr, value: catStr});
+       }
+      });
   }
 
-  input(nameProduct: string) {
+  onSubmit(nameProduct: string) {
+    this.submitted = true;
     if (nameProduct) {
       this.nameProduct = nameProduct;
     }
-    console.log("Test submitted : " + this.nameProduct);
+    //console.log("Test submitted : " + this.nameProduct);
+    console.log("Test submitted : " + this.selectedTypes);
+    //this.selectedTypes.push(this.selectedTypes.join("-"));
+    this.productService.getCategories().subscribe
+    (selectedTypes => this.selectedTypes = selectedTypes.join("-"));
+    console.log("Test modifié : " + this.selectedTypes);
     this.productService.search(this.nameProduct, this.model.category, this.page, this.resultByPage)
-    .subscribe(result => this.myProducts = result, error => console.log(error));
+      .subscribe(result => this.myProducts = result, error => console.log(error));
   }
 }

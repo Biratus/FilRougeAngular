@@ -2,16 +2,26 @@
   Rechercher des produits
 </h1>
 
-<form (ngSubmit)="input(nameProduct.value)">
+<form (ngSubmit)="onSubmit(nameProduct.value)">
   <div class="ui-g-12 ui-md-4">
     <div class="ui-inputgroup">
-      <input  type="text" id="namesearch" required [(ngModel)]="name" name="model" pInputText placeholder="Quel produit recherchez vous?">
-      <button  pButton type="submit" class="btnSearch">Rechercher</button>
+      <input type="text" id="namesearch" #nameProduct required [(ngModel)]="name" name="model" pInputText placeholder="Quel produit recherchez vous?">
+      <button pButton type="submit" class="btnSearch">Rechercher</button>
     </div>
   </div>
 </form>
 
-<p-dataGrid [value]="myProducts" [paginator]="true" [rows]="9" [pageLinks]="100" [alwaysShowPaginator]="true">
+<form (ngSubmit)="onSubmit()">
+  <h3>Catégories de produits :</h3>
+  <p-selectButton [options]="avalaibleCategories" [(ngModel)]="selectedTypes" 
+  multiple="multiple" name="SubmitedType"></p-selectButton>
+  <p>Catégorie(s) sélectionnée(s):
+    <span style="font-weight: bold" *ngFor="let t of selectedTypes">
+      {{t}} </span>
+  </p>
+</form>
+
+<p-dataGrid [value]="myProducts" [paginator]="true" [rows]="9" [emptyMessage]="'Nous ne trouvons pas le produit que vous recherchez :('">
   <p-header>
     Nos produits
   </p-header>
