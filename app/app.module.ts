@@ -34,6 +34,7 @@ import { AdminProductsComponent } from './admin-products/admin-products.componen
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { UserService } from './user.service';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 
@@ -45,7 +46,8 @@ const appRoutes: Routes = [
   { path: 'AdminOrders', component: AdminOrdersComponent },
   { path: 'authentification', component: AuthentificationComponent },
   { path: 'newUser', component: NewUserComponent },
-  { path: 'newProduct', component: NewProductComponent }
+  { path: 'newProduct', component: NewProductComponent },
+  { path: 'Profile', component: UserProfileComponent }
 ];
 
 @NgModule({
@@ -59,7 +61,8 @@ const appRoutes: Routes = [
     NewUserComponent,
     MenuComponent,
     NewProductComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    UserProfileComponent
   ],
   imports: [
     MenuModule,
