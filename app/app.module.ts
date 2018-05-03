@@ -60,6 +60,9 @@ const appRoutes: Routes = [
     UpdateProductComponent
   ],
   imports: [
+    SelectButtonModule,
+    BrowserAnimationsModule,
+    SelectButtonModule,
     PanelModule,
     DataGridModule,
     AngularFontAwesomeModule,
