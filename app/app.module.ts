@@ -19,6 +19,8 @@ import { PanelModule } from 'primeng/panel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SelectItem } from 'primeng/api';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { DialogModule } from 'primeng/dialog';
+import { MenuModule } from 'primeng/menu';
 
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
@@ -32,7 +34,7 @@ import { AdminProductsComponent } from './admin-products/admin-products.componen
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { UserService } from './user.service';
-import {DialogModule} from 'primeng/dialog';
+
 
 
 
@@ -60,6 +62,8 @@ const appRoutes: Routes = [
     UpdateProductComponent
   ],
   imports: [
+    MenuModule,
+    DialogModule,
     SelectButtonModule,
     BrowserAnimationsModule,
     SelectButtonModule,
