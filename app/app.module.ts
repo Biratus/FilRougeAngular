@@ -35,6 +35,7 @@ import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { UserService } from './user.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { PanierComponent } from './panier/panier.component';
 
 
 
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
   { path: 'authentification', component: AuthentificationComponent },
   { path: 'newUser', component: NewUserComponent },
   { path: 'newProduct', component: NewProductComponent },
+  { path: 'panier', component: PanierComponent }
   { path: 'Profile', component: UserProfileComponent }
 ];
 
@@ -61,6 +63,7 @@ const appRoutes: Routes = [
     NewUserComponent,
     MenuComponent,
     NewProductComponent,
+    PanierComponent
     UpdateProductComponent,
     UserProfileComponent
   ],

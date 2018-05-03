@@ -1,0 +1,57 @@
+
+<div class="container">
+  
+    <div class="d-flex flex-row-reverse">
+        <div class="col-xs-5 col-md-4 col-sm-4 col-lg-4   "id="sidebar">
+          <div class="card">
+                <div class="card-header bg-warning">
+                        <h3 class="card-title">Total</h3>
+                 </div>
+            <div class="card-body">
+                    <h2>Rs. 100</h2>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-danger" style="width: 80%;">Valider mon panier <i class="fa fa-shopping-cart" ></i></a>  
+            </div>
+          
+          </div>
+        </div>
+      
+  <div class="row">
+        <div class="col-xs-7 col-md-8 col-sm-8 col-lg-8"  *ngFor="let p of monPanier">
+          <div class="card">
+                <div class="card-header bg-primary" >
+                        <h3 class="card-title">{{p.name | uppercase}}</h3>
+                 </div>
+            <div class="card-body">
+              <!-- <h5 class="card-title">Special title treatment</h5> -->
+              <div class="d-flex justify-content-between">
+                  <div class="p-2">
+                      <figure class="figure">
+                          <img src="http://via.placeholder.com/140x100" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                          <figcaption class="figure-caption text-right">A caption for the above image.</figcaption>
+                        </figure>
+                  </div>
+            
+                  <div class="p-2">
+                      <input type="number" step="1" value="0" min="0" max="64" >
+                      
+                  </div>
+                  <div class="p-2">
+                      <td><button class="btn btn-danger btn-block" v-on:click="supprimer($index)"><i class="fa fa-trash-o fa-lg"></i></button></td>
+                  </div>
+                </div>
+
+                <!---->
+              <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+  
+                  
+              <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            </div>
+            
+          </div>
+        </div>
+        </div>
+        </div>
+       
+    </div>
+      
