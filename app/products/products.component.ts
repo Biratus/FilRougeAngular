@@ -14,6 +14,8 @@ import { PanelModule } from 'primeng/panel';
 export class ProductsComponent implements OnInit {
   model: Product = new Product(0, "", "", 0, "", 0, "", false);
   myProducts: Product[];
+  name:string="";
+  category:string="";
   page: number = 1;
   resultByPage: number = 9;
   nameProduct = "";

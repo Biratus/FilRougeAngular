@@ -4,6 +4,9 @@ import {ProductService} from '../product.service';
 import {DataTableModule} from 'primeng/datatable';
 import {TableModule} from 'primeng/table';
 import {CheckboxModule} from 'primeng/checkbox';
+import {DataGridModule} from 'primeng/datagrid';
+import {PanelModule} from 'primeng/panel';
+import {DialogModule} from 'primeng/dialog';
 
 
 @Component({
@@ -14,13 +17,15 @@ import {CheckboxModule} from 'primeng/checkbox';
 export class AdminProductsComponent implements OnInit {
 
   myProducts: Product[];
+  selectedProduct: Product;
   cols: any[];
   page: number=1;
-  resultByPage:number=9;
+  resultByPage:number=10;
   model: Product = new Product(0, "", "", 0, "", 0, "",false);
   name:string="";
   category:string="";
   submitted=false;
+  displayDialog: boolean;
 
 
   constructor(private productService: ProductService) {
@@ -37,8 +42,7 @@ export class AdminProductsComponent implements OnInit {
       { field: 'type', header: 'Type' },
       { field: 'price', header: 'Prix' },
       { field: 'category', header: 'Catégorie' },
-      { field: 'qty', header: 'Quantité'},
-      { field: 'activ', header: 'Actif'}
+      { field: 'qty', header: 'Quantité'}
     ];
   }
 
@@ -60,5 +64,15 @@ export class AdminProductsComponent implements OnInit {
     if(category){
       this.category=category;
     }
+  }
+
+  selectProduct(product: Product) {
+    console.log(product);
+    this.selectedProduct = product;
+    this.displayDialog = true;
+  }
+
+  onDialogHide() {
+    this.selectedProduct = null;
   }
 }

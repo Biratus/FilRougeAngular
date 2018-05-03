@@ -31,6 +31,7 @@ import { AdminProductsComponent } from './admin-products/admin-products.componen
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { UserService } from './user.service';
+import {DialogModule} from 'primeng/dialog';
 
 
 
@@ -59,6 +60,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     MenuModule,
+    DialogModule,
     PanelModule,
     DataGridModule,
     AngularFontAwesomeModule,

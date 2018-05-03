@@ -5,7 +5,7 @@
 <form (ngSubmit)="input(nameProduct.value)">
   <div class="ui-g-12 ui-md-4">
     <div class="ui-inputgroup">
-      <input type="text" id="namesearch" #nameProduct required [(ngModel)]="name" name="model" pInputText placeholder="Quel produit recherchez vous?">
+      <input  type="text" id="namesearch" required [(ngModel)]="name" name="model" pInputText placeholder="Quel produit recherchez vous?">
       <button  pButton type="submit" class="btnSearch">Rechercher</button>
     </div>
   </div>

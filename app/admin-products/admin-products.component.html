@@ -1,39 +1,95 @@
-<form (ngSubmit)="onSubmit(name.value,category.value)">
-  <div class="form-group">
-    <div class="ui-g ui-fluid">
-      <div class="ui-g-4 ui-md-4">
-        <div class="ui-inputgroup">
-          <input id="name" #name type="text" pInputText placeholder="Product Name">         
+<div class="container container-fluid">
+  <form (ngSubmit)="onSubmit(name.value,category.value)">
+    <div class="form-group">
+      <div class="ui-g ui-fluid">
+        <div class="ui-g-4 ui-md-4">
+          <div class="ui-inputgroup">
+            <input id="name" #name type="text" pInputText placeholder="Product Name">         
+          </div>
         </div>
-      </div>
-      <div class="ui-g-4 ui-md-4">
-        <div class="ui-inputgroup">
-          <input id="category" #category type="text" pInputText placeholder="Product Category">      
+        <div class="ui-g-4 ui-md-4">
+          <div class="ui-inputgroup">
+            <input id="category" #category type="text" pInputText placeholder="Product Category">      
+          </div>
+          <button (click)="input(name.value,category.value)"  pButton type="submit" class="btnSearch" label="Search"  >Rechercher</button>
         </div>
-        <button (click)="input(name.value,category.value)"  pButton type="submit" class="btnSearch" label="Search"  >Rechercher</button>
       </div>
     </div>
-  </div>
-</form>
-<p-table [columns]="cols" [value]="myProducts" [paginator]="true" [rows]="10">
-  <ng-template pTemplate="header" let cols>
-      <tr>
-          <th *ngFor="let col of cols">
-             {{col.header}}
+  </form>
+  <p-table [columns]="cols" [value]="myProducts" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="header" let cols>
+        <tr>
+            <th *ngFor="let col of cols">
+              {{col.header}}
+            </th>
+            <th>
+              Affiché
           </th>
-          <th>
-            Affiché
-         </th>
-      </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-product let-cols="columns">
-      <tr (click)="redirect(product)">
-          <td *ngFor="let col of cols">
-            {{product[col.field]}}
-          </td>
-          <td>
-            <p-checkbox [(ngModel)]="checked" binary="true"></p-checkbox>
-          </td>
-      </tr>
-  </ng-template>
-</p-table>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product let-cols="columns">
+        <tr (click)="selectProduct(product)">
+            <td *ngFor="let col of cols">
+              {{product[col.field]}}
+            </td>
+            <td>
+              Actif
+              <p-checkbox [(ngModel)]="checked" binary="true"></p-checkbox>
+            </td>
+        </tr>
+    </ng-template>
+  </p-table>
+  <p-dialog header="Product Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" width="500" (onAfterHide)="onDialogHide()">
+      <div class="ui-grid ui-grid-responsive ui-grid-pad" *ngIf="selectedProduct" style="font-size:16px;text-align:center;padding:20px">
+          <div class="ui-grid-row">
+              <div class="ui-grid-col-12" style="text-align:center">
+                <form>
+                  <div>
+                    <div  class="ui-grid-col-8" style="text-align:left">
+                      <img id="img" src="../../assets/{{selectedProduct.src}}">
+                    </div>
+                    <div class="ui-grid-col-4" style="text-align:right">
+                      <div class="label">
+                        Id
+                      </div>
+                      <div>
+                        <input id="id" type="text" pInputText placeholder="{{selectedProduct.id}}">
+                      </div>
+                    </div>
+                    <div class="ui-grid-col-4" style="text-align:right">
+                        <div class="label">
+                          Nom
+                        </div>
+                      <input id="name" type="text" pInputText placeholder="{{selectedProduct.name}}">
+                    </div>
+                    <div class="ui-grid-col-4" style="text-align:right">
+                        <div class="label">
+                          Quantité
+                        </div>
+                      <input id="qty"  type="text" pInputText placeholder="{{selectedProduct.qty}}">
+                    </div>
+                    <div class="ui-grid-col-4" style="text-align:right">
+                        <div class="label">
+                          Prix
+                        </div>
+                      <input id="price" type="text" pInputText placeholder="{{selectedProduct.price}}">
+                    </div>
+                    <div class="ui-grid-col-4" style="text-align:right">
+                        <div class="label">
+                          Type
+                        </div>
+                      <input id="type" type="text" pInputText placeholder="{{selectedProduct.type}}">
+                    </div>
+                    <div class="ui-grid-col-4" style="text-align:right">
+                      <div class="label">
+                        Catégorie
+                      </div>
+                      <input id="category" type="text" pInputText placeholder="{{selectedProduct.category}}"> 
+                    </div>
+                </div>
+                </form>
+              </div>
+          </div>
+      </div>
+  </p-dialog>
+</div>
