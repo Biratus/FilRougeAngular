@@ -17,6 +17,7 @@ import { Observable } from 'rxjs';
 import { DataGridModule } from 'primeng/datagrid';
 import { PanelModule } from 'primeng/panel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MenuModule} from 'primeng/menu';
 
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
@@ -57,6 +58,7 @@ const appRoutes: Routes = [
     UpdateProductComponent
   ],
   imports: [
+    MenuModule,
     PanelModule,
     DataGridModule,
     AngularFontAwesomeModule,

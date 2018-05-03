@@ -1,17 +1,6 @@
-/* .circle {
-    text-align: center;
-    border-radius: 15em;
-    background-color: rgb(98, 168, 107);
-    margin: 0 0.1em;
-    padding: 0.2em;
-    cursor:pointer;
-    height:50%;
-} */
-
-.container {
+.container:first-of-type {
     height: 8em;
     margin-top: 1em;
-    /* background-color: darkblue; */
 }
 .circle {
     box-shadow: 2px 3px 2px darkgreen;
@@ -47,10 +36,6 @@
     background-color: rgb(18, 101, 184);
 }
 
-img {
-    width:100%;
-}
-
 #title h1 {
     margin:auto;
     color:white;
@@ -60,6 +45,19 @@ img {
 
 .circle i {
     font-size:xx-large;
+}
+
+#burgerMenuCont {
+    margin-top:1em;
+    display:none;
+}
+
+#burgerMenuCont .row>* {
+    width:100%;
+}
+
+button[label] {
+    width:100%;
 }
 
 @media screen and (max-width: 1200px) {
@@ -93,6 +91,16 @@ img {
     }
     .circle i {
         font-size:small;
+    }
+    #title h1 {
+        font-size:2em;
+    }
+    #burgerMenuCont {
+        display:block;
+    }
+
+    #menuCont {
+        display:none;
     }
   }
 

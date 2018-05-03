@@ -1,12 +1,12 @@
 <div class="container container-fluid">
   <div id="menu" class="row">
-    <div class="col-2">
+    <div class="col-2 col-sm-3">
       <a routerLink='/'>
         <img src="http://via.placeholder.com/140x100">
       </a>
     </div>
     <!-- hidden-sm-down -->
-    <div class="col-7" id="title">
+    <div class="col-7 col-sm-5" id="title">
       <h1>La forme à fond</h1>
     </div>
     <div id="menuItems" class="col-3">
@@ -21,8 +21,16 @@
     </div>
   </div>
 </div>
-<div class="container">
-    <p-menubar [model]="items" [autoDisplay]="false">
-      <p-button label="Deconnexion" icon="fa fa-sign-out" routerLink='/logout'></p-button>
-    </p-menubar>
+<div id="menuCont" class="container">
+  <p-menubar [model]="items" [autoDisplay]="false">
+    <p-button label="Deconnexion" icon="fa fa-sign-out" routerLink='/logout'></p-button>
+  </p-menubar>
+</div>
+<div id="burgerMenuCont" class="container">
+  <div class="row">
+    <div class="col-4 mr-auto">
+      <p-menu #burgerMenu popup="popup" [model]="items"></p-menu>
+      <button type="button" pButton icon="fa fa-list" label="Menu" (click)="burgerMenu.toggle($event)"></button>
+    </div>
   </div>
+</div>
