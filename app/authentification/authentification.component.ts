@@ -26,8 +26,11 @@ export class AuthentificationComponent implements OnInit {
   OnSubmit(form: NgForm) {
     this.userService.userAuthentification(form.value)
       .subscribe((data: any) => {
-        if (data.Succeeded == true) {
+        if (data.state == "success") {
+          sessionStorage.setItem('user',JSON.stringify(form.value));
           this.resetForm(form);
+        } else {
+          //TODO Error message
         }
       },
         error => console.log(error))

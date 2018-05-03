@@ -18,6 +18,8 @@ export class User {
     }
 
     static fromJSON(jsonObj) {
+
+        if(jsonObj==null) return null;
         return new User(jsonObj.lastname,jsonObj.firstname,jsonObj.mail,jsonObj.address,jsonObj.phone,jsonObj.role,jsonObj.password);
     }
 }

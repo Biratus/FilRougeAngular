@@ -3,6 +3,7 @@
     margin-top: 1em;
 }
 .circle {
+    cursor:pointer;
     box-shadow: 2px 3px 2px darkgreen;
     background-color: rgb(98, 168, 107);
     border-radius: 100%;
@@ -58,6 +59,10 @@
 
 button[label] {
     width:100%;
+}
+
+#menuCont {
+    margin:1em auto;
 }
 
 @media screen and (max-width: 1200px) {

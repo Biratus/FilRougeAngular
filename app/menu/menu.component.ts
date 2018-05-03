@@ -3,6 +3,7 @@ import { MenuItem } from 'primeng/api';
 import {User} from './../user.model';
 import { UserService } from '../user.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-menu',
@@ -20,13 +21,14 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.buildItems(new User("","","","",0,"admin",""));
-    //this.uServ.getConnectedUser().subscribe(user => this.buildItems(User.fromJSON(user)));
+    this.buildItems(new User("","","","",0,"",""));
+    //when 
+    //this.buildItems(this.uServ.getConnectedUser());
   }
 
   buildItems(u:User) {
     this.items=[{label:"Accueil",routerLink:'/'},{label:"Shopping",icon:"fa fa-shopping-cart",routerLink:"/Products"}];
-    if(u.role.toLowerCase()=="admin") {
+    if(u && u.role.toLowerCase()=="admin") {
       this.items.push({label:"Gestion des produits",routerLink:'/AdminProducts'},{label:"Gestion des commandes",routerLink:'/AdminOrders'});
     }
   }
@@ -36,8 +38,10 @@ export class MenuComponent implements OnInit {
   }
 
   goToProfile() {
-    //check visitor/user/admin
-    console.log("go to profile");
+    this.router.navigate(['/authentification']);
+    // if(this.uServ.getConnectedUser()) this.router.navigate(['/Profile']);
+    // else this.router.navigate(['/authentification']);
+    
   }
 
 }

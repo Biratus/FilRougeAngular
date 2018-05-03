@@ -22,8 +22,8 @@ export class UserService {
     return this.httpClient.post(this.rootUrl + '/api/user', user);
   }
 
-  getConnectedUser():Observable<any> {
-    return this.httpClient.get(this.rootUrl+"/api/user/current");
+  getConnectedUser():any {
+    return User.fromJSON(sessionStorage.getItem('user'));
   }
 
 }
