@@ -17,7 +17,7 @@ export class AdminProductsComponent implements OnInit {
   cols: any[];
   page: number=1;
   resultByPage:number=9;
-  model: Product = new Product(0, "", "", 0, "", 0, "");
+  model: Product = new Product(0, "", "", 0, "", 0, "",false);
   name:string="";
   category:string="";
   submitted=false;
@@ -33,11 +33,12 @@ export class AdminProductsComponent implements OnInit {
 
     this.cols = [
       { field: 'id', header: 'Id' },
-      { field: 'name', header: 'Name' },
+      { field: 'name', header: 'Nom' },
       { field: 'type', header: 'Type' },
-      { field: 'price', header: 'Price' },
-      { field: 'category', header: 'Category' },
-      { field: 'qty', header: 'Quantity' },
+      { field: 'price', header: 'Prix' },
+      { field: 'category', header: 'Catégorie' },
+      { field: 'qty', header: 'Quantité'},
+      { field: 'activ', header: 'Actif'}
     ];
   }
 
