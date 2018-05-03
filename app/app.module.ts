@@ -63,7 +63,7 @@ const appRoutes: Routes = [
     NewUserComponent,
     MenuComponent,
     NewProductComponent,
-    PanierComponent
+    PanierComponent,
     UpdateProductComponent,
     UserProfileComponent
   ],
