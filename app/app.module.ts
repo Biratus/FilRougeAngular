@@ -37,6 +37,7 @@ import { UserService } from './user.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PanierComponent } from './panier/panier.component';
 import {PanierService} from './panier.service';
+import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
 
 
 
@@ -66,7 +67,8 @@ const appRoutes: Routes = [
     NewProductComponent,
     PanierComponent,
     UpdateProductComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ProfileDetailComponent
   ],
   imports: [
     MenuModule,

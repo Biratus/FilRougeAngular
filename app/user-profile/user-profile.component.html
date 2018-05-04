@@ -1,3 +1,19 @@
-<p>
-  user-profile works!
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col-8" id="compContainer">
+                <app-profile-detail></app-profile-detail>
+            <app-panier hidden></app-panier>
+            <!-- <app-user-order hidden></app-user-order> -->
+        </div>
+        <div class="col-4">
+            <div class="list-group" role="tablist">
+                <button class="list-group-item list-group-item-action active" data-toggle="list" (click)="display('app-profile-detail')">Mon profile</button>
+                <button class="list-group-item list-group-item-action" data-toggle="list" (click)="display('app-orders')">Mes commandes</button>
+                <button class="list-group-item list-group-item-action" data-toggle="list" (click)="display('app-panier')">Mon panier
+                    <span class="badge badge-primary badge-pill">{{productNumber()}}</span>
+                </button>
+                <button class="list-group-item list-group-item-action" data-toggle="list"><i class="fa fa-sign-out"></i> Deconnexion</button>
+            </div>
+        </div>
+    </div>
+</div>
