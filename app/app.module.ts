@@ -44,6 +44,8 @@ import { PanierComponent } from './panier/panier.component';
 import { PanierService } from './panier.service';
 import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
 
+import {ScrollPanelModule} from 'primeng/scrollpanel';
+
 
 
 
@@ -81,6 +83,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     GrowlModule,
     InputTextModule,
+    ScrollPanelModule,
     MenuModule,
     DialogModule,
     SelectButtonModule,

@@ -1,20 +1,23 @@
 <div class="container container-fluid">
   <form (ngSubmit)="onSubmit(name.value,category.value)">
-    <div class="form-group">
-      <div class="ui-g ui-fluid">
-        <div class="ui-g-4 ui-md-4">
-          <div class="ui-inputgroup">
-            <input id="name" #name type="text" pInputText placeholder="Product Name">         
+        <div class="row">
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
+            <div class="ui-inputgroup">
+              <input id="name" #name type="text" pInputText placeholder="Product Name">         
+            </div>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
+            <div class="ui-inputgroup">
+              <input id="category" #category type="text" pInputText placeholder="Product Category">      
+            </div>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
+            <button (click)="input(name.value,category.value)"  pButton type="submit" class="btnSearch" label="Search"  >Rechercher</button>
           </div>
         </div>
-        <div class="ui-g-4 ui-md-4">
-          <div class="ui-inputgroup">
-            <input id="category" #category type="text" pInputText placeholder="Product Category">      
-          </div>
-          <button (click)="input(name.value,category.value)"  pButton type="submit" class="btnSearch" label="Search"  >Rechercher</button>
+        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
+          <button id="btn" (click)="redirect()"  pButton class="btnSearch" label="Ajouter un produit"  ></button>
         </div>
-      </div>
-    </div>
   </form>
   <p-table [columns]="cols" [value]="myProducts" [paginator]="true" [rows]="10">
     <ng-template pTemplate="header" let cols>
@@ -42,56 +45,72 @@
   <p-dialog  header="Product Details" [(visible)]="display" [responsive]="true" showEffect="fade" [modal]="true" width="500" (onAfterHide)="onDialogHide()"
   [dismissableMask]="true">
       <div class="ui-grid ui-grid-responsive ui-grid-pad" *ngIf="selectedProduct" style="font-size:16px;text-align:center;padding:20px">
-          <div class="ui-grid-row">
-              <div class="ui-grid-col-12" style="text-align:center">
+          <div class="row">
+              <div class="col-12" style="text-align:center">
                 <form>
-                  <div>
-                    <div  class="ui-grid-col-8" style="text-align:left">
+                  <div class="row">
+                    <div  class="col-sm-12" style="text-align:left">
                       <img id="img" src="../../assets/{{selectedProduct.src}}">
                     </div>
-                    <div class="ui-grid-col-4" style="text-align:right">
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                       <div class="label">
                         Id
                       </div>
-                      <div>
-                        <input #id id="id" type="text" pInputText placeholder="{{selectedProduct.id}}">
+                      <div class="field">
+                        {{selectedProduct.id}}
                       </div>
                     </div>
-                    <div class="ui-grid-col-4" style="text-align:right">
+                 
+                    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                         <div class="label">
                           Nom
                         </div>
                       <input id="name" type="text" pInputText placeholder="{{selectedProduct.name}}">
                     </div>
-                    <div class="ui-grid-col-4" style="text-align:right">
+                  </div>
+                    <div class="row">
+                      <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                         <div class="label">
                           Quantité
                         </div>
-                      <input id="qty"  type="text" pInputText placeholder="{{selectedProduct.qty}}">
-                    </div>
-                    <div class="ui-grid-col-4" style="text-align:right">
+                        <input id="qty"  type="text" pInputText placeholder="{{selectedProduct.qty}}">
+                      </div>
+                      <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                         <div class="label">
                           Prix
                         </div>
-                      <input id="price" type="text" pInputText placeholder="{{selectedProduct.price}}">
+                        <input id="price" type="text" pInputText placeholder="{{selectedProduct.price}}">
+                      </div>
                     </div>
-                    <div class="ui-grid-col-4" style="text-align:right">
+                    <div class="row">
+                      <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                         <div class="label">
                           Type
                         </div>
-                      <input id="type" type="text" pInputText placeholder="{{selectedProduct.type}}">
-                    </div>
-                    <div class="ui-grid-col-4" style="text-align:right">
-                      <div class="label">
-                        Catégorie
+                        <input id="type" type="text" pInputText placeholder="{{selectedProduct.type}}">
                       </div>
-                      <input id="category" type="text" pInputText placeholder="{{selectedProduct.category}}"> 
+                      <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+                        <div class="label">
+                          Catégorie
+                        </div>
+                        <input id="category" type="text" pInputText placeholder="{{selectedProduct.category}}"> 
+                      </div>
                     </div>
+                <div class="row">
+                  <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                    <p-scrollPanel [style]="{width: '100%', height: '200px'}" styleClass="custombar1">
+                      <div style="padding:1em;line-height:1.5">
+                         {{selectedProduct.descript}}
+                      </div>
+                    </p-scrollPanel>
+                  </div>
                 </div>
-                </form>
-              </div>
+              </form>
+            </div>
           </div>
-          <button (click)="removeProduct(id.value);display=false" type="button" pButton class="btnDelete" label="Supprimer produit"></button>
+          <button (click)="removeProduct(selectedProduct.id);display=false" type="button" pButton class="btnDelete" label="Supprimer produit"></button>
           <button (click)="updateProduct(selectedProduct);display=false" pButton type="button" class="btnModify" label="Modifier produit"></button>
       </div>
   </p-dialog>

@@ -7,7 +7,8 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {DataGridModule} from 'primeng/datagrid';
 import {PanelModule} from 'primeng/panel';
 import {DialogModule} from 'primeng/dialog';
-
+import {ScrollPanelModule} from 'primeng/scrollpanel';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-admin-products',
@@ -21,7 +22,7 @@ export class AdminProductsComponent implements OnInit {
   cols: any[];
   page: number=1;
   resultByPage:number=10;
-  model: Product = new Product(0, "", "", 0, "", 0, "",false,"");
+  model: Product = new Product(0, "", "", 0, "", 0, "", false, "");
   name:string="";
   category:string="";
   id:number=0;
@@ -29,12 +30,13 @@ export class AdminProductsComponent implements OnInit {
   display: boolean = false;
 
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService,private route: ActivatedRoute, private router: Router) {
     this.productService=productService;
+    this.route=route;
+    this.router=router;
   }
 
   ngOnInit() {
-    
     this.productService.getProducts().subscribe(products=>this.myProducts=products);
 
     this.cols = [
@@ -53,10 +55,9 @@ export class AdminProductsComponent implements OnInit {
       .subscribe(result => {console.log(result);this.myProducts = result;}, error => console.log(error));
   }
 
-  // redirect(event){
-  //   console.log("mon produit");
-  //   console.log(event);
-  // }
+  redirect(){
+    this.router.navigate(['/newProduct']);
+  }
 
   input(name:string, category:string){
     if(name){
@@ -74,9 +75,9 @@ export class AdminProductsComponent implements OnInit {
   }
 
   selectProduct(product: Product) {
+   
     this.display=true;
     this.selectedProduct = product;
-    
   }
 
   updateProduct(product:Product){
@@ -87,6 +88,5 @@ export class AdminProductsComponent implements OnInit {
 
   onDialogHide() {
     this.selectedProduct = null;
-    
   }
 }

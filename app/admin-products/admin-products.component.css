@@ -1,29 +1,27 @@
-.ui-grid-col-8{
-    display:flex;
-    flex-direction: row;
-    width: auto;
-    height: 100%;
-}
+
 
 .img{
     image-rendering: auto;
 }
 
-div.ui-grid-col-4{
-    display:flex;
-    flex-direction: column;
-    position:relative;
-}
 
 div.label{
-    display: flex;
-    flex-direction: column;
-    position: static;
-    text-align: center;
+    color: white;
+    background-color:rgb(18, 101, 184);
 }
 
 .btnDelete{
     background: red;
     color: white;
+}
+
+div.field{
+    text-align: center;
+    margin-top: 1em;
+}
+
+#btn{
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
