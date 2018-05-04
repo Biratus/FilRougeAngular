@@ -14,7 +14,7 @@ import { SelectButtonModule } from 'primeng/selectbutton';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  model: Product = new Product(0, "", "", 0, "", 0, "", false);
+  model: Product = new Product(0, "", "", 0, "", 0, "", false,"");
   submitted = false;
   myProducts: Product[];
   name:string="";

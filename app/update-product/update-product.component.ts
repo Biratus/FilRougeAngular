@@ -17,7 +17,7 @@ export class UpdateProductComponent implements OnInit {
    resetForm(form?: NgForm) {
     if (form != null)
       form.reset();
-    this.product =new Product(0,'','',0,'',0,'',false);
+    this.product =new Product(0,'','',0,'',0,'',false,"");
   }
 
   ngOnInit() {

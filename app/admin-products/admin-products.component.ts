@@ -21,7 +21,7 @@ export class AdminProductsComponent implements OnInit {
   cols: any[];
   page: number=1;
   resultByPage:number=10;
-  model: Product = new Product(0, "", "", 0, "", 0, "",false);
+  model: Product = new Product(0, "", "", 0, "", 0, "",false,"");
   name:string="";
   category:string="";
   id:number=0;
