@@ -19,4 +19,8 @@ export class Product {
         this.src = src;
         this.activ=activ;
     }
+
+    static fromJson(jsonObj) {
+        return new Product(jsonObj.id,jsonObj.name,jsonObj.type,jsonObj.price,jsonObj.category,jsonObj.qty,jsonObj.src,true);
+    }
 }
