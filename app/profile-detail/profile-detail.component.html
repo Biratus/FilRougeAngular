@@ -1,3 +1,79 @@
-<p>
-  profile-detail works!
-</p>
+<div class="container" [hidden]="displayContVisi">
+    <!-- nom prenom-->
+    <div class="row">
+        <div class="col-6">
+            <span class="infoLabel">Nom</span>
+            <p>{{user.lastName}}</p>
+        </div>
+        <div class="col-6">
+            <span class="infoLabel">Prenom</span>
+            <p>{{user.firstName}}</p>
+        </div>
+    </div>
+    <!-- mail-->
+    <div class="row">
+        <div class="col">
+            <span class="infoLabel">Mail</span>
+            <p>{{user.mail}}</p>
+        </div>
+    </div>
+    <!-- addr + tel-->
+    <div class="row">
+        <div class="col-8">
+            <span class="infoLabel">Addresse</span>
+            <p>{{user.address}}</p>
+        </div>
+        <div class="col-4">
+            <span class="infoLabel">Telephone</span>
+            <p>{{user.phone}}</p>
+        </div>
+    </div>
+    <!-- modif button-->
+    <div class="row">
+        <div class="col-3">
+            <button type="button" class="btn btn-secondary" (click)="toModify()">Modifier mes informations</button>
+        </div>
+    </div>
+</div>
+
+<div class="container" [hidden]="modifContVisi">
+    <form (ngSubmit)='onSubmit()' [formGroup]="updateUserFormGroup">
+
+        <!-- nom prenom-->
+        <div class="row">
+            <div class="col-6">
+                <span class="infoLabel">Nom</span>
+                <input type="text" pInputText placeholder="Nom" name="lName" formControlName="lName" />
+            </div>
+            <div class="col-6">
+                <span class="infoLabel">Prenom</span>
+                <input type="text" pInputText placeholder="Prenom" name="fName" formControlName="fName" />
+            </div>
+        </div>
+        <!-- mail-->
+        <div class="row">
+            <div class="col">
+                <span class="infoLabel">Mail</span>
+                <input type="text" pInputText placeholder="Mail" name="mail" formControlName="mail" />
+            </div>
+        </div>
+        <!-- address + tel -->
+        <div class="row">
+            <div class="col-6">
+                <span class="infoLabel">Addresse</span>
+                <input type="text" pInputText placeholder="Addresse" name="address" formControlName="address" />
+            </div>
+            <div class="col-6">
+                <span class="infoLabel">Telephone</span>
+                <input type="number" pInputText placeholder="Telephone" name="phone" formControlName="phone" />
+            </div>
+        </div>
+        <!-- modify-->
+        <div class="row">
+            <div class="col-4">
+                <button pButton type="submit" icon="fa-check" iconPos="left" label="Enregistrer mes informations"></button>
+            </div>
+        </div>
+    </form>
+</div>
+<p-growl [(value)]="msgs" (life)="1500"></p-growl>

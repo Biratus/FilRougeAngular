@@ -29,7 +29,7 @@ export class NewUserComponent implements OnInit {
       .subscribe((data: any) => {
         if (data.state == "success") {
           this.resetForm(form);
-      
+          //TODO message success + redirection page profile + set connected user in user.service
         } else {
           //TODO Message d'erreur pb serveur
         }

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { StepsModule } from 'primeng/steps';
 import { MenuItem } from 'primeng/api';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FileUploadModule } from 'primeng/fileupload';
 import { AccordionModule } from 'primeng/accordion';
@@ -21,6 +21,11 @@ import { SelectItem } from 'primeng/api';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { DialogModule } from 'primeng/dialog';
 import { MenuModule } from 'primeng/menu';
+import { InputTextModule } from 'primeng/inputtext';
+import { GrowlModule } from 'primeng/growl';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+
 
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
@@ -36,7 +41,7 @@ import { AuthentificationComponent } from './authentification/authentification.c
 import { UserService } from './user.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PanierComponent } from './panier/panier.component';
-import {PanierService} from './panier.service';
+import { PanierService } from './panier.service';
 import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
 
 
@@ -71,6 +76,11 @@ const appRoutes: Routes = [
     ProfileDetailComponent
   ],
   imports: [
+    MessagesModule,
+    MessageModule,
+    ReactiveFormsModule,
+    GrowlModule,
+    InputTextModule,
     MenuModule,
     DialogModule,
     SelectButtonModule,
@@ -95,7 +105,7 @@ const appRoutes: Routes = [
     ButtonModule,
     BrowserAnimationsModule
   ],
-  providers: [ProductService, UserService,PanierService],
+  providers: [ProductService, UserService, PanierService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -15,6 +15,11 @@ import { ProfileDetailComponent } from './../profile-detail/profile-detail.compo
 export class UserProfileComponent implements OnInit {
 
   user: User;
+  visibility: any = {
+    "app-profile-detail": false,
+    "app-orders": true,
+    "app-panier": true
+  }
 
   constructor(private uServ: UserService, private panierServ: PanierService, private route: ActivatedRoute, private router: Router) {
     this.uServ = uServ;
@@ -35,7 +40,9 @@ export class UserProfileComponent implements OnInit {
   }
 
   display(component) {
-    $("#compContainer>*").hide();
-    $(component).show();
+    for (let comp in this.visibility) {
+      this.visibility[comp] = true;
+    }
+    this.visibility[component] = false;
   }
 }
