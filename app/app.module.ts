@@ -36,6 +36,7 @@ import { AuthentificationComponent } from './authentification/authentification.c
 import { UserService } from './user.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PanierComponent } from './panier/panier.component';
+import {PanierService} from './panier.service';
 
 
 
@@ -92,7 +93,7 @@ const appRoutes: Routes = [
     ButtonModule,
     BrowserAnimationsModule
   ],
-  providers: [ProductService, UserService],
+  providers: [ProductService, UserService,PanierService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
