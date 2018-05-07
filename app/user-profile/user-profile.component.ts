@@ -16,8 +16,8 @@ export class UserProfileComponent implements OnInit {
 
   user: User;
   visibility: any = {
-    "app-profile-detail": false,
-    "app-orders": true,
+    "app-profile-detail": true,
+    "app-user-order": false,
     "app-panier": true
   }
 

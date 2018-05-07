@@ -46,6 +46,8 @@ import { PanierService } from './panier.service';
 import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
 
 import {ScrollPanelModule} from 'primeng/scrollpanel';
+import { UserOrderComponent } from './user-order/user-order.component';
+import { CommandeService } from './commande.service';
 
 
 
@@ -59,7 +61,9 @@ const appRoutes: Routes = [
   { path: 'newUser', component: NewUserComponent },
   { path: 'newProduct', component: NewProductComponent },
   { path: 'panier', component: PanierComponent },
-  { path: 'Profile', component: UserProfileComponent }
+  { path: 'Profile', component: UserProfileComponent },
+  { path: 'order', component: UserOrderComponent }
+
 ];
 
 @NgModule({
@@ -76,7 +80,9 @@ const appRoutes: Routes = [
     PanierComponent,
     UpdateProductComponent,
     UserProfileComponent,
-    ProfileDetailComponent
+    ProfileDetailComponent,
+    UserOrderComponent
+  
   ],
   imports: [
     InputSwitchModule,
@@ -110,7 +116,7 @@ const appRoutes: Routes = [
     ButtonModule,
     BrowserAnimationsModule
   ],
-  providers: [ProductService, UserService, PanierService],
+  providers: [ProductService, UserService, PanierService, CommandeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
