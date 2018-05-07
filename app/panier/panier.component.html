@@ -1,15 +1,17 @@
 
 <div class="container">
+   
   
-    <div class="row">
-  
+   
+        <div class="row">
         <div class="col-xs-7 col-md-8 col-sm-8 col-lg-8"  >
           <div class="card">
                 <div class="card-header bg-primary" >
                         <h3 class="card-title">Mon Panier</h3>
                  </div>
             <div class="card-body">
-              <!-- <h5 class="card-title">Special title treatment</h5> -->
+            
+            </div>  <!-- <h5 class="card-title">Special title treatment</h5> -->
               <div class="d-flex justify-content-between">
                   <div class="p-2">
                       <ul class="list-group" *ngFor="let p of monPanier">
@@ -21,9 +23,10 @@
                               <figcaption class="figure-caption text-right">{{p.description | uppercase}}</figcaption>
                             </figure>
                             <div class="p-2 btnsupp">
-                                <input  type="number" step="1" value= "{{ p.qty }}" min="0" max="64"  >
-                                <p>prix Unitaire: {{p.price}}&euro;</p>
+                                <input  type="number" step="1" value= "{{ p.qty }}" min="0" max="64"  (change)="quantityChange($event,p.id)">
+                                <p style="font-size:1em">prix Unitaire: {{p.price}}&euro;</p>
                                 <p>prix Total: {{p.qty * p.price}}</p>
+                              
                                 
                             </div>
                             <div class="p-2 btnsupp">
@@ -47,24 +50,24 @@
             </div>
             
           </div>
+         
+                <div class="col-xs-5 col-md-4 col-sm-4 col-lg-4   "id="sidebar">
+                        <div class="card">
+                              <div class="card-header bg-warning">
+                                      <h3 class="card-title">Total</h3>
+                               </div>
+                          <div class="card-body">
+                                  <h2> {{updateTotal()}} &euro;</h2>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <a href="#" class="btn btn-danger" style="width: 80%;"><span style= "font-size: 70%;"    > Valider mon panier</span>  <i class="fa fa-shopping-cart" ></i></a>  
+                          </div>
+                        
+                      </div>
+                    
+                
+                    </div>
         </div>
 
-        <div class="col-xs-5 col-md-4 col-sm-4 col-lg-4   "id="sidebar">
-            <div class="card">
-                  <div class="card-header bg-warning">
-                          <h3 class="card-title">Total</h3>
-                   </div>
-              <div class="card-body">
-                      <h2> {{updateTotal()}} &euro;</h2>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-danger" style="width: 80%;">Valider mon panier <i class="fa fa-shopping-cart" ></i></a>  
-              </div>
-            
-            </div>
-          </div>
-        
-    
-        </div>
      
        
     

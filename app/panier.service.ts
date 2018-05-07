@@ -30,9 +30,10 @@ export class PanierService {
   setProductQtyInPanier(prod_id:number,qty:number) {
     let currPanier=JSON.parse(sessionStorage.getItem('panier'));
     if(currPanier==null) return;
-    currPanier=currPanier.map(p => {
+    for(let p of currPanier) {
       if(p.id==prod_id) p.qty=qty;
-    });
+
+    }
     sessionStorage.setItem("panier",JSON.stringify(currPanier));
   }
 

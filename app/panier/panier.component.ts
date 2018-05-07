@@ -20,10 +20,12 @@ export class PanierComponent implements OnInit {
     this.monPanier.push(new Product(2,"name3","type",50,"category",60,"",true,"description3"));
     sessionStorage.setItem('panier',JSON.stringify(this.monPanier));
     // this.productService.getProducts().subscribe(products => this.monPanier = products);
+  
   }
 
   deleteArticle(index: number) {
     this.panierService.removeProductFromPanier(index);
+    this.monPanier=this.panierService.getCurrentPanier();
     
   }
   updateTotal() {
@@ -32,6 +34,14 @@ export class PanierComponent implements OnInit {
       this.total += element.price * element.qty;
     }
     return this.total;
+  }
+  quantityChange(event,id_produit){
+   // console.log(event.target.valueAsNumber);
+   // console.log(id_produit);
+   this.panierService.setProductQtyInPanier(id_produit,event.target.valueAsNumber);
+   this.monPanier=this.panierService.getCurrentPanier();
+    
+
   }
 
 }
