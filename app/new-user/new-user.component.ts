@@ -25,13 +25,13 @@ export class NewUserComponent implements OnInit {
     this.user = new User("","","","",0,"","");
   }
   OnSubmit(form: NgForm) {
-    this.userService.registerUser(form.value)
+    this.userService.registerUser(this.user)
       .subscribe((data: any) => {
         if (data.state == "success") {
           this.resetForm(form);
           //TODO message success + redirection page profile + set connected user in user.service
         } else {
-          //TODO Message d'erreur pb serveur
+          //TODO Message d'erreur user already exists
         }
       },error => console.log(error));
   }

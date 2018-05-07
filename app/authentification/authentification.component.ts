@@ -37,9 +37,9 @@ export class AuthentificationComponent implements OnInit {
     this.msgs = [];
     this.userService.userAuthentification(form.value.UserName, form.value.Password)
       .subscribe((data: any) => {
-        this.userService.setConnectedUser(form.value);
+        this.userService.getUser(form.value.UserName).subscribe(user => this.userService.setConnectedUser(User.fromJSON(user)));
         // sessionStorage.setItem('user',JSON.stringify(form.value));
-        this.router.navigate(['/Product']);
+        this.router.navigate(['/Products']);
         // this.resetForm(form);
       },
         error => this.msgs.push({

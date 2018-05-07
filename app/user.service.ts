@@ -34,4 +34,7 @@ export class UserService {
     return this.httpClient.put(UserService.rootUrl + "/api/user", u);
   }
 
+  getUser(username):Observable<any> {
+    return this.httpClient.get(UserService.rootUrl+"/api/user/byName?name="+username);
+  }
 }
