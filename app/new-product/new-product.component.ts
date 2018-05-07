@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 import { NgForm } from '@angular/forms';
-import {FileUploadModule} from 'primeng/fileupload';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @Component({
   selector: 'app-new-product',
@@ -10,44 +10,39 @@ import {FileUploadModule} from 'primeng/fileupload';
   styleUrls: ['./new-product.component.css']
 })
 export class NewProductComponent implements OnInit {
-  product:Product;
-  uploadedFiles: any[] = [];
-  myProducts: Product[];
+  product: Product;
+  imgsrc;
 
   constructor(private productService: ProductService) {
     this.productService = productService;
-   }
+  }
 
 
   resetForm(form?: NgForm) {
     if (form != null)
       form.reset();
-    this.product =new Product(0,'','',0,'',0,'',false, "");
+    this.product = new Product(0, '', '', 0, '', 0, '', false, "");
+    this.productService.getImageSrc().subscribe(data => {
+      console.log(data);
+    });
   }
 
   ngOnInit() {
     this.resetForm();
-    this.productService.getProducts().subscribe
-    (myProducts => this.myProducts = myProducts);
   }
 
   OnSubmit(form: NgForm) {
-  // console.log(form.value);
-    // this.productService.saveProduct(form.value)
-    //   .subscribe((data: any) => {
-    //     if (data.Succeeded == true) {
-    //       this.resetForm(form);
-      
-    //     }
-    
-    //   });
-
-    this.productService.saveProduct(form.value).subscribe
-    (newProduct => this.myProducts = newProduct);
-    this.resetForm(form);
+    this.productService.saveProduct(form.value).subscribe(newProduct => {
+      //display error/success message
+      this.resetForm(form);
+    });
   }
 
-  //onUpload(event) {}
-
-
+  onUpload(event) {
+    console.log('onUpload');
+    console.log(event);
+    for(let file of event.files) {
+      console.log(file);
+    }
+  }
 }

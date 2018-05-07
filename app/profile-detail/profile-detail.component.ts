@@ -49,9 +49,13 @@ export class ProfileDetailComponent implements OnInit {
 
     this.uServ.setConnectedUser(this.user);
     this.msgs.push({ severity: 'success', summary: 'Vos informations ont bien été mises à jour', detail: '' });
+    this.displayContVisi = false;
+    this.modifContVisi = true;
     /* this.uServ.updateUser(this.user).subscribe(() => {
       this.uServ.setConnectedUser(this.user);
       this.msgs.push({ severity: 'success', summary: 'Vos informations ont bien été mises à jour', detail: '' });
+    this.displayContVisi = false;
+    this.modifContVisi = true;
     }); */
   }
 

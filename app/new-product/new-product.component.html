@@ -37,9 +37,14 @@
                   </div> 
            </div>
            <div class="row">
-              <div class="input-field col s12">
+              <div class="input-field col s6">
                   <p>Photo</p>
-                  <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onBasicUpload($event)"></p-fileUpload>
+                  <!-- url="./upload.php" -->
+                  <p-fileUpload mode="basic" accept="image/*" url="./upload.php" maxFileSize="1000000" auto="true" customUpload="true" (uploadHandler)="onUpload($event)"></p-fileUpload>
+              </div>
+              <div class="input-field col s6">
+                  <p>Activé/Désactivé ce produit</p>
+                  <p-inputSwitch onLabel="Oui" offLabel="Non" name="activ" [(ngModel)]="product.activ"></p-inputSwitch>
               </div>
             </div>
           
@@ -53,4 +58,6 @@
     </div>
   </div>
 </div>
+
+<img src="{{imgsrc}}"/>
   

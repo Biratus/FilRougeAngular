@@ -25,13 +25,32 @@ export class UserProfileComponent implements OnInit {
     this.uServ = uServ;
     this.route = route;
     this.router = router;
+    this.route.queryParamMap.subscribe(map => {
+      if (!map.get('page')) return;
+      else {
+        let page=map.get('page');
+        if(page=='panier') {
+          for (let comp in this.visibility) {
+            this.visibility[comp] = true;
+          }
+          this.visibility['app-panier'] = false;
+        } else if(page=='commande') {
+          for (let comp in this.visibility) {
+            this.visibility[comp] = true;
+          }
+          this.visibility['app-orders'] = false;
+        }
+      }
+    });
     this.panierServ = panierServ;
   }
 
   ngOnInit() {
-    this.user = this.uServ.getConnectedUser();
-    this.user = new User("", "", "", "", 0, "user", "");
-    if (this.user.role == "") this.router.navigate(['/forbidden']);
+    this.uServ.getConnectedUser().subscribe(jsonU => {
+      // this.user=User.fromJSON(jsonU);
+      this.user = new User("", "", "", "", 0, "user", "");
+      if (this.user.role == "") this.router.navigate(['/forbidden']);
+    });
   }
 
   productNumber() {
