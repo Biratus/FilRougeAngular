@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './authentification.component.html',
   styleUrls: ['./authentification.component.css']
 })
+
 export class AuthentificationComponent implements OnInit {
   user: User = new User("", "", "", "", 0, "", "");
   msgs: Message[] = [];

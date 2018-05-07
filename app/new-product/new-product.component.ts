@@ -11,7 +11,6 @@ import { FileUploadModule } from 'primeng/fileupload';
 })
 export class NewProductComponent implements OnInit {
   product: Product;
-  imgsrc;
 
   constructor(private productService: ProductService) {
     this.productService = productService;
@@ -22,9 +21,6 @@ export class NewProductComponent implements OnInit {
     if (form != null)
       form.reset();
     this.product = new Product(0, '', '', 0, '', 0, '', false, "");
-    this.productService.getImageSrc().subscribe(data => {
-      console.log(data);
-    });
   }
 
   ngOnInit() {
@@ -41,7 +37,7 @@ export class NewProductComponent implements OnInit {
   onUpload(event) {
     console.log('onUpload');
     console.log(event);
-    for(let file of event.files) {
+    for (let file of event.files) {
       console.log(file);
     }
   }

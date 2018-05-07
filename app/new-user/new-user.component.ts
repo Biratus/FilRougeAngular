@@ -13,17 +13,18 @@ export class NewUserComponent implements OnInit {
   user: User;
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
 
-
-  constructor(private userService: UserService ) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.resetForm();
   }
+
   resetForm(form?: NgForm) {
     if (form != null)
       form.reset();
-    this.user = new User("","","","",0,"","");
+    this.user = new User("", "", "", "", 0, "", "");
   }
+
   OnSubmit(form: NgForm) {
     this.userService.registerUser(this.user)
       .subscribe((data: any) => {
@@ -33,6 +34,6 @@ export class NewUserComponent implements OnInit {
         } else {
           //TODO Message d'erreur user already exists
         }
-      },error => console.log(error));
+      }, error => console.log(error));
   }
 }

@@ -3,25 +3,28 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Response } from "@angular/http";
 import { HttpClient } from '@angular/common/http';
+import { PanierService } from './panier.service';
+import { User } from './user.model';
+import { AppModule } from './app.module';
 
 @Injectable()
 export class CommandeService {
 
+  static readonly restApi = "/Api/order";
 
-  urlAdminProducts='http://localhost:8082/formafond';
-  urlProducts='http://localhost:8082/formafond/Api/product';
-
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private panierService: PanierService) {
     this.http = http;
+    this.panierService = panierService;
   }
 
-  getCommande(): Observable<any>{
+  getCommande(): Observable<any> {
 
-    return this.http.get(this.urlAdminProducts+"/Api/order");
-    
+    return this.http.get(AppModule.restApi + CommandeService.restApi);
+
   }
-  
 
-  
- 
+  createCommande(user: User) {
+    let listprod = this.panierService.getCurrentPanier();
+    this.http.post(AppModule.restApi + CommandeService.restApi + "/order", { "products": listprod, "user": user });
+  }
 }

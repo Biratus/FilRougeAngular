@@ -22,7 +22,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.buildItems(new User("", "", "", "", 0, "", ""));
-    //when 
+    
     //this.buildItems(this.uServ.getConnectedUser());
   }
 

@@ -46,11 +46,13 @@ export class ProfileDetailComponent implements OnInit {
     this.user.mail = this.updateUserFormGroup.value.mail;
     this.user.address = this.updateUserFormGroup.value.address;
     this.user.phone = this.updateUserFormGroup.value.phone;
-
+//remove from here 
     this.uServ.setConnectedUser(this.user);
     this.msgs.push({ severity: 'success', summary: 'Vos informations ont bien été mises à jour', detail: '' });
     this.displayContVisi = false;
     this.modifContVisi = true;
+//to here
+
     /* this.uServ.updateUser(this.user).subscribe(() => {
       this.uServ.setConnectedUser(this.user);
       this.msgs.push({ severity: 'success', summary: 'Vos informations ont bien été mises à jour', detail: '' });

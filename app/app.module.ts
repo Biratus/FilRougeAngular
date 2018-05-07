@@ -25,7 +25,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { GrowlModule } from 'primeng/growl';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
-import {InputSwitchModule} from 'primeng/inputswitch';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 
 import { AppComponent } from './app.component';
@@ -45,7 +45,7 @@ import { PanierComponent } from './panier/panier.component';
 import { PanierService } from './panier.service';
 import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
 
-import {ScrollPanelModule} from 'primeng/scrollpanel';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { UserOrderComponent } from './user-order/user-order.component';
 import { CommandeService } from './commande.service';
 
@@ -82,7 +82,7 @@ const appRoutes: Routes = [
     UserProfileComponent,
     ProfileDetailComponent,
     UserOrderComponent
-  
+
   ],
   imports: [
     InputSwitchModule,
@@ -119,4 +119,6 @@ const appRoutes: Routes = [
   providers: [ProductService, UserService, PanierService, CommandeService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  static readonly restApi = 'http://localhost:8082/formafond';
+}
