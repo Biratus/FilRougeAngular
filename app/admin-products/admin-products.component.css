@@ -10,18 +10,14 @@ div.label{
     background-color:rgb(18, 101, 184);
 }
 
-.btnDelete{
-    background: red;
-    color: white;
-}
 
 div.field{
     text-align: center;
     margin-top: 1em;
 }
 
-#btn{
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
 
+
+div.description{
+    text-align: left;
+}

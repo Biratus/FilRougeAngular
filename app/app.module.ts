@@ -49,6 +49,11 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { UserOrderComponent } from './user-order/user-order.component';
 import { CommandeService } from './commande.service';
 
+import {InputSwitchModule} from 'primeng/inputswitch';
+
+import {DropdownModule} from 'primeng/dropdown';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+
 
 
 
@@ -84,6 +89,8 @@ const appRoutes: Routes = [
 
   ],
   imports: [
+    InputTextareaModule,
+    DropdownModule,
     InputSwitchModule,
     SpinnerModule,
     MessagesModule,

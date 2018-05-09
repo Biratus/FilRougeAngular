@@ -12,7 +12,7 @@
             </div>
           </div>
           <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
-            <button (click)="input(name.value,category.value)"  pButton type="submit" class="btnSearch" label="Search"  >Rechercher</button>
+            <button (click)="input(name.value,category.value.name)"  pButton type="submit" class="btnSearch" label="Rechercher"  ></button>
           </div>
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
@@ -36,8 +36,7 @@
               {{product[col.field]}}
             </td>
             <td>
-                Actif
-                <p-checkbox [(ngModel)]="checked" binary="true"></p-checkbox>
+                <p-inputSwitch #activ (click)="onOffProduct(product.activ)" onLabel="Yes" offLabel="No" [(ngModel)]="product.activ"></p-inputSwitch>
             </td>
         </tr>
     </ng-template>
@@ -67,7 +66,7 @@
                         <div class="label">
                           Nom
                         </div>
-                      <input id="name" type="text" pInputText placeholder="{{selectedProduct.name}}">
+                      <input #productName id="name"  type="text" [(ngModel)]="selectedProduct.name" name="name" pInputText placeholder="{{selectedProduct.name}}">
                     </div>
                   </div>
                     <div class="row">
@@ -75,13 +74,13 @@
                         <div class="label">
                           Quantité
                         </div>
-                        <input id="qty"  type="text" pInputText placeholder="{{selectedProduct.qty}}">
+                        <input #productQty id="qty" [(ngModel)]="selectedProduct.qty" name="qty"  type="text" pInputText placeholder="{{selectedProduct.qty}}">
                       </div>
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                         <div class="label">
                           Prix
                         </div>
-                        <input id="price" type="text" pInputText placeholder="{{selectedProduct.price}}">
+                        <input #productPrice id="price" type="text" [(ngModel)]="selectedProduct.price" name="price" pInputText placeholder="{{selectedProduct.price}}">
                       </div>
                     </div>
                     <div class="row">
@@ -89,29 +88,27 @@
                         <div class="label">
                           Type
                         </div>
-                        <input id="type" type="text" pInputText placeholder="{{selectedProduct.type}}">
+                        <input #productType id="type" type="text" [(ngModel)]="selectedProduct.type" name="type" pInputText placeholder="{{selectedProduct.type}}">
                       </div>
                       <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                         <div class="label">
                           Catégorie
                         </div>
-                        <input id="category" type="text" pInputText placeholder="{{selectedProduct.category}}"> 
+                        <p-dropdown [options]="cat" [(ngModel)]="selectedProduct.category" name="category"  optionLabel="label" [style]="{'width':'150px'}" [ngModelOptions]="{standalone: true}"></p-dropdown>
                       </div>
                     </div>
                 <div class="row">
                   <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                     <p-scrollPanel [style]="{width: '100%', height: '200px'}" styleClass="custombar1">
-                      <div style="padding:1em;line-height:1.5">
-                         {{selectedProduct.descript}}
-                      </div>
+                        <textarea #productDescript pInputTextarea>{{selectedProduct.descript}}</textarea> 
                     </p-scrollPanel>
                   </div>
                 </div>
               </form>
             </div>
           </div>
-          <button (click)="removeProduct(selectedProduct.id);display=false" type="button" pButton class="btnDelete" label="Supprimer produit"></button>
-          <button (click)="updateProduct(selectedProduct);display=false" pButton type="button" class="btnModify" label="Modifier produit"></button>
+          <button (click)="removeProduct(selectedProduct.id);display=false" type="button" pButton class="ui-button-danger" label="Supprimer produit"></button>
+          <button (click)="saveProduct(productName.value,productQty.value,productPrice.value,productType.value,productDescript.value);display=false"  pButton type="button" class="btnModify" label="Modifier produit"></button>
       </div>
   </p-dialog>
 </div>

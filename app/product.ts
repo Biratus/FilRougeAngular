@@ -6,8 +6,8 @@ export class Product {
     category: string;
     qty: number;
     src: string;
-    activ: boolean;
-    description: string;
+    activ:boolean;
+    descript: string;
 
     constructor(id: number, name: string, type: string, price: number, category: string, qty: number, src: string, activ: boolean, description: string) {
         this.id = id;
@@ -17,11 +17,11 @@ export class Product {
         this.category = category;
         this.qty = qty;
         this.src = src;
-        this.activ = activ;
-        this.description = description;
+        this.activ=activ;
+        this.descript=description;
     }
 
     static fromJson(jsonObj) {
-        return new Product(jsonObj.id, jsonObj.name, jsonObj.type, jsonObj.price, jsonObj.category, jsonObj.qty, jsonObj.src, true, jsonObj.description);
+        return new Product(jsonObj.id,jsonObj.name,jsonObj.type,jsonObj.price,jsonObj.category.name,jsonObj.qty,jsonObj.src,true,jsonObj.descript);
     }
 }
