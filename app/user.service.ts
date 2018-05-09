@@ -40,4 +40,13 @@ export class UserService {
   getUserById(id): Observable<any> {
     return this.httpClient.get(UserService.restApi + '/' + id);
   }
+
+  logout(): Observable<any> {
+    return this.httpClient.post('http://localhost:8082/formafond/logout', null, {});
+  }
+
+  removeConnectedUser() {
+    sessionStorage.setItem('user',null);
+    sessionStorage.setItem('panier',null);
+  }
 }

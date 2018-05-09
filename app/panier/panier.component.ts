@@ -24,11 +24,11 @@ export class PanierComponent implements OnInit {
 
   ngOnInit() {
     //remove from here
-    this.monPanier.push(new Product(0, "name", "type", 50, "category", 5, "", true, "description"));
-    this.monPanier.push(new Product(1, "name2", "type", 50, "category", 5, "", true, "description2"));
-    this.monPanier.push(new Product(2, "name3", "type", 50, "category", 60, "", true, "description3"));
-    sessionStorage.setItem('panier', JSON.stringify(this.monPanier));
-    //to here
+    // this.monPanier.push(new Product(0,"name","type",50,"category",5,"",true,"description"));
+    // this.monPanier.push(new Product(1,"name2","type",50,"category",5,"",true,"description2"));
+    // this.monPanier.push(new Product(2,"name3","type",50,"category",60,"",true,"description3"));
+    //sessionStorage.setItem('panier',JSON.stringify(this.monPanier));
+//to here
 
     this.monPanier = this.panierService.getCurrentPanier();
 

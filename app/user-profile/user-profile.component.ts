@@ -48,7 +48,7 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
     this.uServ.getConnectedUser().subscribe(jsonU => {
        this.user=User.fromJSON(jsonU);
-      //this.user = new User("", "", "", "", 0, "user", "");
+      //this.user = new User("", "", "", "", "", "user", "");
       if (this.user.role == "") this.router.navigate(['/forbidden']);
     });
   }
@@ -63,5 +63,13 @@ export class UserProfileComponent implements OnInit {
       this.visibility[comp] = true;
     }
     this.visibility[component] = false;
+  }
+
+  logout() {
+    this.uServ.logout().subscribe(data => {
+      console.log(data);
+      this.uServ.removeConnectedUser();
+      this.router.navigate(['/authentification']);
+    },error => console.error(error));
   }
 }
