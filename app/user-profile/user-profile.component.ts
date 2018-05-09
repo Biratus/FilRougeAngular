@@ -16,8 +16,8 @@ export class UserProfileComponent implements OnInit {
 
   user: User;
   visibility: any = {
-    "app-profile-detail": true,
-    "app-user-order": false,
+    "app-profile-detail": false,
+    "app-user-order": true,
     "app-panier": true
   }
 
@@ -47,8 +47,8 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
     this.uServ.getConnectedUser().subscribe(jsonU => {
-      // this.user=User.fromJSON(jsonU);
-      this.user = new User("", "", "", "", 0, "user", "");
+       this.user=User.fromJSON(jsonU);
+      //this.user = new User("", "", "", "", 0, "user", "");
       if (this.user.role == "") this.router.navigate(['/forbidden']);
     });
   }

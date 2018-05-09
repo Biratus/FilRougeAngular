@@ -38,15 +38,14 @@ export class MenuComponent implements OnInit {
   }
 
   goToProfile() {
-    this.router.navigate(["/authentification"], {
+    if(this.uServ.getConnectedUser()) this.router.navigate(['/Profile']);
+    else this.router.navigate(["/authentification"], {
       queryParams: {
         severity: "warn",
         summary: "Vous n'êtes pas connecté",
         message: "Connectez-vous afin de pouvoir accéder à votre profile."
       }
     });
-    // if(this.uServ.getConnectedUser()) this.router.navigate(['/Profile']);
-    // else this.router.navigate(['/authentification']);
 
   }
 

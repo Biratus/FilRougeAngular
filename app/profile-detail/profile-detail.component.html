@@ -1,4 +1,4 @@
-<div class="container" [hidden]="displayContVisi">
+<div class="container" [hidden]="displayContVisi" *ngIf="user">
     <!-- nom prenom-->
     <div class="row">
         <div class="col-6">
@@ -36,7 +36,7 @@
     </div>
 </div>
 
-<div class="container" [hidden]="modifContVisi">
+<div class="container" [hidden]="modifContVisi" *ngIf="user">
     <form (ngSubmit)='onSubmit()' [formGroup]="updateUserFormGroup">
 
         <!-- nom prenom-->
