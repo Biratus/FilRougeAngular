@@ -3,11 +3,10 @@ import { User } from './user.model';
 import { Response } from "@angular/http";
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { AppModule } from './app.module';
 
 @Injectable()
 export class UserService {
-  static readonly restApi = '/api/user';
+  static readonly restApi = 'http://localhost:8082/formafond/api/user';
 
   constructor(private httpClient: HttpClient) {
     this.httpClient = httpClient;
@@ -15,11 +14,11 @@ export class UserService {
 
   userAuthentification(username, password): Observable<any> {
 
-    return this.httpClient.post(AppModule.restApi + '/authenticate?username=' + username + '&password=' + password, null);
+    return this.httpClient.post('http://localhost:8082/formafond/authenticate?username=' + username + '&password=' + password, null);
   }
 
   registerUser(user: User): Observable<any> {
-    return this.httpClient.post(AppModule.restApi + UserService.restApi, user);
+    return this.httpClient.post(UserService.restApi, user);
   }
 
   getConnectedUser(): Observable<any> {
@@ -31,14 +30,14 @@ export class UserService {
   }
 
   updateUser(u: User): Observable<any> {
-    return this.httpClient.put(AppModule.restApi + UserService.restApi, u);
+    return this.httpClient.put(UserService.restApi, u);
   }
 
   getUser(username): Observable<any> {
-    return this.httpClient.get(AppModule.restApi + UserService.restApi + "/byName?name=" + username);
+    return this.httpClient.get(UserService.restApi + "/byName?name=" + username);
   }
 
   getUserById(id): Observable<any> {
-    return this.httpClient.get(AppModule.restApi + UserService.restApi + '/' + id);
+    return this.httpClient.get(UserService.restApi + '/' + id);
   }
 }

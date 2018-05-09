@@ -5,12 +5,11 @@ import { Response } from "@angular/http";
 import { HttpClient } from '@angular/common/http';
 import { PanierService } from './panier.service';
 import { User } from './user.model';
-import { AppModule } from './app.module';
 
 @Injectable()
 export class CommandeService {
 
-  static readonly restApi = "/Api/order";
+  static readonly restApi = "http://localhost:8082/formafond/Api/order";
 
   constructor(private http: HttpClient, private panierService: PanierService) {
     this.http = http;
@@ -19,12 +18,12 @@ export class CommandeService {
 
   getCommande(): Observable<any> {
 
-    return this.http.get(AppModule.restApi + CommandeService.restApi);
+    return this.http.get(CommandeService.restApi);
 
   }
 
   createCommande(user: User) {
     let listprod = this.panierService.getCurrentPanier();
-    this.http.post(AppModule.restApi + CommandeService.restApi + "/order", { "products": listprod, "user": user });
+    this.http.post(CommandeService.restApi + "/order", { "products": listprod, "user": user });
   }
 }

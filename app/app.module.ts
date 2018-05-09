@@ -118,5 +118,4 @@ const appRoutes: Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  static readonly restApi = 'http://localhost:8082/formafond';
 }
