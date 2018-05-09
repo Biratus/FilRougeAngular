@@ -10,6 +10,7 @@ import { SpinnerModule } from 'primeng/spinner';
 import { NgModule } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { PanierService } from '../panier.service';
+import { Message } from 'primeng/components/common/api';
 
 @Component({
   selector: 'app-products',
@@ -31,6 +32,7 @@ export class ProductsComponent implements OnInit {
   selectedProduct: Product;
   qty: number = 0;
   QtyCmd: number = 0;
+  msgs: Message[] = [];
 
   constructor(private productService: ProductService, private panierService: PanierService) {
     this.productService = productService;
@@ -64,10 +66,15 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(product: Product, qty: number) {
+    this.msgs = [];
     this.selectedProduct = product;
     this.QtyCmd = qty;
     this.panierService.addProductToPanier(product, qty);
-    console.log(product);
-    console.log(qty);
+    this.msgs.push({
+      severity: 'success',
+      summary: "Votre produit à été ajouté au panier",
+      detail: 'Vous pouvez continuer vos achats'
+    });
   }
+
 }
