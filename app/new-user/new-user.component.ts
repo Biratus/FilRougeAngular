@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user.model';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../user.service';
+import { Message } from 'primeng/components/common/api';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { UserService } from '../user.service';
 export class NewUserComponent implements OnInit {
   user: User;
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  msgs: Message[] = [];
 
   constructor(private userService: UserService) { }
 
@@ -26,13 +28,22 @@ export class NewUserComponent implements OnInit {
   }
 
   OnSubmit(form: NgForm) {
+    this.msgs = [];
     this.userService.registerUser(this.user)
       .subscribe((data: any) => {
         if (data.state == "success") {
           this.resetForm(form);
-          //TODO message success + redirection page profile + set connected user in user.service
+          this.msgs.push({
+            severity: 'success',
+            summary: "Votre compte a été créer",
+            detail: 'Vous pouvez maintenant vous connecté'
+          });
         } else {
-          //TODO Message d'erreur user already exists
+          this.msgs.push({
+            severity: 'error',
+            summary: "Erreur",
+            detail: 'Un erreur est survenue lors de la création de votre compte.'
+          });
         }
       }, error => console.log(error));
   }

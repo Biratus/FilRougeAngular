@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpRequest,HttpEvent } from '@angular/common/http';
 import { Product } from './product';
 import { Response } from "@angular/http";
 
@@ -47,7 +47,18 @@ export class ProductService {
     return this.http.get(ProductService.restApi + "/categories");
   }
 
-  saveImage(imagename,image:File):Observable<any> {
-    return this.http.post('http://localhost:8082/formafond/api/image',{"file":image,"filename":imagename});
+  saveImage(imagename, image: File): Observable<any> {
+    let formdata: FormData = new FormData();
+
+    formdata.append('file', image);
+    formdata.append('filename', imagename);
+
+    const req = new HttpRequest('POST', 'http://localhost:8082/formafond/api/image', formdata, {
+      reportProgress: false,
+      responseType: 'text'
+    });
+
+    return this.http.request(req);
+   // return this.http.post('http://localhost:8082/formafond/api/image', { "file": image, "filename": imagename });
   }
 }

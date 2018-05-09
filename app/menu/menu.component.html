@@ -1,12 +1,12 @@
 <div class="container container-fluid">
   <div id="menu" class="row">
-    <div class="col-md-2 col-sm-3">
+    <div class="col-md-2 col-3">
       <a routerLink='/'>
-        <img src="http://via.placeholder.com/140x100">
+        <img src="http://via.placeholder.com/140x100" class="rounded img-fluid">
       </a>
     </div>
     <!-- hidden-sm-down -->
-    <div class="col-md-7 col-sm-5" id="title">
+    <div class="col-md-7 col-5" id="title">
       <h1>La forme à fond</h1>
     </div>
     <div id="menuItems" class="col-3">
@@ -29,8 +29,9 @@
 <div id="burgerMenuCont" class="container">
   <div class="row">
     <div class="col-4 mr-auto">
-      <p-menu #burgerMenu popup="popup" [model]="items"></p-menu>
       <button type="button" pButton icon="fa fa-list" label="Menu" (click)="burgerMenu.toggle($event)"></button>
     </div>
   </div>
 </div>
+
+<p-menu #burgerMenu popup="popup" [model]="items"></p-menu>
