@@ -32,7 +32,6 @@ import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductService } from './product.service';
-import { UpdateProductComponent } from './update-product/update-product.component';
 import { MenuComponent } from './menu/menu.component';
 import { NewProductComponent } from './new-product/new-product.component';
 import { NewUserComponent } from './new-user/new-user.component';
@@ -78,7 +77,6 @@ const appRoutes: Routes = [
     MenuComponent,
     NewProductComponent,
     PanierComponent,
-    UpdateProductComponent,
     UserProfileComponent,
     ProfileDetailComponent,
     UserOrderComponent
