@@ -26,8 +26,7 @@ export class UserProfileComponent implements OnInit {
     this.route = route;
     this.router = router;
     this.route.queryParamMap.subscribe(map => {
-      if (!map.get('page')) return;
-      else {
+      if (map.get('page')) {
         let page=map.get('page');
         if(page=='panier') {
           for (let comp in this.visibility) {
@@ -51,6 +50,11 @@ export class UserProfileComponent implements OnInit {
       //this.user = new User("", "", "", "", "", "user", "");
       if (this.user.role == "") this.router.navigate(['/forbidden']);
     });
+    for(let comp in this.visibility) {
+      if(!this.visibility[comp]) {
+        document.getElementById(comp).classList.add("active");
+      }
+    }
   }
 
   productNumber() {
