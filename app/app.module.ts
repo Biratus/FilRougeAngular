@@ -26,6 +26,7 @@ import { GrowlModule } from 'primeng/growl';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { InputSwitchModule } from 'primeng/inputswitch';
+import { SpinnerModule } from 'primeng/spinner';
 
 
 import { AppComponent } from './app.component';
@@ -84,6 +85,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     InputSwitchModule,
+    SpinnerModule,
     MessagesModule,
     MessageModule,
     ReactiveFormsModule,
@@ -106,13 +108,13 @@ const appRoutes: Routes = [
     HttpClientModule,
     FileUploadModule,
     FormsModule,
+    BrowserModule,
+    ButtonModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
-    ),
-    BrowserModule,
-    ButtonModule,
-    BrowserAnimationsModule
+    )
   ],
   providers: [ProductService, UserService, PanierService, CommandeService],
   bootstrap: [AppComponent]
