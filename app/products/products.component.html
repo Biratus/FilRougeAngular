@@ -41,13 +41,20 @@
         <div style="padding:3px" class="ui-g-5 ui-md-4 ui-grid-responsive ">
           <p-panel [header]="product.name" [style]="{'text-align':'center'}" (click)="selectProduct(product)">
             <img src="src" width="60" />
-            <div class="product-detail">{{product.category}}</div>
+            <div class="catPriceContainer">
+                <div class="productCat col-12">{{product.category}}</div>
+                <div class="priceTag col-12">{{product.price}}€</div>
+            </div>            
             <hr class="ui-widget-content" style="border-top:0" />
-            <i class="fa fa-cart-arrow-down cartIcon" (click)="selectProd(product)" style="cursor:pointer">
-              <div class="priceTag">
-                {{product.price}}€
+            <div class="container container-fluid">
+              <div class="row justify-content-between" style="margin-bottom:0">
+                <div class="cart col-12">
+                  <i class="fa fa-cart-arrow-down cartIcon" (click)="selectProd(product)" style="cursor:pointer"></i>
+                </div>
               </div>
-            </i>
+            </div>
+
+
           </p-panel>
         </div>
       </ng-template>
@@ -68,7 +75,7 @@
 
             <div class="descript">
               <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                <div class="col-12">
                   <p-scrollPanel class="description">
                     <div class="innerDescript">
                       {{selectedProduct.descript}}

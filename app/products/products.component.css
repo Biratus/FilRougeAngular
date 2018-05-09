@@ -50,16 +50,8 @@ div.label{
     display: flex;
 }
 
-/* . {
-    display: flex;
-    justify-content: center;
-    justify-content: baseline;
-} */ 
-
 .page {
     display: flex;
-  
-    /* justify-content: baseline; */
 }
 
 .btnFlex {
@@ -113,8 +105,7 @@ div.label{
 .cartIcon {
     font-size: 2em;
     display: flex;
-    /* justify-content: flex-end;*/
-    flex-direction: row-reverse;
+    justify-content: flex-end;
     padding-right: 1em;
     color: rgb(98, 168, 107);
     background-color: #e9ecef;
@@ -123,6 +114,7 @@ div.label{
 .priceTag {
     display : flex;
     position: relative;
+    justify-content: center;
     margin-right: 4em;
     color : rgb(219, 46, 46);
 }
