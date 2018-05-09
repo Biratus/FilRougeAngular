@@ -28,26 +28,28 @@ export class PanierComponent implements OnInit {
     // this.monPanier.push(new Product(1,"name2","type",50,"category",5,"",true,"description2"));
     // this.monPanier.push(new Product(2,"name3","type",50,"category",60,"",true,"description3"));
     //sessionStorage.setItem('panier',JSON.stringify(this.monPanier));
-//to here
-
-    this.monPanier = this.panierService.getCurrentPanier();
-
+    //to here
+    if(this.panierService.getCurrentPanier())
+      this.monPanier = this.panierService.getCurrentPanier();
   }
 
   deleteArticle(index: number) {
     this.panierService.removeProductFromPanier(index);
     this.monPanier = this.panierService.getCurrentPanier();
-
   }
+
   updateTotal() {
-
-  //return this.monPanier.reduce((acc,elt)=>acc+=elt.price*elt.qty,0);
+    //return this.monPanier.reduce((acc,elt)=>acc+=elt.price*elt.qty,0);
     let total = 0;
-    for (let element of this.monPanier) {
-      total += element.price * element.qty;
-    }
-    return total;
+    console.log("ceci est MON PANIER CULE " +this.monPanier);
+    if (this.monPanier.length > 0) {
+      for (let element of this.monPanier) {
+        total += element.price * element.qty;
+      }
+      return total;
+    } else return total;
   }
+
   quantityChange(event, id_produit) {
     this.panierService.setProductQtyInPanier(id_produit, event.target.valueAsNumber);
     this.monPanier = this.panierService.getCurrentPanier();

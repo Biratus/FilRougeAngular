@@ -41,7 +41,10 @@ export class ProductsComponent implements OnInit {
 
 
   ngOnInit() {
-    this.productService.getProducts().subscribe(myProducts => this.myProducts = myProducts);
+    this.productService.getProducts().subscribe(myProducts => {
+      this.myProducts = myProducts;
+      this.myProducts = this.myProducts.sort((a, b) => a.price - b.price);
+    });
     this.productService.getCategories().subscribe(myAvalaibleCategories => {
       for (let catStr of myAvalaibleCategories) {
         this.avalaibleCategories.push({ label: catStr, value: catStr });
@@ -54,7 +57,6 @@ export class ProductsComponent implements OnInit {
     if (nameProduct) {
       this.nameProduct = nameProduct;
     }
-
     let catStr = this.selectedTypes ? this.selectedTypes.join("-") : '';
     this.productService.search(this.nameProduct, catStr, this.page, this.resultByPage)
       .subscribe(result => this.myProducts = result.listSearch, error => console.log(error));

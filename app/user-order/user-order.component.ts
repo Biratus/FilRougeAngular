@@ -20,12 +20,12 @@ export class UserOrderComponent implements OnInit {
 
   ngOnInit() {
      //this.commandeService.getCommande().subscribe(commandes => this.mesCommandes = commandes);
-     this.mesCommandes.push({"id_commande":1,"date":null,"products":[new Product(1,"name2","type",50,"category",5,"",true,"description2"),
-                                                                   new Product(2,"name3","type",50,"category",60,"",true,"description3")
-     ],"user":new User("slimane","slimane","adr","aa.aa@gmail.com",123456,"admin","pass")});
-     this.mesCommandes.push({"id_commande":1,"date":null,"products":[new Product(1,"name2","type",50,"category",5,"",true,"description2"),
-                                                                   new Product(2,"name3","type",50,"category",60,"",true,"description3")
-     ],"user":new User("slimane","slimane","adr","aa.aa@gmail.com",123456,"admin","pass")});
+    //  this.mesCommandes.push({"id_commande":1,"date":null,"products":[new Product(1,"name2","type",50,"category",5,"",true,"description2"),
+    //                                                                new Product(2,"name3","type",50,"category",60,"",true,"description3")
+    //  ],"user":new User("slimane","slimane","adr","aa.aa@gmail.com","123456","admin","pass")});
+    //  this.mesCommandes.push({"id_commande":1,"date":null,"products":[new Product(1,"name2","type",50,"category",5,"",true,"description2"),
+    //                                                                new Product(2,"name3","type",50,"category",60,"",true,"description3")
+    //  ],"user":new User("slimane","slimane","adr","aa.aa@gmail.com","123456","admin","pass")});
     
    
      this.parcourir();    }
