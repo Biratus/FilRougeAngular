@@ -37,4 +37,8 @@ export class PanierService {
     sessionStorage.setItem("panier", JSON.stringify(currPanier));
   }
 
+  clearPanier() {
+    sessionStorage.setItem('panier',JSON.stringify([]));
+  }
+
 }

@@ -42,7 +42,7 @@ export class NewUserComponent implements OnInit {
           this.msgs.push({
             severity: 'error',
             summary: "Erreur",
-            detail: 'Un erreur est survenue lors de la création de votre compte.'
+            detail: 'Cette addresse mail est déjà relié à un compte.'
           });
         }
       }, error => console.log(error));
