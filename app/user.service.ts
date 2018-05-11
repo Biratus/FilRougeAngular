@@ -26,7 +26,7 @@ export class UserService {
   }
 
   getConnectedUserInSession() {
-    sessionStorage.getItem('user');
+    return sessionStorage.getItem('user');
   }
 
   setConnectedUser(u: User) {
