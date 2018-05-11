@@ -4,6 +4,8 @@ import { ProductService } from '../product.service';
 import { NgForm } from '@angular/forms';
 import { FileUploadModule } from 'primeng/fileupload';
 import { Message } from 'primeng/components/common/api';
+import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-product',
@@ -18,8 +20,10 @@ export class NewProductComponent implements OnInit {
 
   readonly cat = { 'CLIMBING': 'Alpinisme / Escalade', 'DIVING': 'Plongée', 'HIKING': 'Randonnée' };
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService,private uServ:UserService,private router:Router) {
     this.productService = productService;
+    this.uServ=uServ;
+    this.router=router;
   }
 
 
@@ -30,7 +34,15 @@ export class NewProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.resetForm();
+    if (!this.uServ.getConnectedUserInSession()) {
+      this.router.navigate(["/authentification"], {
+        queryParams: {
+          severity: "warn",
+          summary: "Vous n'êtes pas connecté",
+          message: "Connectez-vous afin de pouvoir accéder à votre profile."
+        }
+      });
+    }
   }
 
   OnSubmit(form: NgForm) {

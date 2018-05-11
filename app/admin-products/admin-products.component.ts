@@ -18,6 +18,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CommandeService } from '../commande.service';
 import { Message } from 'primeng/components/common/api';
 import { callNgModuleLifecycle } from '@angular/core/src/view/ng_module';
+import { UserService } from './../user.service';
 
 interface Category {
   label: string;
@@ -58,7 +59,7 @@ export class AdminProductsComponent implements OnInit {
 
 
   constructor(private productService: ProductService, private commandeService: CommandeService,
-    private route: ActivatedRoute, private router: Router) {
+    private route: ActivatedRoute, private router: Router, private uServ: UserService) {
 
     this.productService = productService;
     this.commandeService = commandeService;
@@ -73,11 +74,20 @@ export class AdminProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    if (!this.uServ.getConnectedUserInSession()) {
+      this.router.navigate(["/authentification"], {
+        queryParams: {
+          severity: "warn",
+          summary: "Vous n'êtes pas connecté",
+          message: "Connectez-vous afin de pouvoir accéder à votre profile."
+        }
+      });
+    }
     this.productService.getProducts().subscribe(result => {
       this.myProducts = result.map(p => Product.fromJson(p));
       this.myProducts = this.myProducts.sort((a, b) => a.id - b.id);
     });
+
 
 
 
@@ -100,7 +110,7 @@ export class AdminProductsComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     let catStr = this.selectedTypes ? this.selectedTypes.join("-") : '';
-    if (this.name=="" && catStr=="") {
+    if (this.name == "" && catStr == "") {
       this.ngOnInit();
     }
     this.productService.search(this.name, catStr, this.page, this.resultByPage)
@@ -124,7 +134,7 @@ export class AdminProductsComponent implements OnInit {
   selectProduct(product: Product) {
     this.display = true;
     this.selectedProduct = product;
-    this.modifCategory=this.getCat(this.selectedProduct.category);
+    this.modifCategory = this.getCat(this.selectedProduct.category);
   }
 
   activProduct(product: Product) {
