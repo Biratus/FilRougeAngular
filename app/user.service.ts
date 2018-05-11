@@ -20,8 +20,13 @@ export class UserService {
     return this.httpClient.post(UserService.restApi, user);
   }
 
+  //get user name from session then get from server
   getConnectedUser(): Observable<any> {
     return this.getUser(sessionStorage.getItem('user'));
+  }
+
+  getConnectedUserInSession() {
+    sessionStorage.getItem('user');
   }
 
   setConnectedUser(u: User) {
@@ -40,8 +45,8 @@ export class UserService {
     return this.httpClient.get(UserService.restApi + '/' + id);
   }
 
-  removeConnectedUser(): Observable<any> {
-    return this.getUser(sessionStorage.removeItem('user'));
+  removeConnectedUser() {
+    return sessionStorage.removeItem('user');
   }
 
   logout() {

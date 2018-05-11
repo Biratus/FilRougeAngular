@@ -49,7 +49,13 @@ export class UserProfileComponent implements OnInit {
        this.user=User.fromJSON(jsonU);
       //this.user = new User("", "", "", "", "", "user", "");
      // if (this.user. == "")
-      if (this.user.role == "") this.router.navigate(['/forbidden']);
+      if(!this.uServ.getConnectedUserInSession()) this.router.navigate(["/authentification"], {
+        queryParams: {
+          severity: "warn",
+          summary: "Vous n'êtes pas connecté",
+          message: "Connectez-vous afin de pouvoir accéder à votre profile."
+        }
+      });
     });
     for(let comp in this.visibility) {
       if(!this.visibility[comp]) {

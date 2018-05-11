@@ -43,7 +43,7 @@ export class MenuComponent implements OnInit {
   }
 
   goToProfile() {
-    if(this.uServ.getConnectedUser()) this.router.navigate(['/Profile']);
+    if(this.uServ.getConnectedUserInSession()) this.router.navigate(['/Profile']);
     else this.router.navigate(["/authentification"], {
       queryParams: {
         severity: "warn",
@@ -51,7 +51,6 @@ export class MenuComponent implements OnInit {
         message: "Connectez-vous afin de pouvoir accéder à votre profile."
       }
     });
-    console.log(this.uServ.getConnectedUser());
   }
 
 }
