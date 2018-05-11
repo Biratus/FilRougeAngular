@@ -89,7 +89,10 @@ div.label{
     margin-left: 5%;
     margin-right: 3%;
     margin-top: 3%;
- 
+}
+
+.containTab {
+    margin-right: 3%;
 }
 
 .titleSearch {

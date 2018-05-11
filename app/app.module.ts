@@ -30,6 +30,7 @@ import { SpinnerModule } from 'primeng/spinner';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { TabMenuModule } from 'primeng/tabmenu';
 
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './products/products.component';
@@ -47,6 +48,8 @@ import { PanierService } from './panier.service';
 import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
 import { UserOrderComponent } from './user-order/user-order.component';
 import { CommandeService } from './commande.service';
+import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -76,10 +79,13 @@ const appRoutes: Routes = [
     PanierComponent,
     UserProfileComponent,
     ProfileDetailComponent,
-    UserOrderComponent
+    UserOrderComponent,
+    LegalNoticeComponent,
+    FooterComponent
 
   ],
   imports: [
+    TabMenuModule,
     InputTextareaModule,
     DropdownModule,
     InputSwitchModule,
