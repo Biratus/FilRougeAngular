@@ -14,3 +14,8 @@ button.btn-submit:focus,button.btn-submit:hover{
     background-color: rgb(18, 101, 184);
 }
 
+#cgu{
+    text-decoration:underline;
+    color:blue;
+    cursor:pointer;
+}
