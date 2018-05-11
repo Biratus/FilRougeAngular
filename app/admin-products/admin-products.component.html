@@ -2,7 +2,7 @@
   <form (ngSubmit)="onSubmit(name.value,category.value)">
         <div class="row">
           <div class="placeholderSearch">
-              <form (ngSubmit)="onSubmit(productName.value)" class="NameSearch ">
+              <form (ngSubmit)="onSubmit()" class="NameSearch ">
                 <div class="col-12">
                   <div class="ui-inputgroup">
                     <input type="text" id="namesearch" #productName required [(ngModel)]="name" name="model" pInputText placeholder="Quel produit recherchez vous?">
@@ -48,7 +48,7 @@
               {{product[col.field]}}
             </td>
             <td>
-              <p-growl [(value)]="msgs"></p-growl>
+              <p-growl [life]="1000" [(value)]="msgs"></p-growl>
               <div>
                 <p-inputSwitch id="activButton" (click)="activProduct(product);onOffProduct(product.activ)" onLabel="Yes" offLabel="No" [(ngModel)]="product.activ" ></p-inputSwitch>
               </div>
@@ -111,7 +111,7 @@
                         <div class="label">
                           Catégorie
                         </div>
-                        <p-dropdown [options]="cat" [(ngModel)]="selectedProduct.category" name="category"  optionLabel="label" [style]="{'width':'150px'}" [ngModelOptions]="{standalone: true}"></p-dropdown>
+                        <p-dropdown [options]="cat" [(ngModel)]="modifCategory" placeholder={{selectedProduct.category}} name="selectedProduct.category"  optionLabel="label" [style]="{'width':'150px'}" [ngModelOptions]="{standalone: true}"></p-dropdown>
                       </div>
                     </div>
                 <div class="row">

@@ -16,7 +16,8 @@ import { SelectItem } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CommandeService } from '../commande.service';
-import {Message} from 'primeng/components/common/api';
+import { Message } from 'primeng/components/common/api';
+import { callNgModuleLifecycle } from '@angular/core/src/view/ng_module';
 
 interface Category {
   label: string;
@@ -46,15 +47,13 @@ export class AdminProductsComponent implements OnInit {
   id: number = 0;
   submitted = false;
   display: boolean = false;
-  productName: string = "";
-  productQty: number = 0;
-  productPrice: number = 0;
-  productType: string = "";
-  productDescript: string = "";
   activ: boolean;
   avalaibleCategories: SelectItem[] = [];
   selectedTypes: string[];
   msgs: Message[] = [];
+  readonly categ = { 'CLIMBING': 'Alpinisme / Escalade', 'DIVING': 'Plongée', 'HIKING': 'Randonnée' };
+
+  modifCategory;
 
 
 
@@ -98,15 +97,14 @@ export class AdminProductsComponent implements OnInit {
     ];
   }
 
-  onSubmit(productName: string) {
+  onSubmit() {
     this.submitted = true;
-    if (productName) {
-      this.productName = productName;
-    }
-    console.log(productName);
     let catStr = this.selectedTypes ? this.selectedTypes.join("-") : '';
-    this.productService.search(this.productName, catStr, this.page, this.resultByPage)
-      .subscribe(result => this.myProducts = result.listSearch, error => console.log(error));
+    if (this.name=="" && catStr=="") {
+      this.ngOnInit();
+    }
+    this.productService.search(this.name, catStr, this.page, this.resultByPage)
+      .subscribe(result => this.myProducts = result.listSearch.sort((a, b) => a.id - b.id), error => console.log(error));
   }
 
   redirect() {
@@ -114,22 +112,7 @@ export class AdminProductsComponent implements OnInit {
   }
 
   saveProduct(productName: string, productQty: number, productPrice: number, productType: string, productDescript: string) {
-
-    if (productName) { this.productName = productName; }
-    if (productQty) { this.productQty = productQty; }
-    if (productPrice) { this.productPrice = productPrice; }
-    if (productType) { this.productType = productType; }
-    if (productDescript) { this.productDescript = productDescript; }
-
-    this.selectedProduct.id = this.selectedProduct.id;
-    this.selectedProduct.category = this.selectedProduct.category;
-    this.selectedProduct.name = productName;
-    this.selectedProduct.qty = productQty;
-    this.selectedProduct.price = productPrice;
-    this.selectedProduct.type = productType;
-    this.selectedProduct.descript = productDescript;
-    console.log(this.selectedProduct);
-
+    this.selectedProduct.category = this.modifCategory.value;
     this.productService.saveProduct(this.selectedProduct).subscribe(() => this.ngOnInit());
   }
 
@@ -141,6 +124,7 @@ export class AdminProductsComponent implements OnInit {
   selectProduct(product: Product) {
     this.display = true;
     this.selectedProduct = product;
+    this.modifCategory=this.getCat(this.selectedProduct.category);
   }
 
   activProduct(product: Product) {
@@ -150,25 +134,34 @@ export class AdminProductsComponent implements OnInit {
   onOffProduct(activ) {
 
     this.commandeService.isInOrder(this.selectedProduct.id).subscribe(
-       data => {
+      data => {
         if (data.orders.length == 0) {
           this.productService.activProduct(this.selectedProduct.id, activ).subscribe(() => this.ngOnInit());
-            
-        } else{this.alertOffProduct(this.selectedProduct.name); 
-           this.productService.getProducts().subscribe(()=>this.ngOnInit());}
-        
-        
+
+        } else {
+          this.productService.getProducts().subscribe(() => this.ngOnInit());
+          this.alertOffProduct(this.selectedProduct.name);
+        }
       });
-      
+
   }
 
-  alertOffProduct(productName:string){
+  alertOffProduct(productName: string) {
     this.msgs = [];
-    this.msgs.push({severity:'Error', summary:'Désactivation du produit', 
-    detail:'Vous ne pouvez pas désactiver le produit '+productName+' car il est déjà commandé '});
+    this.msgs.push({
+      severity: 'error', summary: 'Désactivation du produit',
+      detail: 'Vous ne pouvez pas désactiver le produit ' + productName + ' car il est déjà commandé '
+    });
   }
 
   onDialogHide() {
     this.selectedProduct = null;
+  }
+
+  getCat(str) {
+    for (let i of this.cat) {
+      if (i.value == str || i.label == str) return i;
+    }
+    return "";
   }
 }
