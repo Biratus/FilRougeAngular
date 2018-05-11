@@ -7,10 +7,10 @@
         </h1>
       </div>
       <div class="placeholderSearch">
-        <form (ngSubmit)="onSubmit(nameProduct.value)" class="NameSearch ">
+        <form (ngSubmit)="onSubmit()" class="NameSearch">
           <div class="ui-g-12 ui-md-12 col-sm-12">
             <div class="ui-inputgroup">
-              <input type="text" id="namesearch" #nameProduct required [(ngModel)]="name" name="model" pInputText placeholder="Quel produit recherchez vous?">
+              <input type="text" #nameProduct required [(ngModel)]="name" name="nameinput" pInputText placeholder="Quel produit recherchez vous?">
             </div>
           </div>
         </form>
@@ -42,9 +42,9 @@
           <p-panel [header]="product.name" [style]="{'text-align':'center'}" (click)="selectProduct(product)">
             <img src="src" width="60" />
             <div class="catPriceContainer">
-                <div class="productCat col-12">{{product.category}}</div>
-                <div class="priceTag col-12">{{product.price}}€</div>
-            </div>            
+              <div class="productCat col-12">{{product.category}}</div>
+              <div class="priceTag col-12">{{product.price}}€</div>
+            </div>
             <hr class="ui-widget-content" style="border-top:0" />
             <div class="container container-fluid">
               <div class="row justify-content-between" style="margin-bottom:0">

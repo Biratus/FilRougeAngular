@@ -25,7 +25,6 @@ export class ProductsComponent implements OnInit {
   category: string = "";
   page: number = 1;
   resultByPage: number = 1000;
-  nameProduct = "";
   avalaibleCategories: SelectItem[] = [];
   selectedTypes: string[];
   display: boolean = false;
@@ -52,13 +51,11 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  onSubmit(nameProduct: string) {
+  onSubmit() {
     this.submitted = true;
-    if (nameProduct) {
-      this.nameProduct = nameProduct;
-    }
+
     let catStr = this.selectedTypes ? this.selectedTypes.join("-") : '';
-    this.productService.search(this.nameProduct, catStr, this.page, this.resultByPage)
+    this.productService.search(this.name, catStr, this.page, this.resultByPage)
       .subscribe(result => this.myProducts = result.listSearch, error => console.log(error));
   }
 
