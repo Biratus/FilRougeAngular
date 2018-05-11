@@ -24,7 +24,7 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     //this.buildItems(new User("", "", "", "", "", "", ""));
     //this.buildItems(this.uServ.getConnectedUser());
-    this.buildItems(this.user);
+    this.uServ.getConnectedUser().subscribe(user => this.buildItems(User.fromJSON(user)));
   }
 
   buildItems(u: User) {

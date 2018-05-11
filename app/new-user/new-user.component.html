@@ -29,7 +29,7 @@
           </div>
           <div class="row">
             <div class="input-field col s6">
-              <input class="validate" type="tel" name="phone" #phone="ngModel" [(ngModel)]="user.phone" required minlength="3">
+              <input class="validate" type="text" name="phone" #phone="ngModel" [(ngModel)]="user.phone" required minlength="3" maxLength="10">
               <label>Telephone</label>
             </div>
             <div class="input-field col s6">
