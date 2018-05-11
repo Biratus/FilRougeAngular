@@ -48,6 +48,7 @@ export class UserProfileComponent implements OnInit {
     this.uServ.getConnectedUser().subscribe(jsonU => {
        this.user=User.fromJSON(jsonU);
       //this.user = new User("", "", "", "", "", "user", "");
+     // if (this.user. == "")
       if (this.user.role == "") this.router.navigate(['/forbidden']);
     });
     for(let comp in this.visibility) {
@@ -70,10 +71,8 @@ export class UserProfileComponent implements OnInit {
   }
 
   logout() {
-    this.uServ.logout().subscribe(data => {
-      console.log(data);
-      this.uServ.removeConnectedUser();
-      this.router.navigate(['/authentification']);
-    },error => console.error(error));
+  this.uServ.logout();
+  sessionStorage.clear();
+  this.router.navigate(['/authentification']);
   }
 }

@@ -8,8 +8,10 @@ export class PanierService {
 
   getCurrentPanier(): Product[] {
     let prodList = sessionStorage.getItem('panier');
-    if (prodList == null) return null;
-    else return (JSON.parse(prodList) as any[]).map(obj => Product.fromJson(obj));
+    
+    if (prodList != null){
+      return (JSON.parse(prodList) as any[]).map(obj => Product.fromJson(obj));
+    } 
   }
 
   addProductToPanier(p: Product, qty: number) {

@@ -27,10 +27,11 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { SpinnerModule } from 'primeng/spinner';
-
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 import { AppComponent } from './app.component';
-import { ProductComponent } from './product/product.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductService } from './product.service';
 import { MenuComponent } from './menu/menu.component';
@@ -44,21 +45,12 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PanierComponent } from './panier/panier.component';
 import { PanierService } from './panier.service';
 import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
-
-import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { UserOrderComponent } from './user-order/user-order.component';
 import { CommandeService } from './commande.service';
-
-import {InputSwitchModule} from 'primeng/inputswitch';
-
-import {DropdownModule} from 'primeng/dropdown';
-import {InputTextareaModule} from 'primeng/inputtextarea';
-
 
 
 
 const appRoutes: Routes = [
-  { path: 'Product', component: ProductComponent },
   { path: 'Products', component: ProductsComponent },
   { path: 'AdminProducts', component: AdminProductsComponent },
   { path: 'AdminOrders', component: AdminOrdersComponent },
@@ -75,7 +67,6 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     AuthentificationComponent,
-    ProductComponent,
     ProductsComponent,
     AdminProductsComponent,
     AdminOrdersComponent,

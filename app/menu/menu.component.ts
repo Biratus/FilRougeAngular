@@ -10,9 +10,10 @@ import { Observable } from 'rxjs';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnInit {
 
+export class MenuComponent implements OnInit {
   items: MenuItem[];
+  user: User;
 
   constructor(private uServ: UserService, private route: ActivatedRoute, private router: Router) {
     this.uServ = uServ;
@@ -21,9 +22,9 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.buildItems(new User("", "", "", "", 0, "", ""));
-    
+    //this.buildItems(new User("", "", "", "", "", "", ""));
     //this.buildItems(this.uServ.getConnectedUser());
+    this.buildItems(this.user);
   }
 
   buildItems(u: User) {
@@ -34,7 +35,11 @@ export class MenuComponent implements OnInit {
   }
 
   goToCart() {
-    console.log("go to cart");
+    this.router.navigate(['/Profile'], {
+      queryParams:{
+        page: "panier"
+      }
+    })
   }
 
   goToProfile() {
@@ -46,7 +51,7 @@ export class MenuComponent implements OnInit {
         message: "Connectez-vous afin de pouvoir accéder à votre profile."
       }
     });
-
+    console.log(this.uServ.getConnectedUser());
   }
 
 }
