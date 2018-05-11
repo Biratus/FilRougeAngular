@@ -18,19 +18,19 @@ import { Message } from 'primeng/components/common/api';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  model: Product = new Product(0, "", "", 0, "", 0, "", false, "");
+  model: Product = new Product(0, "", "", 0, "", 0, "", false, "");//utile?
   submitted = false;
   myProducts: Product[];
   name: string = "";
-  category: string = "";
+  category: string = "";//utile?
   page: number = 1;
   resultByPage: number = 1000;
   avalaibleCategories: SelectItem[] = [];
   selectedTypes: string[];
   display: boolean = false;
   selectedProduct: Product;
-  qty: number = 0;
-  QtyCmd: number = 0;
+  qty: number = 0;//utile?
+  QtyCmd: number = 0;//utile?
   msgs: Message[] = [];
 
   constructor(private productService: ProductService, private panierService: PanierService) {
