@@ -30,7 +30,7 @@
 }
 
 #menuItems {
-    margin:0;
+    margin:auto;
 }
 #menu {
     text-align:center;
@@ -115,6 +115,7 @@ button[label] {
       padding:5%
     }
     #title {
+        display:none;
         visibility:hidden;
     }
   }
