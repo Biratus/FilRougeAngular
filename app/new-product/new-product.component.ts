@@ -12,9 +12,9 @@ import { Message } from 'primeng/components/common/api';
 })
 
 export class NewProductComponent implements OnInit {
-  product: Product;
+  product: Product=null;
   msgs: Message[] = [];
-  selectedFile: File = new File(null, "");
+  selectedFile: File = null;
 
   readonly cat = { 'CLIMBING': 'Alpinisme / Escalade', 'DIVING': 'Plongée', 'HIKING': 'Randonnée' };
 
