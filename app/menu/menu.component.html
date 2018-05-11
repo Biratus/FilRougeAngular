@@ -23,7 +23,7 @@
 </div>
 <div id="menuCont" class="container">
   <p-menubar [model]="items" [autoDisplay]="false">
-    <p-button label="Deconnexion" icon="fa fa-sign-out" routerLink='/logout'></p-button>
+    <p-button label="Deconnexion" icon="fa fa-sign-out" (click)='logout()'></p-button>
   </p-menubar>
 </div>
 <div id="burgerMenuCont" class="container">
@@ -33,5 +33,4 @@
     </div>
   </div>
 </div>
-
 <p-menu #burgerMenu popup="popup" [model]="items"></p-menu>

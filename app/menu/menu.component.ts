@@ -36,14 +36,14 @@ export class MenuComponent implements OnInit {
 
   goToCart() {
     this.router.navigate(['/Profile'], {
-      queryParams:{
+      queryParams: {
         page: "panier"
       }
     })
   }
 
   goToProfile() {
-    if(this.uServ.getConnectedUserInSession()) this.router.navigate(['/Profile']);
+    if (this.uServ.getConnectedUserInSession()) this.router.navigate(['/Profile']);
     else this.router.navigate(["/authentification"], {
       queryParams: {
         severity: "warn",
@@ -51,6 +51,12 @@ export class MenuComponent implements OnInit {
         message: "Connectez-vous afin de pouvoir accéder à votre profile."
       }
     });
+  }
+
+  logout() {
+    this.uServ.logout();
+    sessionStorage.clear();
+    this.router.navigate(['/authentification']);
   }
 
 }

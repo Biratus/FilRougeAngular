@@ -8,10 +8,10 @@ export class PanierService {
 
   getCurrentPanier(): Product[] {
     let prodList = sessionStorage.getItem('panier');
-    
-    if (prodList != null){
+
+    if (prodList != null) {
       return (JSON.parse(prodList) as any[]).map(obj => Product.fromJson(obj));
-    } 
+    } else return null;
   }
 
   addProductToPanier(p: Product, qty: number) {
@@ -40,7 +40,7 @@ export class PanierService {
   }
 
   clearPanier() {
-    sessionStorage.setItem('panier',JSON.stringify([]));
+    sessionStorage.setItem('panier', JSON.stringify([]));
   }
 
 }

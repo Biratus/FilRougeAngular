@@ -23,12 +23,6 @@ export class PanierComponent implements OnInit {
   }
 
   ngOnInit() {
-    //remove from here
-    // this.monPanier.push(new Product(0,"name","type",50,"category",5,"",true,"description"));
-    // this.monPanier.push(new Product(1,"name2","type",50,"category",5,"",true,"description2"));
-    // this.monPanier.push(new Product(2,"name3","type",50,"category",60,"",true,"description3"));
-    //sessionStorage.setItem('panier',JSON.stringify(this.monPanier));
-    //to here
     if (this.panierService.getCurrentPanier())
       this.monPanier = this.panierService.getCurrentPanier();
   }
@@ -41,7 +35,7 @@ export class PanierComponent implements OnInit {
   updateTotal() {
     //return this.monPanier.reduce((acc,elt)=>acc+=elt.price*elt.qty,0);
     let total = 0;
-    //console.trace("ceci est MON PANIER CULE " +this.monPanier);
+
     for (let element of this.monPanier) {
       total += element.price * element.qty;
     }
@@ -56,14 +50,14 @@ export class PanierComponent implements OnInit {
   checkout() {
     this.userService.getConnectedUser().subscribe(user => {
       this.commandeService.createCommande(user).subscribe(data => {
+        //display message success
         this.msgs.push({
           severity: 'success',
           summary: "Commande validée",
           detail: 'Votre panier à été validé, et votre commande créer.\nVous pouvez consulter vos commandes dans votre profil.'
         });
-        this.panierService.clearPanier();
         //empty panier
-        //display message success
+        this.panierService.clearPanier();
       });
     }, error => {
       //display error message

@@ -27,13 +27,13 @@ export class UserProfileComponent implements OnInit {
     this.router = router;
     this.route.queryParamMap.subscribe(map => {
       if (map.get('page')) {
-        let page=map.get('page');
-        if(page=='panier') {
+        let page = map.get('page');
+        if (page == 'panier') {
           for (let comp in this.visibility) {
             this.visibility[comp] = true;
           }
           this.visibility['app-panier'] = false;
-        } else if(page=='commande') {
+        } else if (page == 'commande') {
           for (let comp in this.visibility) {
             this.visibility[comp] = true;
           }
@@ -46,18 +46,19 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
     this.uServ.getConnectedUser().subscribe(jsonU => {
-       this.user=User.fromJSON(jsonU);
+      this.user = User.fromJSON(jsonU);
     });
-    if(!this.uServ.getConnectedUserInSession()) {
+    if (!this.uServ.getConnectedUserInSession()) {
       this.router.navigate(["/authentification"], {
-      queryParams: {
-        severity: "warn",
-        summary: "Vous n'êtes pas connecté",
-        message: "Connectez-vous afin de pouvoir accéder à votre profile."
-      }
-    });}
-    for(let comp in this.visibility) {
-      if(!this.visibility[comp]) {
+        queryParams: {
+          severity: "warn",
+          summary: "Vous n'êtes pas connecté",
+          message: "Connectez-vous afin de pouvoir accéder à votre profile."
+        }
+      });
+    }
+    for (let comp in this.visibility) {
+      if (!this.visibility[comp]) {
         document.getElementById(comp).classList.add("active");
       }
     }
@@ -76,8 +77,8 @@ export class UserProfileComponent implements OnInit {
   }
 
   logout() {
-  this.uServ.logout();
-  sessionStorage.clear();
-  this.router.navigate(['/authentification']);
+    this.uServ.logout();
+    sessionStorage.clear();
+    this.router.navigate(['/authentification']);
   }
 }
