@@ -1,72 +1,64 @@
 <div class="container">
     <div class="well">
-        <div class="page-header">
-            <h3>Mes commandes</h3>
-        </div>
- 
+      <div class="page-header">
+        <h3>Mes commandes</h3>
+      </div>
+      <table *ngIf="hasOrder" class = "com">
+         
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Id commande</th>
+            <th scope="col">date</th>
+            <th scope="col">Nombre produits</th>
+            <th scope="col">Prix total</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let c of mesCommandes" (click)="selectedOrder(c)">
+          <td>{{c.id}}</td>
+          <td>{{c.date| date: 'dd/MM/yyyy'}}</td>
+          <td>{{nbProduit(c)}}</td>
+          <td>{{prixTotal(c)}}</td>
+        </tr>
+        </tbody>
+      </table>
       
-
-        <table class="table table-sm table-hover">
-            <thead class="thead-dark">
+    </div>
+    <p-dialog *ngIf="selectedCommande" header="COMMANDE DU {{selectedCommande.date| date: 'dd/MM/yyyy'}}" [(visible)]="display"
+      [responsive]="true" showEffect="fade" [modal]="true" width="500" (onAfterHide)="onDialogHide()" [dismissableMask]="true">
+      <div class="ui-grid ui-grid-responsive ui-grid-pad" style="font-size:16px;text-align:center;padding:20px">
+        <div class="col-12 " style="text-align:center">
+  
+          <div class="row">
+            <table class="tablediag diag" align="center" cellpadding="100">
+              <thead class="table-success">
                 <tr>
-                  <th scope="col">Id commande</th>
-                  <th scope="col">datet</th>
-                  <th scope="col">Nombre produits</th>
-                  <th scope="col">Prix total</th>
+                  <th scope="col">Produit</th>
+                  <th scope="col">Prix</th>
+                  <th scope="col">Quantité</th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
-          <tr *ngFor="let c of mesCommandes" (click)="selectedOrder(c)"> 
-            <td >{{c.id_commande}}</td>
-            <td>{{c.date}}</td>
-            <td>{{c.nombre_produits}}</td>
-            <td>{{c.rix_total}}</td>
-      
-          </tr>
-        </table>
-       
-   
- 
- 
-    </div>
-
-
-
-    <p-dialog  header="commande Details" [(visible)]="display" [responsive]="true" showEffect="fade" [modal]="true" width="500" (onAfterHide)="onDialogHide()"
-    [dismissableMask]="true">
-        <div class="ui-grid ui-grid-responsive ui-grid-pad" *ngIf="selectedCommande" style="font-size:16px;text-align:center;padding:20px">
-            <div class="row">
-                <div class="col-12" style="text-align:center">
-                  <form>
-
-                    <div class="row">
-                      <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-                        <div class="label">
-                          Id
-                        </div>
-                        <div class="field">
-                          {{selectedCommande.id_commande}}
-                          {{parcourir()}}
-                        </div>
-                      </div>
-                      <div class="field" *ngFor="let p of selectedCommande.products">
-                         <div >{{p.name}}</div>
-                        
-                      </div>
-                   
-                      <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
-                          <div class="label">
-                            Nom
-                          </div>
-                        <!-- <input id="name" type="text" pInputText placeholder="{{selectedCommande.id}}"> -->
-                      </div>
-                    </div>
-                   
-              
-                </form>
-              </div>
-            </div>
-            <!-- <button (click)="removeProduct(selectedProduct.id);display=false" type="button" pButton class="btnDelete" label="Supprimer produit"></button>
-            <button (click)="updateProduct(selectedProduct);display=false" pButton type="button" class="btnModify" label="Modifier produit"></button> -->
+              <tbody>
+              <tr *ngFor="let p of selectedCommande.products" style="text-align:center">
+                <td>{{p.name}}</td>
+                <td>{{p.price}}€</td>
+                <td>{{p.qty}}</td>
+                <td>
+                  <img src="{{p.src}}">
+                </td>
+              </tr>
+            </tbody>
+              <tfoot>
+                <tr class="table-secondary ">
+                  <td colspan="3">Total</td>
+                  <td>{{prixTotal(selectedCommande)}}€</td>
+                </tr>
+              </tfoot>
+           
+            </table>
+          </div>
         </div>
+      </div>
     </p-dialog>
-</div>
+  </div>

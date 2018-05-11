@@ -5,11 +5,13 @@ import { Response } from "@angular/http";
 import { HttpClient } from '@angular/common/http';
 import { PanierService } from './panier.service';
 import { User } from './user.model';
+import { Commande } from './commande';
 
 @Injectable()
 export class CommandeService {
 
   static readonly restApi = "http://localhost:8082/formafond/Api/order";
+  static readonly  restApiUser = "http://localhost:8082/formafond"
 
   constructor(private http: HttpClient, private panierService: PanierService) {
     this.http = http;
@@ -22,9 +24,12 @@ export class CommandeService {
 
   }
 
-  getCommandeOfUser(user_id:number): Observable<any> {
-    return this.http.get(CommandeService.restApi+"/user/"+user_id);
-  }
+  getOrderOfUser(id: number): Observable<any> {
+    return this.http.get(CommandeService.restApiUser + "/api/user/" + id + "/orders");
+
+  } 
+
+
 
   createCommande(user: User): Observable<any> {
     let listprod = this.panierService.getCurrentPanier();

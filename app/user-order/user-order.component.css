@@ -1,0 +1,114 @@
+/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table.com table, table.com thead, table.com tbody, table.com th, table.com td, table.com tr { 
+    font-family: "Times New Roman", Times, serif;
+    border: 1px solid #FFFFFF;
+  
+    text-align: center;
+    border-collapse: collapse;
+    border-radius: 5px;
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	table.com thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	table.com tr { border: 1px solid #ccc; }
+	
+	table.com td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	table.com td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+	/*
+	Label the data
+	*/
+table.com td:nth-of-type(1):before { content: "Id commande"; }
+table.com td:nth-of-type(2):before { content: "date"; }
+table.com td:nth-of-type(3):before { content: "Nombre produits"; }
+table.com td:nth-of-type(4):before { content: "Prix total"; }
+
+
+
+
+
+
+
+}
+table{
+  font-family: "Times New Roman", Times, serif;
+  border: 1px solid #FFFFFF;
+
+  text-align: center;
+  border-collapse: collapse;
+  border-radius: 5px;
+}
+
+table td, table th {
+  border: 1px solid #FFFFFF;
+  padding: 3px 2px;
+}
+
+table tbody td {
+  font-size: 13px;;
+}
+table thead {
+  background: #0B6FA4;
+  border-bottom: 5px solid #FFFFFF;
+}
+
+table thead th {
+  font-size: 17px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align: center;
+  border-left: 2px solid #FFFFFF;
+}
+
+table thead th:first-child {
+  border-left: none;
+}
+table tr:nth-child(even) {
+  background: #D0E4F5;
+}
+
+table tfoot {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333333;
+  background: #D0E4F5;
+  border-top: 3px solid #444444;
+}
+table tfoot td {
+  font-size: 14px;
+}
+
+
+
+
