@@ -24,10 +24,13 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     //this.buildItems(new User("", "", "", "", "", "", ""));
     //this.buildItems(this.uServ.getConnectedUser());
-    this.uServ.getConnectedUser().subscribe(user => this.buildItems(User.fromJSON(user)));
+    this.uServ.getConnectedUser().subscribe(user => {
+      if(user.state && user.state=='failed') this.buildItems();
+      else this.buildItems(User.fromJSON(user));
+    });
   }
 
-  buildItems(u: User) {
+  buildItems(u?: User) {
     this.items = [{ label: "Accueil", routerLink: '/' }, { label: "Shopping", icon: "fa fa-shopping-cart", routerLink: "/Products" }];
     if (u && u.role.toLowerCase() == "admin") {
       this.items.push({ label: "Gestion des produits", routerLink: '/AdminProducts' }, { label: "Gestion des commandes", routerLink: '/AdminOrders' });
