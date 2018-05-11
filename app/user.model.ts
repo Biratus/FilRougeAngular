@@ -1,5 +1,5 @@
 export class User {
-    id: number;
+    id:number;
     lastName: string;
     firstName: string;
     mail: string;
@@ -8,7 +8,7 @@ export class User {
     role: string;
     password: string;
 
-    constructor(lastName: string, firstName: string, mail: string, address: string, phone: string, role: string, pwd: string, id: number) {
+    constructor(id:number, lastName: string, firstName: string, mail: string, address: string, phone: string, role: string, pwd: string) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.mail = mail;
@@ -21,6 +21,6 @@ export class User {
 
     static fromJSON(jsonObj) {
         if (jsonObj == null) return null;
-        return new User(jsonObj.lastname, jsonObj.firstname, jsonObj.mail, jsonObj.address, jsonObj.phone, jsonObj.role, jsonObj.password, jsonObj.id);
+        return new User(jsonObj.id,jsonObj.lastname, jsonObj.firstname, jsonObj.mail, jsonObj.address, jsonObj.phone, jsonObj.role, jsonObj.password);
     }
 }

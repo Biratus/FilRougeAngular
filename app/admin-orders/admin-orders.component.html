@@ -1,3 +1,30 @@
-<p>
-  admin-orders works!
-</p>
+<p-table [columns]="colsOrders" [value]="myOrders" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>
+              Numéro de commande
+            </th>
+            <th>
+              Date
+            </th>
+            <th>
+              Nom d'utilisateur
+            </th>
+            <th>
+              Nombre de Produits
+            </th>
+            <th>
+              Prix Total
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-order >
+        <tr>
+            <td >{{order.id}}</td>
+            <td >{{order.date}}</td>
+            <td>{{order.user_id}}</td>
+            <td>{{order.products.length}}</td>
+            <td>{{totalPrice(order)}}</td>
+        </tr>
+    </ng-template>
+  </p-table>

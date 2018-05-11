@@ -17,8 +17,8 @@ export class UserOrderComponent implements OnInit {
   private total: number;
   curentUser: User;
   mesCommandes = new Array<Commande>();
-  model: Commande = new Commande(0, null, null, null);
   hasOrder:boolean=false;
+  model: Commande = new Commande(0, null,  null,null,0);
 
 
   constructor(private commandeService: CommandeService, private produitService: ProductService, private userService: UserService) { }

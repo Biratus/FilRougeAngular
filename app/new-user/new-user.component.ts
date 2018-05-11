@@ -26,7 +26,7 @@ export class NewUserComponent implements OnInit {
   resetForm(form?: NgForm) {
     if (form != null)
       form.reset();
-    this.user = new User("", "", "", "", null, "", "");
+    this.user = new User(0,"", "", "", "", null, "", "");
   }
 
   OnSubmit(form: NgForm) {

@@ -12,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 
 export class AuthentificationComponent implements OnInit {
-  user: User = new User("", "", "", "", "", "", "");
+  user: User = new User(0,"", "", "", "", "", "", "");
   msgs: Message[] = [];
 
   constructor(private userService: UserService, private activRoute: ActivatedRoute, private router: Router) {
@@ -28,7 +28,7 @@ export class AuthentificationComponent implements OnInit {
   resetForm(form?: NgForm) {
     if (form != null)
       form.reset();
-    this.user = new User("", "", "", "", "", "", "");
+    this.user = new User(0,"", "", "", "", "", "", "");
   }
 
   ngOnInit() {
