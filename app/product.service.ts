@@ -61,4 +61,10 @@ export class ProductService {
     return this.http.request(req);
    // return this.http.post('http://localhost:8082/formafond/api/image', { "file": image, "filename": imagename });
   }
+
+  activProduct(id:number,activ:boolean){
+      return this.http.get(ProductService.restApi+"/"+id+(activ?"/activate":"/deactivate"));  
+  }
+
+  
 }

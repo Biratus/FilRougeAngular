@@ -30,4 +30,8 @@ export class CommandeService {
     let listprod = this.panierService.getCurrentPanier();
     return this.http.post(CommandeService.restApi, { "products": listprod, "user": user });
   }
+
+  isInOrder(productId:number): Observable<any>{
+    return this.http.get("http://localhost:8082/formafond/Api/order/product/"+productId);
+  }
 }

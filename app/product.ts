@@ -22,6 +22,6 @@ export class Product {
     }
 
     static fromJson(jsonObj) {
-        return new Product(jsonObj.id,jsonObj.name,jsonObj.type,jsonObj.price,jsonObj.category.name,jsonObj.qty,jsonObj.src,true,jsonObj.descript);
+        return new Product(jsonObj.id,jsonObj.name,jsonObj.type,jsonObj.price,jsonObj.category,jsonObj.qty,jsonObj.src,jsonObj.activ,jsonObj.descript);
     }
 }

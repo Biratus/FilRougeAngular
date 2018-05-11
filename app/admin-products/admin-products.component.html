@@ -1,24 +1,36 @@
 <div class="container container-fluid">
   <form (ngSubmit)="onSubmit(name.value,category.value)">
         <div class="row">
-          <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
-            <div class="ui-inputgroup">
-              <input id="name" #name type="text" pInputText placeholder="Product Name">         
+          <div class="placeholderSearch">
+              <form (ngSubmit)="onSubmit(productName.value)" class="NameSearch ">
+                <div class="col-12">
+                  <div class="ui-inputgroup">
+                    <input type="text" id="namesearch" #productName required [(ngModel)]="name" name="model" pInputText placeholder="Quel produit recherchez vous?">
+                  </div>
+                </div>
+              </form>
             </div>
+          <div class="col-12">
+              <form (ngSubmit)="onSubmit()" class="TypeSearch ui-grid-responsive">
+                <div class="btnType">
+                  <div class="pBtn">
+                    <p-selectButton [options]="avalaibleCategories" [(ngModel)]="selectedTypes" multiple="multiple" name="SubmitedType">
+                    </p-selectButton>
+                  </div>
+                </div>
+              </form>     
           </div>
+
           <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
-            <div class="ui-inputgroup">
-              <input id="category" #category type="text" pInputText placeholder="Product Category">      
-            </div>
-          </div>
-          <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
-            <button (click)="input(name.value,category.value.name)"  pButton type="submit" class="btnSearch" label="Rechercher"  ></button>
+            <button pButton type="submit" class="btnSearch" label="Rechercher"  ></button>
           </div>
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
           <button id="btn" (click)="redirect()"  pButton class="btnSearch" label="Ajouter un produit"  ></button>
         </div>
   </form>
+
+
   <p-table [columns]="cols" [value]="myProducts" [paginator]="true" [rows]="10">
     <ng-template pTemplate="header" let cols>
         <tr>
@@ -36,11 +48,16 @@
               {{product[col.field]}}
             </td>
             <td>
-                <p-inputSwitch #activ (click)="onOffProduct(product.activ)" onLabel="Yes" offLabel="No" [(ngModel)]="product.activ"></p-inputSwitch>
+              <p-growl [(value)]="msgs"></p-growl>
+              <div>
+                <p-inputSwitch id="activButton" (click)="activProduct(product);onOffProduct(product.activ)" onLabel="Yes" offLabel="No" [(ngModel)]="product.activ" ></p-inputSwitch>
+              </div>
             </td>
         </tr>
     </ng-template>
   </p-table>
+
+
   <p-dialog  header="Product Details" [(visible)]="display" [responsive]="true" showEffect="fade" [modal]="true" width="500" (onAfterHide)="onDialogHide()"
   [dismissableMask]="true">
       <div class="ui-grid ui-grid-responsive ui-grid-pad" *ngIf="selectedProduct" style="font-size:16px;text-align:center;padding:20px">

@@ -13,8 +13,10 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { forEach } from '@angular/router/src/utils/collection';
 import { DropdownModule } from 'primeng/dropdown';
 import { SelectItem } from 'primeng/api';
-import {ButtonModule} from 'primeng/button';
-import {InputTextareaModule} from 'primeng/inputtextarea';
+import { ButtonModule } from 'primeng/button';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { CommandeService } from '../commande.service';
+import {Message} from 'primeng/components/common/api';
 
 interface Category {
   label: string;
@@ -37,33 +39,47 @@ export class AdminProductsComponent implements OnInit {
   selectedProduct: Product;
   cols: any[];
   page: number = 1;
-  resultByPage: number = 100;
+  resultByPage: number = 1000;
   model: Product = new Product(0, "", "", 0, "", 0, "", false, "");
   name: string = "";
   category: string = "";
   id: number = 0;
   submitted = false;
   display: boolean = false;
-  productName:string="";
-  productQty:number=0;
-  productPrice:number=0;
-  productType:string="";
-  productDescript:string="";
-  activ:boolean;
+  productName: string = "";
+  productQty: number = 0;
+  productPrice: number = 0;
+  productType: string = "";
+  productDescript: string = "";
+  activ: boolean;
+  avalaibleCategories: SelectItem[] = [];
+  selectedTypes: string[];
+  msgs: Message[] = [];
 
 
-  constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router) {
+
+  constructor(private productService: ProductService, private commandeService: CommandeService,
+    private route: ActivatedRoute, private router: Router) {
+
     this.productService = productService;
+    this.commandeService = commandeService;
     this.route = route;
     this.router = router;
+
+    this.productService.getCategories().subscribe(myAvalaibleCategories => {
+      for (let catStr of myAvalaibleCategories) {
+        this.avalaibleCategories.push({ label: catStr, value: catStr });
+      }
+    });
   }
 
   ngOnInit() {
-    
-    this.productService.getProducts().subscribe(result => { 
+
+    this.productService.getProducts().subscribe(result => {
       this.myProducts = result.map(p => Product.fromJson(p));
-      this.myProducts=this.myProducts.sort((a,b) => a.id-b.id);
+      this.myProducts = this.myProducts.sort((a, b) => a.id - b.id);
     });
+
 
 
     this.cat = [
@@ -82,40 +98,37 @@ export class AdminProductsComponent implements OnInit {
     ];
   }
 
-  onSubmit(name, cat) {
+  onSubmit(productName: string) {
     this.submitted = true;
-    this.productService.search(name, cat, this.page, this.resultByPage)
-      .subscribe(result => { this.myProducts = result.map(p => Product.fromJson(p)); }, error => console.log(error));
+    if (productName) {
+      this.productName = productName;
+    }
+    console.log(productName);
+    let catStr = this.selectedTypes ? this.selectedTypes.join("-") : '';
+    this.productService.search(this.productName, catStr, this.page, this.resultByPage)
+      .subscribe(result => this.myProducts = result.listSearch, error => console.log(error));
   }
 
   redirect() {
     this.router.navigate(['/newProduct']);
   }
 
-  input(name: string, category: string) {
-    if (name) {
-      this.name = name;
-    }
-    if (category) {
-      this.category = category;
-    }
-    
-  }
+  saveProduct(productName: string, productQty: number, productPrice: number, productType: string, productDescript: string) {
 
-  saveProduct(productName:string,productQty:number,productPrice:number,productType:string,productDescript:string){ 
-    if(productName){this.productName=productName;}
-    if(productQty){this.productQty=productQty;}
-    if(productPrice){this.productPrice=productPrice;}
-    if(productType){this.productType=productType;}
-    if(productDescript){this.productDescript=productDescript;}
+    if (productName) { this.productName = productName; }
+    if (productQty) { this.productQty = productQty; }
+    if (productPrice) { this.productPrice = productPrice; }
+    if (productType) { this.productType = productType; }
+    if (productDescript) { this.productDescript = productDescript; }
 
-    this.selectedProduct.id=this.selectedProduct.id;
+    this.selectedProduct.id = this.selectedProduct.id;
     this.selectedProduct.category = this.selectedProduct.category;
-    this.selectedProduct.name=productName;
-    this.selectedProduct.qty=productQty;
-    this.selectedProduct.price=productPrice;
-    this.selectedProduct.type=productType;
-    this.selectedProduct.descript=productDescript;
+    this.selectedProduct.name = productName;
+    this.selectedProduct.qty = productQty;
+    this.selectedProduct.price = productPrice;
+    this.selectedProduct.type = productType;
+    this.selectedProduct.descript = productDescript;
+    console.log(this.selectedProduct);
 
     this.productService.saveProduct(this.selectedProduct).subscribe(() => this.ngOnInit());
   }
@@ -126,15 +139,33 @@ export class AdminProductsComponent implements OnInit {
   }
 
   selectProduct(product: Product) {
-    
-    this.selectedCat = null;
     this.display = true;
     this.selectedProduct = product;
   }
 
-  onOffProduct(activ){
-    console.log(activ);
-    
+  activProduct(product: Product) {
+    this.selectedProduct = product;
+  }
+
+  onOffProduct(activ) {
+
+    this.commandeService.isInOrder(this.selectedProduct.id).subscribe(
+       data => {
+        if (data.orders.length == 0) {
+          this.productService.activProduct(this.selectedProduct.id, activ).subscribe(() => this.ngOnInit());
+            
+        } else{this.alertOffProduct(this.selectedProduct.name); 
+           this.productService.getProducts().subscribe(()=>this.ngOnInit());}
+        
+        
+      });
+      
+  }
+
+  alertOffProduct(productName:string){
+    this.msgs = [];
+    this.msgs.push({severity:'Error', summary:'Désactivation du produit', 
+    detail:'Vous ne pouvez pas désactiver le produit '+productName+' car il est déjà commandé '});
   }
 
   onDialogHide() {
