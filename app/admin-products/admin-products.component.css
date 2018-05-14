@@ -21,3 +21,24 @@ div.field{
 div.description{
     text-align: left;
 }
+.serch{
+   
+        background-color: rgb(235, 237, 240);   /* Couleur de fond */
+        border-style: solid;   /* Style de la bordure  */
+        border-width: 1px;   /* Epaisseur de la bordure  */
+        border-color: #dddddd;   /* Couleur de la bordure  */
+        padding: 10px 10px 10px 10px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
+        border-radius: 30px;
+        margin-bottom: 20px;
+
+        width: 98.5%;   /* Permet d'ajuster la largeur du champ de saisie à 100% */
+        box-sizing: border-box;   /* Important */
+    
+    
+        letter-spacing: 1px;   /* Espacement des caractères */
+ 
+}
+.pBut{
+    padding: 5px;
+    margin-left: 9px
+}

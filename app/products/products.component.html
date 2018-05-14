@@ -1,9 +1,10 @@
+<div class="container container-fluid">
 <div class="containerPage">
   <div class="page">
     <div class="searches">
       <div class="titleSearch">
         <h1>
-          Rechercher des produits
+            <span>Rechercher des produits</span>
         </h1>
       </div>
       <div class="placeholderSearch">
@@ -21,6 +22,7 @@
           <div class="titleCat">
             <h1>Catégories de produits :</h1>
           </div>
+          
           <div class="pBtn">
             <p-selectButton [options]="avalaibleCategories" [(ngModel)]="selectedTypes" multiple="multiple" name="SubmitedType">
             </p-selectButton>
@@ -135,3 +137,4 @@
 
 
 <p-growl [(value)]="msgs"></p-growl>
+</div>

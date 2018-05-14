@@ -86,23 +86,51 @@ div.label{
 .searches {
     display: flex;
     flex-direction: column;
-    margin-left: 5%;
+    /* margin-left: 5%;
     margin-right: 3%;
-    margin-top: 3%;
+    margin-top: 3%; */
+    border-radius: 30px;
+    /* background:rgb(113, 163, 212); */
+    background-color: #eeeeee; 
+    
 }
 
-.containTab {
-    margin-right: 3%;
-}
+/* .containTab {
+    margin-right: 0%;
+} */
 
 .titleSearch {
-    margin-top: 3%;
-    margin-bottom: 0%;
+    border: 1px solid #000;
+background: #000;
+    /* margin-top: 3%;
+    margin-bottom: 0%; */
+    border-radius: 10px 5%;
+}
+div h1{
+    text-align: center;
+    margin-top: 2px;
+    /* height: 20px;
+    line-height: 20px; */
+    font-size: 15px;
+    color: white;
+}
+.titleCat h1{
+    color: #000
+
+}
+.btnType{
+    text-align: justify;
+    margin: 5px;
+
+}
+.btnFlex{
+    margin-bottom: 6px;
 }
 
 .titleCat {
     margin-top: 3%;
     margin-bottom: 7%;
+   
 }
 
 .placeholderSearch {

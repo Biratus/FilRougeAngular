@@ -1,5 +1,7 @@
 <div class="container container-fluid">
+  
   <form (ngSubmit)="onSubmit(name.value,category.value)">
+      <div class="serch">
         <div class="row">
           <div class="placeholderSearch">
               <form (ngSubmit)="onSubmit()" class="NameSearch ">
@@ -10,6 +12,7 @@
                 </div>
               </form>
             </div>
+           
           <div class="col-12">
               <form (ngSubmit)="onSubmit()" class="TypeSearch ui-grid-responsive">
                 <div class="btnType">
@@ -20,14 +23,15 @@
                 </div>
               </form>     
           </div>
-
-          <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
+        </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12 pBut">
             <button pButton type="submit" class="btnSearch" label="Rechercher"  ></button>
           </div>
-        </div>
+        
         <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12">
           <button id="btn" (click)="redirect()"  pButton class="btnSearch" label="Ajouter un produit"  ></button>
         </div>
+      </div>
   </form>
 
 

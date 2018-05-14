@@ -17,8 +17,9 @@
                     <figcaption class="figure-caption text-right">{{p.description | uppercase}}</figcaption>
                   </figure>
                   <div class="p-2 btnsupp">
+                    
                     <input type="number" step="1" value="{{ p.qty }}" min="0" max="64" (change)="quantityChange($event,p.id)">
-                    <p style="font-size:1em">prix Unitaire: {{p.price}}&euro;</p>
+                    <p style="font-size:1em"><span style="font-size:  0.70vw" >prix Unitaire: </span>{{p.price}}&euro;</p>
                     <p>prix Total: {{p.qty * p.price}}</p>
                   </div>
                   <div class="p-2 btnsupp">
