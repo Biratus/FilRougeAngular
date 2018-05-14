@@ -38,6 +38,7 @@ export class UserService {
   }
 
   getUser(username): Observable<any> {
+    username=username||'';
     return this.httpClient.get(UserService.restApi + "/byName?name=" + username);
   }
 

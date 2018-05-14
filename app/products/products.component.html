@@ -31,7 +31,7 @@
         </div>
       </form>
     </div>
-
+    <!-- Liste des produits -->
     <div class="container-fluid containTab">
       <p-dataGrid [value]="myProducts" [paginator]="true" [rows]="9" [emptyMessage]="'Nous ne trouvons pas le produit que vous recherchez :('"
         [alwaysShowPaginator]="true" class="Grid ui-grid-responsive">
@@ -63,6 +63,7 @@
     </div>
   </div>
 
+  <!-- détail du produit -->
   <p-dialog *ngIf="selectedProduct" [header]="selectedProduct.name" [(visible)]="display" [responsive]="true" showEffect="fade"
     [modal]="true" width="500" (onAfterHide)="onDialogHide()" [dismissableMask]="true">
     <div class="ui-grid ui-grid-responsive ui-grid-pad">
@@ -79,9 +80,9 @@
               <div class="row">
                 <div class="col-12">
                   <p-scrollPanel class="description">
-                      <textarea #productDescript pInputTextarea>
+                    <textarea #productDescript pInputTextarea>
                       {{selectedProduct.descript}}
-                    </textarea> 
+                    </textarea>
                   </p-scrollPanel>
                 </div>
               </div>
@@ -113,7 +114,7 @@
                     Quantité
                   </div>
                 </div>
-                <p-spinner size="5em" [min]="0" [max]="selectedProduct.qty" name="QtyCmd" required="true" #QtyCmd></p-spinner>
+                <p-spinner [(ngModel)]="qtyCmd" [min]="0" [max]="selectedProduct.qty" name="QtyCmd" required="true" #QtyCmd></p-spinner>
                 <!--{{selectedProduct.qty}}-->
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
@@ -131,7 +132,7 @@
         </div>
       </div>
       <div class="BtnCart">
-        <button (click)="addToCart(selectedProduct, QtyCmd.value);display=false" type="button" pButton class="ui-button-success"
+        <button (click)="addToCart(selectedProduct);display=false" type="button" pButton class="ui-button-success"
           label="Ajouter au panier"></button>
       </div>
     </div>

@@ -18,7 +18,7 @@ import { Message } from 'primeng/components/common/api';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  model: Product = new Product(0, "", "", 0, "", 0, "", false, "");//utile?
+  //model: Product = new Product(0, "", "", 0, "", 0, "", false, "");//utile?
   submitted = false;
   myProducts: Product[];
   name: string = "";
@@ -29,9 +29,9 @@ export class ProductsComponent implements OnInit {
   selectedTypes: string[];
   display: boolean = false;
   selectedProduct: Product;
-  qty: number = 0;//utile?
-  QtyCmd: number = 0;//utile?
   msgs: Message[] = [];
+
+  qtyCmd:number=0;
 
   constructor(private productService: ProductService, private panierService: PanierService) {
     this.productService = productService;
@@ -64,16 +64,17 @@ export class ProductsComponent implements OnInit {
     this.selectedProduct = product;
   }
 
-  addToCart(product: Product, qty: number) {
+  addToCart(product: Product) {
     this.msgs = [];
     this.selectedProduct = product;
-    this.QtyCmd = qty;
-    this.panierService.addProductToPanier(product, qty);
+    this.panierService.addProductToPanier(product, this.qtyCmd);
     this.msgs.push({
       severity: 'success',
       summary: "Votre produit à été ajouté au panier",
       detail: 'Vous pouvez continuer vos achats'
     });
+
+    this.qtyCmd=0;
   }
 
 }

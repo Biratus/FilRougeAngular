@@ -27,9 +27,7 @@ export class CommandeService {
   getOrderOfUser(id: number): Observable<any> {
     return this.http.get(CommandeService.restApiUser + "/api/user/" + id + "/orders");
 
-  } 
-
-
+  }
 
   createCommande(user: User): Observable<any> {
     let listprod = this.panierService.getCurrentPanier();
