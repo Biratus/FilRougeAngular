@@ -5,3 +5,11 @@
 .ui-tabmenu .ui-tabmenu-nav > li.ui-state-active {
     background: rgb(132, 152, 186, 0.6) !important;
 }
+
+body {
+    background-image: url("/assets/bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover; 
+}
