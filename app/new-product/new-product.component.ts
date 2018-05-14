@@ -22,7 +22,6 @@ interface Category {
 
 export class NewProductComponent implements OnInit {
   cat: SelectItem[];
-  selectedCat: Category;
   avalaibleCategories: SelectItem[] = [];
   category: string = "";
   product: Product=new Product(0,"","",0,"",0,"",false,"");
@@ -67,12 +66,19 @@ export class NewProductComponent implements OnInit {
       { label: 'Plongée', value: 'DIVING' },
       { label: 'Randonnée', value: 'HIKING' }
     ];
-    console.log(this.selectedCat);
   }
 
   OnSubmit(form: NgForm) {
     this.msgs = [];
     this.product.id = null;
+    if(!form.valid) {
+      this.msgs.push({
+        severity: 'error',
+        summary: "Champs invalides",
+        detail: 'Certains champs du formulaire sont incomplets ou invalide.'
+      });
+      return;
+    }
     //save first time to get new id 
     this.productService.saveProduct(this.product).subscribe(newProduct => {
       //save image with id of product
@@ -80,7 +86,8 @@ export class NewProductComponent implements OnInit {
         //update new product with new src
         if (filePath.body) {
           //vnewProduct.category = this.getCat(newProduct.category);//utile ?
-          newProduct.category = this.selectedCat;
+          console.log(this.modifCategory);
+          newProduct.category = this.modifCategory.value;
           newProduct.src = filePath.body;
           this.productService.saveProduct(newProduct).subscribe(data => {
             this.msgs.push({

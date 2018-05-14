@@ -23,8 +23,8 @@
           <div class="col s6">
             <!-- TODO DROPDOWN FOR CATEGORY-->
             <!-- <label data-error="Required field!">category</label> -->
-              <p-dropdown [options]="cat" [(ngModel)]="modifCategory" placeholder="catégorie" name="catégorie" placeholder="Sélectionne la catégorie"
-                optionLabel="label" [style]="{'width':'150px'}" [ngModelOptions]="{standalone: true}"></p-dropdown>
+            <p-dropdown [options]="cat" [(ngModel)]="modifCategory" placeholder="catégorie" name="categorie" placeholder="Sélectionne la catégorie"
+              optionLabel="label" [style]="{'width':'150px'}" [ngModelOptions]="{standalone: true}"></p-dropdown>
           </div>
         </div>
         <div class="row">
@@ -36,19 +36,19 @@
             <!-- <label data-error="">Photo</label> -->
 
           </div>
-          <div class="row">
-            <div class="input-field col s6">
-              <p>Photo</p>
-              <p-fileUpload mode="basic" accept="image/*" url="./upload.php" maxFileSize="1000000" auto="true" chooseLabel="Image produit"
-                customUpload="true" (uploadHandler)="onUpload($event)"></p-fileUpload>
-              <p *ngIf="selectedFile">
-                <strong>{{selectedFile.name}}</strong>
-              </p>
-            </div>
-            <div class="input-field col s6">
-              <p>Activé/Désactivé ce produit</p>
-              <p-inputSwitch onLabel="Oui" offLabel="Non" name="activ" [(ngModel)]="product.activ"></p-inputSwitch>
-            </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <p>Photo</p>
+            <p-fileUpload multiple="multiple" accept="image/*" url="./upload.php" maxFileSize="1000000" auto="true" chooseLabel="Image produit"
+              customUpload="true" (uploadHandler)="onUpload($event)"></p-fileUpload>
+            <p *ngIf="selectedFile">
+              <strong>{{selectedFile.name}}</strong>
+            </p>
+          </div>
+          <div class="input-field col s6">
+            <p>Activé/Désactivé ce produit</p>
+            <p-inputSwitch onLabel="Oui" offLabel="Non" name="activ" [(ngModel)]="product.activ"></p-inputSwitch>
           </div>
         </div>
 
