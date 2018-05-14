@@ -30,7 +30,7 @@ export class ProfileDetailComponent implements OnInit {
         lName: [this.user.lastName, Validators.required],
         mail: [this.user.mail, Validators.email],
         address: [this.user.address],
-        phone: [this.user.phone, Validators.min(0)],
+        phone: [this.user.phone,phoneValidator],
       });
     });
   }
@@ -42,17 +42,21 @@ export class ProfileDetailComponent implements OnInit {
 
   onSubmit() {
     this.msgs = [];
+
+    if (!this.updateUserFormGroup.valid) {
+      this.msgs.push({
+        severity: 'error',
+        summary: "Champs invalides",
+        detail: "Certains champs sont incorrects."
+      });
+      return;
+    }
+
     this.user.firstName = this.updateUserFormGroup.value.fName;
     this.user.lastName = this.updateUserFormGroup.value.lName;
     this.user.mail = this.updateUserFormGroup.value.mail;
     this.user.address = this.updateUserFormGroup.value.address;
     this.user.phone = this.updateUserFormGroup.value.phone;
-    //remove from here 
-    /* this.uServ.setConnectedUser(this.user);
-    this.msgs.push({ severity: 'success', summary: 'Vos informations ont bien été mises à jour', detail: '' });
-    this.displayContVisi = false;
-    this.modifContVisi = true; */
-    //to here
 
     this.uServ.updateUser(this.user).subscribe(() => {
       this.uServ.setConnectedUser(this.user);
@@ -62,4 +66,13 @@ export class ProfileDetailComponent implements OnInit {
     });
   }
 
+}
+
+/*
+Validate phone
+Check is a number and is > 0
+*/
+function phoneValidator(fg: FormGroup) {
+  let phoneNum=parseInt(fg.get("phone").value);
+  return !isNaN(phoneNum) && phoneNum>0;
 }
