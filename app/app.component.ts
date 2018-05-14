@@ -11,6 +11,6 @@ export class AppComponent {
 
   constructor(private router:Router) {
     this.router=router;
-    this.router.navigate(['/Products']);
+    //this.router.navigate(['/Products']);
   }
 }
