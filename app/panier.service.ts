@@ -18,7 +18,15 @@ export class PanierService {
     let currPanier = JSON.parse(sessionStorage.getItem('panier'));
     p.qty = qty;
     if (currPanier == null) currPanier = [];
-    currPanier.push(p);
+    let isThere=false;
+    for(let prodPan of currPanier) {
+      if(prodPan.id==p.id) {
+        isThere=true;
+        prodPan.qty=qty;
+        break;
+      }
+    }
+    if(!isThere) currPanier.push(p);
     sessionStorage.setItem("panier", JSON.stringify(currPanier));
   }
 
