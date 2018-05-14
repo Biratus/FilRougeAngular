@@ -16,6 +16,8 @@ only screen and (max-width: 760px),
     border-collapse: collapse;
     border-radius: 5px;
 		display: block; 
+		background-color: #0B6FA4;
+		opacity: 1;
 	}
 	
 	/* Hide table headers (but not display: none;, for accessibility) */
@@ -23,9 +25,12 @@ only screen and (max-width: 760px),
 		position: absolute;
 		top: -9999px;
 		left: -9999px;
+		background-color: #0B6FA4;
+		opacity: 1;
 	}
 	
-	table.com tr { border: 1px solid #ccc; }
+	table.com tr { border: 1px solid #ccc; 		background-color: #0B6FA4;
+		opacity: 1;}
 	
 	table.com td { 
 		/* Behave  like a "row" */
@@ -33,6 +38,8 @@ only screen and (max-width: 760px),
 		border-bottom: 1px solid #eee; 
 		position: relative;
 		padding-left: 50%; 
+		background-color: #0B6FA4;
+		opacity: 1;
 	}
 	
 	table.com td:before { 
@@ -44,6 +51,8 @@ only screen and (max-width: 760px),
 		width: 45%; 
 		padding-right: 10px; 
 		white-space: nowrap;
+		background-color: #0B6FA4;
+		opacity: 1;
 	}
 	
 	/*

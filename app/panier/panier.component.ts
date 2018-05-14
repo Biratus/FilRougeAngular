@@ -43,7 +43,15 @@ export class PanierComponent implements OnInit {
     }
     return total;
   }
+  nbrProduit() {
+    //return this.monPanier.reduce((acc,elt)=>acc+=elt.price*elt.qty,0);
+    let nbr = 0;
 
+    for (let prod of this.monPanier) {
+      nbr +=  prod.qty;
+    }
+    return nbr;
+  }
   quantityChange(event, id_produit) {
     this.panierService.setProductQtyInPanier(id_produit, event.target.valueAsNumber);
     this.monPanier = this.panierService.getCurrentPanier();

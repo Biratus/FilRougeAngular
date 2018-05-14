@@ -30,6 +30,7 @@ div.description{
         padding: 10px 10px 10px 10px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
         border-radius: 30px;
         margin-bottom: 20px;
+        opacity: 0.9;
 
         width: 98.5%;   /* Permet d'ajuster la largeur du champ de saisie à 100% */
         box-sizing: border-box;   /* Important */
