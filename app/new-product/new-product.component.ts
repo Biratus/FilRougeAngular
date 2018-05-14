@@ -9,11 +9,6 @@ import { Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 import { DropdownModule } from 'primeng/dropdown';
 
-interface Category {
-  label: string;
-  value: string;
-}
-
 @Component({
   selector: 'app-new-product',
   templateUrl: './new-product.component.html',
@@ -22,8 +17,6 @@ interface Category {
 
 export class NewProductComponent implements OnInit {
   cat: SelectItem[];
-  avalaibleCategories: SelectItem[] = [];
-  category: string = "";
   product: Product=new Product(0,"","",null ,"",null,"",false,"");
   msgs: Message[] = [];
   selectedFile: File = null;
@@ -35,12 +28,6 @@ export class NewProductComponent implements OnInit {
     this.productService = productService;
     this.uServ = uServ;
     this.router = router;
-
-    this.productService.getCategories().subscribe(myAvalaibleCategories => {
-      for (let catStr of myAvalaibleCategories) {
-        this.avalaibleCategories.push({ label: catStr, value: catStr });
-      }
-    });
   }
 
 
@@ -64,7 +51,7 @@ export class NewProductComponent implements OnInit {
     this.cat = [
       { label: 'Alpinisme / Escalade', value: 'CLIMBING' },
       { label: 'Plongée', value: 'DIVING' },
-      { label: 'Randonnée', value: 'HIKING' }
+      { label: 'Randonnée', value: 'HIKING'}
     ];
   }
 
@@ -80,12 +67,13 @@ export class NewProductComponent implements OnInit {
       return;
     }
     //save first time to get new id 
+    this.product.category = this.modifCategory.value;
     this.productService.saveProduct(this.product).subscribe(newProduct => {
       //save image with id of product
       this.productService.saveImage(newProduct.id, this.selectedFile).subscribe(filePath => {
         //update new product with new src
         if (filePath.body) {
-          newProduct.category = this.modifCategory.value;
+          newProduct.category=this.modifCategory.value;
           newProduct.src = filePath.body;
           this.productService.saveProduct(newProduct).subscribe(data => {
             this.msgs.push({
@@ -97,7 +85,14 @@ export class NewProductComponent implements OnInit {
           });
         }
 
-      });
+      },
+        error => {
+          this.msgs.push({
+            severity: 'error',
+            summary: "Problème serveur",
+            detail: 'Le produit n\'a pas pu être créer suite à une erreur du serveur.'
+          });
+        });
     },
       error => {
         this.msgs.push({
@@ -113,9 +108,8 @@ export class NewProductComponent implements OnInit {
   }
 
   getCat(str) {
-    for (let i in this.cat) {
-      if (i == str) return this.cat[i];
-      else if (this.cat[i] == str) return i;
+    for (let i of this.cat) {
+      if (i.value == str || i.label == str) return i;
     }
     return "";
   }

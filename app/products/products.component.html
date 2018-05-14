@@ -43,7 +43,7 @@
         <ng-template let-product let-i="index" pTemplate="item">
           <div style="padding:3px" class="ui-g-5 ui-md-4 ui-grid-responsive ">
             <p-panel [header]="product.name" [style]="{'text-align':'center'}" (click)="selectProduct(product)">
-              <img src="assets/{{product.src}}" width="60" />
+              <img src="{{product.src}}" width="60" />
               <div class="catPriceContainer">
                 <div class="productCat col-12">{{product.category}}</div>
                 <div class="priceTag col-12">{{product.price}}€</div>
@@ -74,7 +74,7 @@
           <form>
             <div class="row">
               <div class="col-sm-12" style="text-align:left">
-                <img id="img" src="assets/{{selectedProduct.src}}">
+                <img id="img" src="{{selectedProduct.src}}">
               </div>
             </div>
             <div class="row">
