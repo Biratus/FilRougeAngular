@@ -3,6 +3,7 @@ import { User } from '../user.model';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Message } from 'primeng/components/common/api';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class NewUserComponent implements OnInit {
   checkCGU: string;
   CGUPanelVisi: boolean = false;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,private router:Router) { }
 
   ngOnInit() {
     this.resetForm();
@@ -64,6 +65,7 @@ export class NewUserComponent implements OnInit {
               summary: "Votre compte a été créer",
               detail: 'Vous pouvez maintenant vous connecté'
             });
+            this.router.navigate(['/authentification']);
           } else {
             this.msgs.push({
               severity: 'error',
