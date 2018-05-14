@@ -24,7 +24,7 @@ export class NewProductComponent implements OnInit {
   cat: SelectItem[];
   avalaibleCategories: SelectItem[] = [];
   category: string = "";
-  product: Product = new Product(0, "", "", 0, "", 0, "", false, "");
+  product: Product=new Product(0,"","",null ,"",null,"",false,"");
   msgs: Message[] = [];
   selectedFile: File = null;
   modifCategory;
@@ -47,7 +47,7 @@ export class NewProductComponent implements OnInit {
   resetForm(form?: NgForm) {
     if (form != null)
       form.reset();
-    this.product = new Product(0, '', '', 0, '', 0, '', false, "");
+    this.product = new Product(0, '', '', null, '', null, '', false, "");
   }
 
   ngOnInit() {
