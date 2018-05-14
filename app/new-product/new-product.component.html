@@ -18,17 +18,18 @@
           </div>
           <div class="row">
             <div class="input-field col s6">
-              <input class="validate" type="text" name="price" #price="ngModel" [(ngModel)]="product.price" required>
+              <input class="validate" type="text" name="price" #price="ngModel" [(ngModel)]="product.price" required placeholder="">
               <label data-error="Required field!">Prix</label>
             </div>
             <div class="input-field col s6">
+              <!-- TODO DROPDOWN FOR CATEGORY-->
               <input class="validate" type="text" name="category" #category="ngModel" [(ngModel)]="product.category" required>
               <label data-error="Required field!">category</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s6">
-              <input class="validate" type="text" name="qty" #qty="ngModel" [(ngModel)]="product.qty" required>
+              <input class="validate" type="text" name="qty" #qty="ngModel" [(ngModel)]="product.qty" required placeholder="">
               <label data-error="Required field!">Quantité</label>
             </div>
             <div class="input-field col s6">

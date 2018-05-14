@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 
 export class NewProductComponent implements OnInit {
-  product: Product=null;
+  product: Product=new Product(0,"","",0,"",0,"",false,"");
   msgs: Message[] = [];
   selectedFile: File = null;
 

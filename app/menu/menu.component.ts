@@ -31,7 +31,7 @@ export class MenuComponent implements OnInit {
   }
 
   buildItems(u?: User) {
-    this.items = [{ label: "Accueil", routerLink: '/' }, { label: "Shopping", icon: "fa fa-shopping-cart", routerLink: "/Products" }];
+    this.items = [{ label: "Shopping", icon: "fa fa-shopping-cart", routerLink: "/Products" }];
     if (u && u.role && u.role.toLowerCase() == "admin") {
       this.items.push({ label: "Gestion des produits", routerLink: '/AdminProducts' }, { label: "Gestion des commandes", routerLink: '/AdminOrders' });
     }
