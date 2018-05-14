@@ -24,17 +24,17 @@ export class NewProductComponent implements OnInit {
   cat: SelectItem[];
   avalaibleCategories: SelectItem[] = [];
   category: string = "";
-  product: Product=new Product(0,"","",0,"",0,"",false,"");
+  product: Product = new Product(0, "", "", 0, "", 0, "", false, "");
   msgs: Message[] = [];
   selectedFile: File = null;
   modifCategory;
 
   readonly categ = { 'CLIMBING': 'Alpinisme / Escalade', 'DIVING': 'Plongée', 'HIKING': 'Randonnée' };
 
-  constructor(private productService: ProductService,private uServ:UserService,private router:Router) {
+  constructor(private productService: ProductService, private uServ: UserService, private router: Router) {
     this.productService = productService;
-    this.uServ=uServ;
-    this.router=router;
+    this.uServ = uServ;
+    this.router = router;
 
     this.productService.getCategories().subscribe(myAvalaibleCategories => {
       for (let catStr of myAvalaibleCategories) {
@@ -71,7 +71,7 @@ export class NewProductComponent implements OnInit {
   OnSubmit(form: NgForm) {
     this.msgs = [];
     this.product.id = null;
-    if(!form.valid) {
+    if (!form.valid) {
       this.msgs.push({
         severity: 'error',
         summary: "Champs invalides",
@@ -85,8 +85,6 @@ export class NewProductComponent implements OnInit {
       this.productService.saveImage(newProduct.id, this.selectedFile).subscribe(filePath => {
         //update new product with new src
         if (filePath.body) {
-          //vnewProduct.category = this.getCat(newProduct.category);//utile ?
-          console.log(this.modifCategory);
           newProduct.category = this.modifCategory.value;
           newProduct.src = filePath.body;
           this.productService.saveProduct(newProduct).subscribe(data => {
@@ -98,7 +96,7 @@ export class NewProductComponent implements OnInit {
             this.resetForm(form);
           });
         }
-        
+
       });
     },
       error => {

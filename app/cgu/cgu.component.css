@@ -12,6 +12,7 @@ p {
 }
 
 h4 {
+    color:white;
     display: flex;
     justify-content: center;
     padding: 1%;
