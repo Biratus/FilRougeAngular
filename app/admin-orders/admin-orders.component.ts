@@ -12,6 +12,7 @@ export class AdminOrdersComponent implements OnInit {
   model: Commande= new Commande(0,new Date(),[],null,0);
   myOrders: Commande[];
   selectedOrder: Commande;
+  display: boolean = false;
 
   constructor(private commandeService: CommandeService) {
     this.commandeService=commandeService;
@@ -34,6 +35,7 @@ export class AdminOrdersComponent implements OnInit {
   }
 
   selectOrder(order: Commande) {
+    this.display = true;
     this.selectedOrder = order;
   }
   
@@ -45,4 +47,7 @@ export class AdminOrdersComponent implements OnInit {
     return sum;
   }
 
+  onDialogHide() {
+    this.selectedOrder = null;
+  }
 }
