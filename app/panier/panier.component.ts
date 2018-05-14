@@ -5,6 +5,7 @@ import { PanierService } from '../panier.service';
 import { CommandeService } from '../commande.service';
 import { UserService } from '../user.service';
 import { Message } from 'primeng/components/common/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-panier',
@@ -16,10 +17,11 @@ export class PanierComponent implements OnInit {
 
   msgs: Message[] = [];
 
-  constructor(private panierService: PanierService, private commandeService: CommandeService, private userService: UserService) {
+  constructor(private panierService: PanierService, private commandeService: CommandeService, private userService: UserService,private router:Router) {
     this.panierService = panierService;
     this.commandeService = commandeService;
     this.userService = userService;
+    this.router=router;
   }
 
   ngOnInit() {
@@ -48,6 +50,16 @@ export class PanierComponent implements OnInit {
   }
 
   checkout() {//Validation de la commande
+    if(!this.userService.getConnectedUserInSession()) {
+      this.router.navigate(["/authentification"], {
+        queryParams: {
+          severity: "warn",
+          summary: "Vous n'êtes pas authentifié",
+          message: "Veuillez vous connectez ou créer votre compte afin de valider votre panier"
+        }
+      });
+      return;
+    }
     this.userService.getConnectedUser().subscribe(user => {
       this.commandeService.createCommande(user).subscribe(data => {
         //display message success

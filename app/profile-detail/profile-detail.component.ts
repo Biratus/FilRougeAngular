@@ -10,7 +10,7 @@ import { Message } from 'primeng/components/common/api';
   styleUrls: ['./profile-detail.component.css']
 })
 export class ProfileDetailComponent implements OnInit {
-  user: User;
+  user: User=null;
   updateUserFormGroup: FormGroup=null;
   msgs: Message[] = [];
   displayContVisi = false;
