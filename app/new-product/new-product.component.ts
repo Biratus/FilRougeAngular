@@ -6,6 +6,13 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { Message } from 'primeng/components/common/api';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { SelectItem } from 'primeng/api';
+import { DropdownModule } from 'primeng/dropdown';
+
+interface Category {
+  label: string;
+  value: string;
+}
 
 @Component({
   selector: 'app-new-product',
@@ -14,16 +21,27 @@ import { Router } from '@angular/router';
 })
 
 export class NewProductComponent implements OnInit {
+  cat: SelectItem[];
+  selectedCat: Category;
+  avalaibleCategories: SelectItem[] = [];
+  category: string = "";
   product: Product=new Product(0,"","",0,"",0,"",false,"");
   msgs: Message[] = [];
   selectedFile: File = null;
+  modifCategory;
 
-  readonly cat = { 'CLIMBING': 'Alpinisme / Escalade', 'DIVING': 'Plongée', 'HIKING': 'Randonnée' };
+  readonly categ = { 'CLIMBING': 'Alpinisme / Escalade', 'DIVING': 'Plongée', 'HIKING': 'Randonnée' };
 
   constructor(private productService: ProductService,private uServ:UserService,private router:Router) {
     this.productService = productService;
     this.uServ=uServ;
     this.router=router;
+
+    this.productService.getCategories().subscribe(myAvalaibleCategories => {
+      for (let catStr of myAvalaibleCategories) {
+        this.avalaibleCategories.push({ label: catStr, value: catStr });
+      }
+    });
   }
 
 
@@ -43,6 +61,13 @@ export class NewProductComponent implements OnInit {
         }
       });
     }
+
+    this.cat = [
+      { label: 'Alpinisme / Escalade', value: 'CLIMBING' },
+      { label: 'Plongée', value: 'DIVING' },
+      { label: 'Randonnée', value: 'HIKING' }
+    ];
+    console.log(this.selectedCat);
   }
 
   OnSubmit(form: NgForm) {
@@ -54,7 +79,8 @@ export class NewProductComponent implements OnInit {
       this.productService.saveImage(newProduct.id, this.selectedFile).subscribe(filePath => {
         //update new product with new src
         if (filePath.body) {
-          newProduct.category = this.getCat(newProduct.category);//utile ?
+          //vnewProduct.category = this.getCat(newProduct.category);//utile ?
+          newProduct.category = this.selectedCat;
           newProduct.src = filePath.body;
           this.productService.saveProduct(newProduct).subscribe(data => {
             this.msgs.push({
@@ -65,7 +91,7 @@ export class NewProductComponent implements OnInit {
             this.resetForm(form);
           });
         }
-
+        
       });
     },
       error => {

@@ -31,6 +31,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { TabMenuModule } from 'primeng/tabmenu';
+import {CardModule} from 'primeng/card';
 
 
 import { AppComponent } from './app.component';
@@ -97,6 +98,7 @@ const appRoutes: Routes = [
 
   ],
   imports: [
+    CardModule,
     TabMenuModule,
     InputTextareaModule,
     DropdownModule,
