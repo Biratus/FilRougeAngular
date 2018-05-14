@@ -32,7 +32,7 @@ export class NewUserComponent implements OnInit {
 
   OnSubmit(form: NgForm) {
     this.msgs = [];
-    if (!this.checkCGU) {
+    if (!this.checkCGU || this.checkCGU=="") {
       this.msgs.push({
         severity: 'error',
         summary: "CGU / CGV",
