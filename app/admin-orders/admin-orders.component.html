@@ -19,10 +19,10 @@
         </th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-order >
-      <tr (click)="selectOrder(order)">
-        <td >{{order.id}}</td>
-        <td >{{order.date | date:"dd-MM-yyyy"}}</td>
+    <ng-template pTemplate="body" let-order>
+      <tr (click)="selectOrder(order)" style="cursor:pointer">
+        <td>{{order.id}}</td>
+        <td>{{order.date | date:"dd-MM-yyyy"}}</td>
         <td>{{order.user.mail}}</td>
         <td>{{order.products.length}}</td>
         <td>{{order.priceTot}}</td>
@@ -30,8 +30,8 @@
     </ng-template>
   </p-table>
 
-  <p-dialog  header="Détails de la Commande" [(visible)]="display" [responsive]="true" showEffect="fade" [modal]="true" width="500" (onAfterHide)="onDialogHide()"
-  [dismissableMask]="true">
+  <p-dialog header="Détails de la Commande" [(visible)]="display" [responsive]="true" showEffect="fade" [modal]="true" width="500"
+    (onAfterHide)="onDialogHide()" [dismissableMask]="true">
     <div class="ui-grid ui-grid-responsive ui-grid-pad" *ngIf="selectedOrder" style="font-size:16px;text-align:center;padding:20px">
       <div class="row">
         <div class="col-12" style="text-align:center">
@@ -55,31 +55,31 @@
               </div>
               <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                 <p-card title="Client" [style]="{width: '100%'}">
-                    <div class="field">
-                        <div id="tag" class="col-12"> Nom</div>
-                        <div class="col-6"> {{selectedOrder.user.lastName}}</div>
-                        <div id="tag" class="col-12">Prénom</div>
-                        <div class="col-6">{{selectedOrder.user.firstName}}</div>
-                          <div id="tag" class="col-12">Mail</div>
-                          <div class="col-6">{{selectedOrder.user.mail}}</div>
-                            <div id="tag" class="col-12">Adresse</div>
-                            <div class="col-6">{{selectedOrder.user.address}}</div>
-                              <div id="tag" class="col-12">tél</div>
-                              <div class="col-6">{{selectedOrder.user.phone}}</div>
-                    </div>
+                  <div class="field">
+                    <div id="tag" class="col-12"> Nom</div>
+                    <div class="col-6"> {{selectedOrder.user.lastName}}</div>
+                    <div id="tag" class="col-12">Prénom</div>
+                    <div class="col-6">{{selectedOrder.user.firstName}}</div>
+                    <div id="tag" class="col-12">Mail</div>
+                    <div class="col-6">{{selectedOrder.user.mail}}</div>
+                    <div id="tag" class="col-12">Adresse</div>
+                    <div class="col-6">{{selectedOrder.user.address}}</div>
+                    <div id="tag" class="col-12">tél</div>
+                    <div class="col-6">{{selectedOrder.user.phone}}</div>
+                  </div>
                 </p-card>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
                 <p-card title="Liste des produits" [style]="{width: '100%'}">
-                <div  class="field">
+                  <div class="field">
                     <p-table [columns]="colsOrders" [value]="myOrders.products">
-                        <ng-template pTemplate="body" let-product >
-                          <tr *ngFor="let p of selectedOrder.products">
-                            <td>{{p.name}}</td>
-                          </tr>
-                        </ng-template>
-                      </p-table>
-                </div>
+                      <ng-template pTemplate="body" let-product>
+                        <tr *ngFor="let p of selectedOrder.products">
+                          <td>{{p.name}}</td>
+                        </tr>
+                      </ng-template>
+                    </p-table>
+                  </div>
                 </p-card>
               </div>
             </div>
