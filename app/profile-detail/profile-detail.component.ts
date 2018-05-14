@@ -11,7 +11,7 @@ import { Message } from 'primeng/components/common/api';
 })
 export class ProfileDetailComponent implements OnInit {
   user: User;
-  updateUserFormGroup: FormGroup;
+  updateUserFormGroup: FormGroup=null;
   msgs: Message[] = [];
   displayContVisi = false;
   modifContVisi = true;

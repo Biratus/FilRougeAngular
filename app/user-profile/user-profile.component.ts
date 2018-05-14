@@ -29,15 +29,9 @@ export class UserProfileComponent implements OnInit {
       if (map.get('page')) {
         let page = map.get('page');
         if (page == 'panier') {
-          for (let comp in this.visibility) {
-            this.visibility[comp] = true;
-          }
-          this.visibility['app-panier'] = false;
+          this.display('app-panier');
         } else if (page == 'commande') {
-          for (let comp in this.visibility) {
-            this.visibility[comp] = true;
-          }
-          this.visibility['app-orders'] = false;
+          this.display('app-orders');
         }
       }
     });
@@ -48,7 +42,8 @@ export class UserProfileComponent implements OnInit {
     this.uServ.getConnectedUser().subscribe(jsonU => {
       this.user = User.fromJSON(jsonU);
     });
-    if (!this.uServ.getConnectedUserInSession()) {
+    //if user is visitor and wants to check other than cart
+    if (!this.uServ.getConnectedUserInSession() && this.visibility['app-panier']) {
       this.router.navigate(["/authentification"], {
         queryParams: {
           severity: "warn",
@@ -70,6 +65,17 @@ export class UserProfileComponent implements OnInit {
   }
 
   display(component) {
+    //if visitor tries to access something other than cart
+    if (!this.uServ.getConnectedUserInSession() && component!='app-panier') {
+      this.router.navigate(["/authentification"], {
+        queryParams: {
+          severity: "warn",
+          summary: "Vous n'êtes pas connecté",
+          message: "Connectez-vous afin de pouvoir accéder à votre profile."
+        }
+      });
+      return;
+    }
     for (let comp in this.visibility) {
       this.visibility[comp] = true;
     }

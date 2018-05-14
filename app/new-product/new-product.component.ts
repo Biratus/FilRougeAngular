@@ -54,7 +54,7 @@ export class NewProductComponent implements OnInit {
       this.productService.saveImage(newProduct.id, this.selectedFile).subscribe(filePath => {
         //update new product with new src
         if (filePath.body) {
-          newProduct.category = this.getCat(newProduct.category);
+          newProduct.category = this.getCat(newProduct.category);//utile ?
           newProduct.src = filePath.body;
           this.productService.saveProduct(newProduct).subscribe(data => {
             this.msgs.push({

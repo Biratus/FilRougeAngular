@@ -47,7 +47,7 @@ export class PanierComponent implements OnInit {
     this.monPanier = this.panierService.getCurrentPanier();
   }
 
-  checkout() {
+  checkout() {//Validation de la commande
     this.userService.getConnectedUser().subscribe(user => {
       this.commandeService.createCommande(user).subscribe(data => {
         //display message success
