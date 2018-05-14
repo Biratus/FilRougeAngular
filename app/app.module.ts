@@ -32,6 +32,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { TabMenuModule } from 'primeng/tabmenu';
 
+
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductService } from './product.service';
@@ -48,9 +49,12 @@ import { PanierService } from './panier.service';
 import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
 import { UserOrderComponent } from './user-order/user-order.component';
 import { CommandeService } from './commande.service';
-import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 import { FooterComponent } from './footer/footer.component';
-
+import { InfosComponent } from './infos/infos.component';
+import { CguComponent } from './cgu/cgu.component';
+import { CgvComponent } from './cgv/cgv.component';
+import { ContactComponent } from './contact/contact.component';
+import { SocialComponent } from './social/social.component';
 
 
 const appRoutes: Routes = [
@@ -62,8 +66,12 @@ const appRoutes: Routes = [
   { path: 'newProduct', component: NewProductComponent },
   { path: 'panier', component: PanierComponent },
   { path: 'Profile', component: UserProfileComponent },
-  { path: 'order', component: UserOrderComponent }
-
+  { path: 'order', component: UserOrderComponent },
+  { path: 'infos', component: InfosComponent },
+  { path: 'cgu', component: CguComponent},
+  { path: 'cgv', component: CgvComponent},
+  { path: 'social', component: SocialComponent},
+  { path: 'contact', component: ContactComponent}
 ];
 
 @NgModule({
@@ -80,8 +88,12 @@ const appRoutes: Routes = [
     UserProfileComponent,
     ProfileDetailComponent,
     UserOrderComponent,
-    LegalNoticeComponent,
-    FooterComponent
+    FooterComponent,
+    InfosComponent,
+    CguComponent,
+    CgvComponent,
+    ContactComponent,
+    SocialComponent
 
   ],
   imports: [

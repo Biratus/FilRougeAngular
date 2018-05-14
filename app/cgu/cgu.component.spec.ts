@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LegalNoticeComponent } from './legal-notice.component';
+import { CguComponent } from './cgu.component';
 
-describe('LegalNoticeComponent', () => {
-  let component: LegalNoticeComponent;
-  let fixture: ComponentFixture<LegalNoticeComponent>;
+describe('CguComponent', () => {
+  let component: CguComponent;
+  let fixture: ComponentFixture<CguComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LegalNoticeComponent ]
+      declarations: [ CguComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LegalNoticeComponent);
+    fixture = TestBed.createComponent(CguComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

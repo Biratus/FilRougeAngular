@@ -1,35 +1,12 @@
-<i class="fa fa-comment"></i>ok
-<i class="fa-comment-dots"></i>ci
-<i class="fa fa-comment-dots"></i> mer
-<i class="fa fa-facebook-square"></i>cul  
-<i class="fa fa-dove"></i>il est la >
-<i class="fas fa-dove"></i>
-
-
-<div class="fieldset">
-    <div class="linebreak"></div>
-    du blabla facebook etc utube et le pigeon
-    <div class="linebreak"></div>
-    <div class="linebreak"></div>
-    <div class="linebreak"></div>
-    <div class="footer">
-      <div class="divFoot">
-        <div>
-          Les Composants techniques de nos Marques - Nos guides de tailles - Codes de réduction
-        </div>
-        <div>** Offre valable sur les produits éligibles et sous réserve de disponibilité du stock. En savoir + Les déchets d'équipements
-          électriques et électroniques (DEEE) ne doivent pas être jetés avec les déchets ménagers. Vous pouvez rapporter votre
-          ancien matériel dans un magasin FORMAFOND dans les bacs destinés à cet effet, ou en faire la demande auprès de notre
-          centre de relation clients en cas de livraison à domicile. Vous pouvez également le rapporter dans une déchetterie
-          agréée pour le tri sélectif ou dans une association qui œuvre pour le recyclage des produits.
-        </div>
-        <div> Retrouvez tous les conseils et les actualités FORMAFOND sur le blog FORMAFOND. Préparez vos cadeaux de Noël avec FORMAFOND,
-          et découvrez toute une sélection de produits pour une rentrée sportive. Retrouvez une large gamme de produits pour
-          la randonnée, de nombreux masques de ski, nos nouvelles planches à voile et tous les VTT à prix de FORMAFOND. Enfin,
-          FORMAFOND ne propose plus de soldes, mais des prix bas toute l'année. Pour la location de skis dans plus de 350 stations,
-          faites appel à notre partenaire SkimieuxGronul.
-        </div>
-        <div></div>
-      </div>
+<div class="footer">
+  <div class="fieldset">
+    <p-tabMenu [model]="menu" class="tabMenu" [activeItem]="activeItem"></p-tabMenu>
+    <div class="col-12" id="compContainer">
+      <app-infos [hidden]="visibility['app-infos']"></app-infos>
+      <app-cgu [hidden]="visibility['app-cgu']"></app-cgu>
+        <app-cgv [hidden]="visibility['app-cgv']"></app-cgv>
+          <app-social [hidden]="visibility['app-social']"></app-social>
+            <app-contact [hidden]="visibility['app-contact']"></app-contact>
     </div>
   </div>
+</div>

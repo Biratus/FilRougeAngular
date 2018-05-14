@@ -56,7 +56,7 @@ export class ProductsComponent implements OnInit {
 
     let catStr = this.selectedTypes ? this.selectedTypes.join("-") : '';
     this.productService.search(this.name, catStr, this.page, this.resultByPage)
-      .subscribe(result => this.myProducts = result.listSearch, error => console.log(error));
+      .subscribe(result => this.myProducts = result.listSearch, error => console.log(error));  
   }
 
   selectProduct(product: Product) {
@@ -76,5 +76,4 @@ export class ProductsComponent implements OnInit {
 
     this.qtyCmd=0;
   }
-
 }
