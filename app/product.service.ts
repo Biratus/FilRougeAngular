@@ -1,34 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient,HttpRequest,HttpEvent } from '@angular/common/http';
+import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import { Product } from './product';
 import { Response } from "@angular/http";
 
 @Injectable()
 export class ProductService {
-  static readonly restApi = "http://localhost:8082/formafond/Api/product";
-
-  /* urlAdminProducts='http://localhost:8082/formafond';
-  ur lProducts = 'http://localhost:8082/formafond/Api/product';*/
+  static readonly restApi = "http://localhost:8082/formafond/api/product";
 
   constructor(private http: HttpClient) {
     this.http = http;
   }
 
   getProducts(): Observable<any> {
-    return this.http.get(ProductService.restApi + "/products");
+    return this.http.get(ProductService.restApi);
   }
 
   saveProduct(product: Product): Observable<any> {
     return this.http.post(ProductService.restApi, product);
   }
 
-  update(product: Product) {
-    return this.http.post(ProductService.restApi, product);
-  }
-
   removeProductById(id: number): Observable<any> {
-    return this.http.delete<Product>(ProductService.restApi + "/" + id);
+    return this.http.delete(ProductService.restApi + "/" + id);
   }
 
   getProductById(id): Observable<any> {
@@ -59,12 +52,11 @@ export class ProductService {
     });
 
     return this.http.request(req);
-   // return this.http.post('http://localhost:8082/formafond/api/image', { "file": image, "filename": imagename });
   }
 
-  activProduct(id:number,activ:boolean){
-      return this.http.get(ProductService.restApi+"/"+id+(activ?"/activate":"/deactivate"));  
+  activProduct(id: number, activ: boolean) {
+    return this.http.get(ProductService.restApi + "/" + id + (activ ? "/activate" : "/deactivate"));
   }
 
-  
+
 }

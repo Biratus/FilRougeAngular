@@ -6,12 +6,12 @@ import { HttpClient } from '@angular/common/http';
 import { PanierService } from './panier.service';
 import { User } from './user.model';
 import { Commande } from './commande';
+import { UserService } from './user.service';
 
 @Injectable()
 export class CommandeService {
 
-  static readonly restApi = "http://localhost:8082/formafond/Api/order";
-  static readonly  restApiUser = "http://localhost:8082/formafond"
+  static readonly restApi = "http://localhost:8082/formafond/api/order";
 
   constructor(private http: HttpClient, private panierService: PanierService) {
     this.http = http;
@@ -25,7 +25,7 @@ export class CommandeService {
   }
 
   getOrderOfUser(id: number): Observable<any> {
-    return this.http.get(CommandeService.restApiUser + "/api/user/" + id + "/orders");
+    return this.http.get(UserService.restApi +"/"+ id + "/orders");
 
   }
 
@@ -34,7 +34,7 @@ export class CommandeService {
     return this.http.post(CommandeService.restApi, { "products": listprod, "user": user });
   }
 
-  isInOrder(productId:number): Observable<any>{
-    return this.http.get("http://localhost:8082/formafond/Api/order/product/"+productId);
+  isInOrder(productId: number): Observable<any> {
+    return this.http.get(CommandeService.restApi+"/product/" + productId);
   }
 }
