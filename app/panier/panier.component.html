@@ -13,12 +13,12 @@
               <li class="list-group-item">{{p.name | uppercase}}
                 <div class="d-flex justify-content-between">
                   <figure class="figure">
-                    <img src="http://via.placeholder.com/140x100" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                    <img src="{{p.src}}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure." width="140" height="100">
                     <figcaption class="figure-caption text-right">{{p.description | uppercase}}</figcaption>
                   </figure>
                   <div class="p-2 btnsupp">
                     
-                    <input type="number" step="1" value="{{ p.qty }}" min="0" max="64" (change)="quantityChange($event,p.id)">
+                    <input type="number" step="1" value="{{ p.qty }}" min="0" max="64" (change)="quantityChange($event,p.id)"> 
                     <p style="font-size:1em"><span style="font-size:  0.70vw" >prix Unitaire: </span>{{p.price}}&euro;</p>
                     <p>prix Total: {{p.qty * p.price}}</p>
                   </div>
