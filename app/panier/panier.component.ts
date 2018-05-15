@@ -78,6 +78,7 @@ export class PanierComponent implements OnInit {
         });
         //empty panier
         this.panierService.clearPanier();
+        this.ngOnInit();
       });
     }, error => {
       //display error message

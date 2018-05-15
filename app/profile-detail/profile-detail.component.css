@@ -3,12 +3,15 @@
     font-weight:bold;
 }
 .container{
-    /* background-color:black; */
- 
+    padding:1em 1em 0 1em;
     color:white;
-    border-radius: 3%;
+    border-radius: 0.3em;
     background-color: rgba(0, 0, 0, .5);
 }
 .but{
-    padding: 15px;    
+    padding: 0.5em;    
+}
+
+button [label="Enregistrer mes informations"] {
+    margin-bottom:1em;
 }
