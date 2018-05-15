@@ -204,3 +204,12 @@ div.scrollPanel{
 div.qtyProd{
     margin-top: 1em;
 }
+
+div.descript{
+    text-align: justify;
+    width:90%;
+}
+
+div.spin{
+    margin-top: 1em;
+}
