@@ -20,7 +20,7 @@
                     
                     <input type="number" step="1" value="{{ p.qty }}" min="0" max="64" (change)="quantityChange($event,p.id)"> 
                     <p style="font-size:1em"><span style="font-size:  0.70vw" >prix Unitaire: </span>{{p.price}}&euro;</p>
-                    <p>prix Total: {{p.qty * p.price}}</p>
+                    <p>prix Total: {{p.qty * p.price}}&euro;</p>
                   </div>
                   <div class="p-2 btnsupp">
                     <button class="btn btn-danger btn-block" (click)="deleteArticle(p.id)">
